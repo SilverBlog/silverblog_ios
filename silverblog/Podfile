@@ -3,5 +3,5 @@ use_frameworks!
 project '../silverblog.xcodeproj'
 target 'silverblog' do
   pod 'SwiftyJSON'
-
+  pod 'Alamofire'
 end

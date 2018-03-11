@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2A59D7DBCAD50BB74880EC2A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A59D0CF1BE31F91C63D769D /* Podfile */; };
-		2A59DB0343A7C44E480D0B95 /* network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A59DA769316D1230B7D0E6F /* network.swift */; };
 		5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042202054A52D008FE7EF /* AppDelegate.swift */; };
 		5E8042232054A52D008FE7EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042222054A52D008FE7EF /* ViewController.swift */; };
 		5E8042262054A52D008FE7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042242054A52D008FE7EF /* Main.storyboard */; };
@@ -21,9 +20,6 @@
 
 /* Begin PBXFileReference section */
 		2A59D0CF1BE31F91C63D769D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		2A59DA769316D1230B7D0E6F /* network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = network.swift; sourceTree = "<group>"; };
-		4C8D3E514D527A278F31EE8B /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
-		533CC1919E7C9DCE557E3C58 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8042202054A52D008FE7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8042222054A52D008FE7EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +58,6 @@
 			children = (
 				5E80421F2054A52D008FE7EF /* silverblog */,
 				5E80421E2054A52D008FE7EF /* Products */,
-				8D920202BA1A524820987184 /* Pods */,
 				4D0616ADB7FAC08B310FB2E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -88,18 +83,8 @@
 				5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */,
 				5EC34DA32055219C0023A9F7 /* public_func.swift */,
 				2A59D0CF1BE31F91C63D769D /* Podfile */,
-				2A59DA769316D1230B7D0E6F /* network.swift */,
 			);
 			path = silverblog;
-			sourceTree = "<group>";
-		};
-		8D920202BA1A524820987184 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4C8D3E514D527A278F31EE8B /* Pods-silverblog.debug.xcconfig */,
-				533CC1919E7C9DCE557E3C58 /* Pods-silverblog.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +228,6 @@
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
 				5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */,
 				5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */,
-				2A59DB0343A7C44E480D0B95 /* network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +362,6 @@
 		};
 		5E8042302054A52D008FE7EF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C8D3E514D527A278F31EE8B /* Pods-silverblog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -396,7 +379,6 @@
 		};
 		5E8042312054A52D008FE7EF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 533CC1919E7C9DCE557E3C58 /* Pods-silverblog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
