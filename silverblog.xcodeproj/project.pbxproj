@@ -12,6 +12,7 @@
 		5E8042262054A52D008FE7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042242054A52D008FE7EF /* Main.storyboard */; };
 		5E8042282054A52D008FE7EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042272054A52D008FE7EF /* Assets.xcassets */; };
 		5E80422B2054A52D008FE7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042292054A52D008FE7EF /* LaunchScreen.storyboard */; };
+		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,8 @@
 		5E8042272054A52D008FE7EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E80422A2054A52D008FE7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E80422C2054A52D008FE7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EC34D9D205518590023A9F7 /* global_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global_value.swift; sourceTree = "<group>"; };
+		5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "silverblog-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 				5E8042272054A52D008FE7EF /* Assets.xcassets */,
 				5E8042292054A52D008FE7EF /* LaunchScreen.storyboard */,
 				5E80422C2054A52D008FE7EF /* Info.plist */,
+				5EC34D9D205518590023A9F7 /* global_value.swift */,
+				5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */,
 			);
 			path = silverblog;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 				TargetAttributes = {
 					5E80421C2054A52D008FE7EF = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC34D9E205518590023A9F7 /* global_value.swift in Sources */,
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
 				5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */,
 			);
@@ -274,11 +281,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = silverblog.silverblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -288,11 +298,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = silverblog.silverblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
