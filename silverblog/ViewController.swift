@@ -14,13 +14,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
-        myUserDefaults.set(server_name.text, forKey: "server")
-        myUserDefaults.set(password.text, forKey: "password")
-        myUserDefaults.synchronize()
         global_value.server_url=server_name.text!
         global_value.password=public_func.md5(password.text!)
-        print(global_value.server_url)
-        print(global_value.password)
+        myUserDefaults.set(global_value.server_url, forKey: "server")
+        myUserDefaults.set(global_value.password, forKey: "password")
+        myUserDefaults.synchronize()
+        print("server_url:" + global_value.server_url)
+        print("password:" + global_value.password)
         
     }
     
