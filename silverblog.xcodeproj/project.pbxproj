@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		2A59D0CF1BE31F91C63D769D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8042202054A52D008FE7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8042222054A52D008FE7EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +31,9 @@
 		5EC34D9D205518590023A9F7 /* global_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global_value.swift; sourceTree = "<group>"; };
 		5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "silverblog-Bridging-Header.h"; sourceTree = "<group>"; };
 		5EC34DA32055219C0023A9F7 /* public_func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = public_func.swift; sourceTree = "<group>"; };
+		5EC85519205598F000228E6E /* SwiftyJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyJSON; path = silverblog/Pods/SwiftyJSON; sourceTree = "<group>"; };
+		5EC8551B205598FC00228E6E /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = silverblog/Pods/Alamofire; sourceTree = "<group>"; };
+		870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
 		FE7180841CDD410669A9D313 /* Pods_silverblog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -48,6 +52,8 @@
 		4D0616ADB7FAC08B310FB2E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EC8551B205598FC00228E6E /* Alamofire */,
+				5EC85519205598F000228E6E /* SwiftyJSON */,
 				FE7180841CDD410669A9D313 /* Pods_silverblog.framework */,
 			);
 			name = Frameworks;
@@ -59,6 +65,7 @@
 				5E80421F2054A52D008FE7EF /* silverblog */,
 				5E80421E2054A52D008FE7EF /* Products */,
 				4D0616ADB7FAC08B310FB2E2 /* Frameworks */,
+				74BE49F1E8FEC8F0D7940F50 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +92,15 @@
 				2A59D0CF1BE31F91C63D769D /* Podfile */,
 			);
 			path = silverblog;
+			sourceTree = "<group>";
+		};
+		74BE49F1E8FEC8F0D7940F50 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */,
+				43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,15 +202,11 @@
 			inputPaths = (
 				"${SRCROOT}/silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,6 +374,7 @@
 		};
 		5E8042302054A52D008FE7EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -379,6 +392,7 @@
 		};
 		5E8042312054A52D008FE7EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
