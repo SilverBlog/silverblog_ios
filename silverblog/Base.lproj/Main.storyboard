@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -72,33 +71,51 @@
             </objects>
             <point key="canvasLocation" x="63" y="37"/>
         </scene>
-        <!--Item 2-->
+        <!--Menu-->
         <scene sceneID="4IP-n9-m7L">
             <objects>
                 <viewController id="EDE-Xv-lQn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HVs-Ru-j5b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-tV-aKw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Menu" id="REh-ni-3he"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="t2E-Pq-Cbu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="vmq-tQ-btR"/>
+                    <tabBarItem key="tabBarItem" title="Menu" id="vmq-tQ-btR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeA-Zy-Gcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1686" y="284"/>
         </scene>
-        <!--Item 1-->
+        <!--Post-->
         <scene sceneID="kWq-rP-Due">
             <objects>
                 <viewController id="n9b-1t-smQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ejz-DW-4kq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nl-Om-oOd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Post" id="Tec-Yx-rqp"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="A2n-w7-2nr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="MEV-wS-YZP"/>
+                    <tabBarItem key="tabBarItem" title="Post" id="MEV-wS-YZP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu3-Om-i2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,7 +137,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nx-q6-Fjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735" y="-64"/>
+            <point key="canvasLocation" x="738" y="36"/>
         </scene>
     </scenes>
 </document>
