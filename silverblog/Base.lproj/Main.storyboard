@@ -78,15 +78,6 @@
                     <view key="view" contentMode="scaleToFill" id="HVs-Ru-j5b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-tV-aKw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Menu" id="REh-ni-3he"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="t2E-Pq-Cbu"/>
                     </view>
@@ -104,11 +95,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8nl-Om-oOd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqe-UV-wns">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="safeArea" id="Dzb-yd-eTZ"/>
                                 <items>
-                                    <navigationItem title="Post" id="Tec-Yx-rqp"/>
+                                    <navigationItem title="Post" id="JR2-95-W4r"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -120,6 +112,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bu3-Om-i2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1687" y="-395"/>
+        </scene>
+        <!--Post-->
+        <scene sceneID="Swu-72-Xpa">
+            <objects>
+                <viewController title="Post" id="4DW-Gt-c5t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K6s-Ym-N1s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="w9y-fF-g6n"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMY-fi-rPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2123" y="-396"/>
         </scene>
         <!--Content list-->
         <scene sceneID="pti-xW-Nbi">

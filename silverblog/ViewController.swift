@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
         global_value.server_url = server_name.text!
-        if (global_value.server_url == "" || password.text=="") {
+        if (global_value.server_url == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
                 return
@@ -24,14 +24,17 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
-        global_value.password = public_func.md5(password.text!)
+        if (global_value.password != "" && password.text != nil){
+            global_value.password = public_func.md5(password.text!)
+        }
+
         myUserDefaults.set(global_value.server_url, forKey: "server")
         myUserDefaults.set(global_value.password, forKey: "password")
         myUserDefaults.synchronize()
 
         print("server_url:" + global_value.server_url)
         print("password:" + global_value.password)
-        let sb = UIStoryboard(name:"Main", bundle: nil)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "Content_list") as! UITabBarController
         self.present(vc, animated: true, completion: nil)
 
@@ -40,8 +43,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         myUserDefaults = UserDefaults.standard
-        global_value.server_url = myUserDefaults.string(forKey: "server")!
-        server_name.text = global_value.server_url
+        if (myUserDefaults.string(forKey: "server") != nil) {
+            global_value.server_url = myUserDefaults.string(forKey: "server")!
+            server_name.text = global_value.server_url
+        }
     }
 }
 
