@@ -17,6 +17,7 @@
 		5E80422B2054A52D008FE7EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042292054A52D008FE7EF /* LaunchScreen.storyboard */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34DA32055219C0023A9F7 /* public_func.swift */; };
+		5ECCB7D02057F04300AA5580 /* content_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECCB7CF2057F04300AA5580 /* content_list.swift */; };
 		877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		5EC34DA32055219C0023A9F7 /* public_func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = public_func.swift; sourceTree = "<group>"; };
 		5EC85519205598F000228E6E /* SwiftyJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyJSON; path = silverblog/Pods/SwiftyJSON; sourceTree = "<group>"; };
 		5EC8551B205598FC00228E6E /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = silverblog/Pods/Alamofire; sourceTree = "<group>"; };
+		5ECCB7CF2057F04300AA5580 /* content_list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = content_list.swift; sourceTree = "<group>"; };
 		870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
 		FE7180841CDD410669A9D313 /* Pods_silverblog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				2A59D0CF1BE31F91C63D769D /* Podfile */,
 				2A59DED8484CF5B82699BCBE /* api.swift */,
 				2A59D51023DFDAB792E0F3E6 /* assets */,
+				5ECCB7CF2057F04300AA5580 /* content_list.swift */,
 			);
 			path = silverblog;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EC34D9E205518590023A9F7 /* global_value.swift in Sources */,
+				5ECCB7D02057F04300AA5580 /* content_list.swift in Sources */,
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
 				5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */,
 				5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */,

@@ -31,6 +31,9 @@ class ViewController: UIViewController {
 
         print("server_url:" + global_value.server_url)
         print("password:" + global_value.password)
+        let sb = UIStoryboard(name:"Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "Content_list") as! UITabBarController
+        self.present(vc, animated: true, completion: nil)
 
     }
 
