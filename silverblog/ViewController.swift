@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         }
         global_value.password = public_func.md5(password.text!)
         myUserDefaults.set(global_value.server_url, forKey: "server")
-        myUserDefaults.set(global_value.password, forKey: "password")
         myUserDefaults.synchronize()
 
         print("server_url:" + global_value.server_url)
@@ -41,7 +40,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         myUserDefaults = UserDefaults.standard
         server_name.text = myUserDefaults.string(forKey: "server")
-        password.text = myUserDefaults.string(forKey: "password")
     }
 }
 
