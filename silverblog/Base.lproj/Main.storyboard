@@ -153,21 +153,6 @@
             </objects>
             <point key="canvasLocation" x="1687" y="-395"/>
         </scene>
-        <!--Post-->
-        <scene sceneID="Swu-72-Xpa">
-            <objects>
-                <viewController title="Post" id="4DW-Gt-c5t" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="K6s-Ym-N1s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="w9y-fF-g6n"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KMY-fi-rPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2369" y="-41"/>
-        </scene>
         <!--Content list-->
         <scene sceneID="pti-xW-Nbi">
             <objects>

@@ -8,20 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		2A59D7DBCAD50BB74880EC2A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A59D0CF1BE31F91C63D769D /* Podfile */; };
-		2A59DAB27B315FA45A7F6577 /* api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A59DED8484CF5B82699BCBE /* api.swift */; };
 		5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042202054A52D008FE7EF /* AppDelegate.swift */; };
 		5E8042232054A52D008FE7EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042222054A52D008FE7EF /* ViewController.swift */; };
 		5E8042262054A52D008FE7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042242054A52D008FE7EF /* Main.storyboard */; };
 		5E8042282054A52D008FE7EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042272054A52D008FE7EF /* Assets.xcassets */; };
+		5EA269EA205ACD1E00888C61 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA269E9205ACD1E00888C61 /* ShareViewController.swift */; };
+		5EA269ED205ACD1E00888C61 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA269EB205ACD1E00888C61 /* MainInterface.storyboard */; };
+		5EA269F2205ACD1E00888C61 /* silverblog_share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34DA32055219C0023A9F7 /* public_func.swift */; };
-		5ECCB7D02057F04300AA5580 /* content_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECCB7CF2057F04300AA5580 /* content_list.swift */; };
 		877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5EA269EF205ACD1E00888C61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EA269E6205ACD1E00888C61;
+			remoteInfo = silverblog_share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5EA269F1205ACD1E00888C61 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5EA269F2205ACD1E00888C61 /* silverblog_share.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2A59D0CF1BE31F91C63D769D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		2A59DED8484CF5B82699BCBE /* api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = api.swift; sourceTree = "<group>"; };
 		43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8042202054A52D008FE7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,12 +53,15 @@
 		5E8042252054A52D008FE7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E8042272054A52D008FE7EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E80422C2054A52D008FE7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5EA269E7205ACD1E00888C61 /* silverblog_share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = silverblog_share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EA269E9205ACD1E00888C61 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		5EA269EC205ACD1E00888C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		5EA269EE205ACD1E00888C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EC34D9D205518590023A9F7 /* global_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global_value.swift; sourceTree = "<group>"; };
 		5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "silverblog-Bridging-Header.h"; sourceTree = "<group>"; };
 		5EC34DA32055219C0023A9F7 /* public_func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = public_func.swift; sourceTree = "<group>"; };
 		5EC85519205598F000228E6E /* SwiftyJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyJSON; path = silverblog/Pods/SwiftyJSON; sourceTree = "<group>"; };
 		5EC8551B205598FC00228E6E /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = silverblog/Pods/Alamofire; sourceTree = "<group>"; };
-		5ECCB7CF2057F04300AA5580 /* content_list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = content_list.swift; sourceTree = "<group>"; };
 		870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
 		FE7180841CDD410669A9D313 /* Pods_silverblog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -45,6 +72,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EA269E4205ACD1E00888C61 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				5E80421F2054A52D008FE7EF /* silverblog */,
+				5EA269E8205ACD1E00888C61 /* silverblog_share */,
 				5E80421E2054A52D008FE7EF /* Products */,
 				4D0616ADB7FAC08B310FB2E2 /* Frameworks */,
 				74BE49F1E8FEC8F0D7940F50 /* Pods */,
@@ -75,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5E80421D2054A52D008FE7EF /* silverblog.app */,
+				5EA269E7205ACD1E00888C61 /* silverblog_share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,10 +127,18 @@
 				5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */,
 				5EC34DA32055219C0023A9F7 /* public_func.swift */,
 				2A59D0CF1BE31F91C63D769D /* Podfile */,
-				2A59DED8484CF5B82699BCBE /* api.swift */,
-				5ECCB7CF2057F04300AA5580 /* content_list.swift */,
 			);
 			path = silverblog;
+			sourceTree = "<group>";
+		};
+		5EA269E8205ACD1E00888C61 /* silverblog_share */ = {
+			isa = PBXGroup;
+			children = (
+				5EA269E9205ACD1E00888C61 /* ShareViewController.swift */,
+				5EA269EB205ACD1E00888C61 /* MainInterface.storyboard */,
+				5EA269EE205ACD1E00888C61 /* Info.plist */,
+			);
+			path = silverblog_share;
 			sourceTree = "<group>";
 		};
 		74BE49F1E8FEC8F0D7940F50 /* Pods */ = {
@@ -119,15 +163,34 @@
 				5E80421B2054A52D008FE7EF /* Resources */,
 				0FC1A470EBB44492D2B6A9D7 /* [CP] Embed Pods Frameworks */,
 				72E6124DBB325053CBE204E0 /* [CP] Copy Pods Resources */,
+				5EA269F1205ACD1E00888C61 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5EA269F0205ACD1E00888C61 /* PBXTargetDependency */,
 			);
 			name = silverblog;
 			productName = silverblog;
 			productReference = 5E80421D2054A52D008FE7EF /* silverblog.app */;
 			productType = "com.apple.product-type.application";
+		};
+		5EA269E6205ACD1E00888C61 /* silverblog_share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EA269F5205ACD1E00888C61 /* Build configuration list for PBXNativeTarget "silverblog_share" */;
+			buildPhases = (
+				5EA269E3205ACD1E00888C61 /* Sources */,
+				5EA269E4205ACD1E00888C61 /* Frameworks */,
+				5EA269E5205ACD1E00888C61 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = silverblog_share;
+			productName = silverblog_share;
+			productReference = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -142,6 +205,10 @@
 					5E80421C2054A52D008FE7EF = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+					};
+					5EA269E6205ACD1E00888C61 = {
+						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -160,6 +227,7 @@
 			projectRoot = "";
 			targets = (
 				5E80421C2054A52D008FE7EF /* silverblog */,
+				5EA269E6205ACD1E00888C61 /* silverblog_share */,
 			);
 		};
 /* End PBXProject section */
@@ -172,6 +240,14 @@
 				5E8042282054A52D008FE7EF /* Assets.xcassets in Resources */,
 				5E8042262054A52D008FE7EF /* Main.storyboard in Resources */,
 				2A59D7DBCAD50BB74880EC2A /* Podfile in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EA269E5205ACD1E00888C61 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EA269ED205ACD1E00888C61 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,15 +315,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EC34D9E205518590023A9F7 /* global_value.swift in Sources */,
-				5ECCB7D02057F04300AA5580 /* content_list.swift in Sources */,
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
 				5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */,
 				5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */,
-				2A59DAB27B315FA45A7F6577 /* api.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EA269E3205ACD1E00888C61 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EA269EA205ACD1E00888C61 /* ShareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5EA269F0205ACD1E00888C61 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EA269E6205ACD1E00888C61 /* silverblog_share */;
+			targetProxy = 5EA269EF205ACD1E00888C61 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5E8042242054A52D008FE7EF /* Main.storyboard */ = {
@@ -256,6 +346,14 @@
 				5E8042252054A52D008FE7EF /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5EA269EB205ACD1E00888C61 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5EA269EC205ACD1E00888C61 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -372,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = silverblog/Info.plist;
@@ -389,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = silverblog/Info.plist;
@@ -396,6 +496,34 @@
 				PRODUCT_BUNDLE_IDENTIFIER = silverblog.silverblog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5EA269F3205ACD1E00888C61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = silverblog_share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "silverblog.silverblog.silverblog-share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5EA269F4205ACD1E00888C61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = silverblog_share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "silverblog.silverblog.silverblog-share";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -418,6 +546,15 @@
 			buildConfigurations = (
 				5E8042302054A52D008FE7EF /* Debug */,
 				5E8042312054A52D008FE7EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EA269F5205ACD1E00888C61 /* Build configuration list for PBXNativeTarget "silverblog_share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EA269F3205ACD1E00888C61 /* Debug */,
+				5EA269F4205ACD1E00888C61 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
