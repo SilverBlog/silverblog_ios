@@ -31,12 +31,17 @@ class ViewController: UIViewController {
         myUserDefaults.set(global_value.server_url, forKey: "server")
         myUserDefaults.set(global_value.password, forKey: "password")
         myUserDefaults.synchronize()
-
-        print("server_url:" + global_value.server_url)
-        print("password:" + global_value.password)
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "Content_list") as! UITabBarController
-        self.present(vc, animated: true, completion: nil)
+        let alertController = UIAlertController(title: "Success", message: "Your settings have been saved.", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
+            exit(0)
+        }
+        alertController.addAction(okAction);
+        self.present(alertController, animated: true, completion: nil)
+        //print("server_url:" + global_value.server_url)
+        //print("password:" + global_value.password)
+        //let sb = UIStoryboard(name: "Main", bundle: nil)
+        //let vc = sb.instantiateViewController(withIdentifier: "Content_list") as! UITabBarController
+        //self.present(vc, animated: true, completion: nil)
 
     }
 
