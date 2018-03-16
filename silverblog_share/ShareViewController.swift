@@ -10,18 +10,23 @@ import UIKit
 import Social
 
 class ShareViewController: SLComposeServiceViewController {
-    var myUserDefaults: UserDefaults!
+    let shared = UserDefaults(suiteName: "group.silverblog")!
     var post_title = ""
     var sulg = ""
     override func isContentValid() -> Bool {
+        if(contentText.isEmpty){
+            return false
+        }
+        if(shared.string(forKey: "server")?.isEmpty)!{
+            return false
+        }
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
     }
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-        print(contentText)
-        print(myUserDefaults.string(forKey: "server"))
+
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
@@ -34,7 +39,7 @@ class ShareViewController: SLComposeServiceViewController {
     lazy var title_item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!
         item.title = "Title"
-        item.value = ""
+        item.value = "(require)"
         item.tapHandler={
             let alert = UIAlertController(title:"Please enter a title:",message:"",preferredStyle:.alert)
             alert.addTextField(configurationHandler: {(textField)in
@@ -45,7 +50,7 @@ class ShareViewController: SLComposeServiceViewController {
             let confirm=UIAlertAction(title:"Ok",style:.default){(action)in
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value=textField.text
-                print("Text field: \(textField.text)")
+                self.post_title=textField.text!
             }
             alert.addAction(cancel)
             alert.addAction(confirm)
@@ -67,6 +72,7 @@ class ShareViewController: SLComposeServiceViewController {
             let confirm=UIAlertAction(title:"Ok",style:.default){(action)in
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value=textField.text
+                self.sulg=textField.text!
                 print("Text field: \(textField.text)")
             }
             alert.addAction(cancel)

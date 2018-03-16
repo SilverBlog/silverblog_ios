@@ -53,6 +53,8 @@
 		5E8042252054A52D008FE7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E8042272054A52D008FE7EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E80422C2054A52D008FE7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E85BC79205BB13A00D0DEF3 /* silverblog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = silverblog.entitlements; sourceTree = "<group>"; };
+		5E85BC7A205BB16D00D0DEF3 /* silverblog_share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = silverblog_share.entitlements; sourceTree = "<group>"; };
 		5EA269E7205ACD1E00888C61 /* silverblog_share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = silverblog_share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA269E9205ACD1E00888C61 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		5EA269EC205ACD1E00888C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		5E80421F2054A52D008FE7EF /* silverblog */ = {
 			isa = PBXGroup;
 			children = (
+				5E85BC79205BB13A00D0DEF3 /* silverblog.entitlements */,
 				5E8042202054A52D008FE7EF /* AppDelegate.swift */,
 				5E8042222054A52D008FE7EF /* ViewController.swift */,
 				5E8042242054A52D008FE7EF /* Main.storyboard */,
@@ -134,6 +137,7 @@
 		5EA269E8205ACD1E00888C61 /* silverblog_share */ = {
 			isa = PBXGroup;
 			children = (
+				5E85BC7A205BB16D00D0DEF3 /* silverblog_share.entitlements */,
 				5EA269E9205ACD1E00888C61 /* ShareViewController.swift */,
 				5EA269EB205ACD1E00888C61 /* MainInterface.storyboard */,
 				5EA269EE205ACD1E00888C61 /* Info.plist */,
@@ -206,10 +210,20 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					5EA269E6205ACD1E00888C61 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -472,6 +486,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog/Info.plist;
@@ -491,6 +506,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog/Info.plist;
@@ -506,6 +522,7 @@
 		5EA269F3205ACD1E00888C61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
@@ -521,6 +538,7 @@
 		5EA269F4205ACD1E00888C61 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog_share/Info.plist;

@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var myUserDefaults: UserDefaults!
+    let shared = UserDefaults(suiteName: "group.silverblog")!
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
 
@@ -28,9 +28,9 @@ class ViewController: UIViewController {
             global_value.password = public_func.md5(password.text!)
         }
 
-        myUserDefaults.set(global_value.server_url, forKey: "server")
-        myUserDefaults.set(global_value.password, forKey: "password")
-        myUserDefaults.synchronize()
+        shared.set(global_value.server_url, forKey: "server")
+        shared.set(global_value.password, forKey: "password")
+        shared.synchronize()
         let alertController = UIAlertController(title: "Success", message: "Your settings have been saved.", preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
             exit(0)
@@ -47,9 +47,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        myUserDefaults = UserDefaults.standard
-        if (myUserDefaults.string(forKey: "server") != nil) {
-            global_value.server_url = myUserDefaults.string(forKey: "server")!
+        if (shared.string(forKey: "server") != nil) {
+            global_value.server_url = shared.string(forKey: "server")!
             server_name.text = global_value.server_url
         }
     }
