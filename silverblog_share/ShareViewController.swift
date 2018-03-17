@@ -27,6 +27,7 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+
         var sign = md5(post_title+shared.string(forKey: "password"))
 
         let parameters : Parameters = [
