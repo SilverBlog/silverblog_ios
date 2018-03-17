@@ -8,10 +8,11 @@
 
 import UIKit
 import Social
+import Alamofire
 
 class ShareViewController: SLComposeServiceViewController {
     let shared = UserDefaults(suiteName: "group.silverblog")!
-    var post_title = ""
+    var post_title = "No Title"
     var sulg = ""
     override func isContentValid() -> Bool {
         if(contentText.isEmpty){
@@ -26,6 +27,22 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
+        var sign = md5(post_title+shared.string(forKey: "password"))
+
+        let parameters : Parameters = [
+            "title":post_title,
+            "sign":sign,
+            "content":contentText,
+            "name":sulg
+        ]
+        Alamofire.request(shared.string(forKey: "server")+"/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                print("Validation Successful")
+            case .failure(let error):
+                print(error)
+            }
+        }
 
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
@@ -39,7 +56,7 @@ class ShareViewController: SLComposeServiceViewController {
     lazy var title_item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!
         item.title = "Title"
-        item.value = "(require)"
+        item.value = "No Title"
         item.tapHandler={
             let alert = UIAlertController(title:"Please enter a title:",message:"",preferredStyle:.alert)
             alert.addTextField(configurationHandler: {(textField)in
@@ -73,7 +90,7 @@ class ShareViewController: SLComposeServiceViewController {
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value=textField.text
                 self.sulg=textField.text!
-                print("Text field: \(textField.text)")
+                //print("Text field: \(textField.text)")
             }
             alert.addAction(cancel)
             alert.addAction(confirm)
@@ -81,5 +98,19 @@ class ShareViewController: SLComposeServiceViewController {
         }
         return item
     }()
+    func md5(_ string: String) -> String {
 
+        let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
+        var digest = Array<UInt8>(repeating:0, count:Int(CC_MD5_DIGEST_LENGTH))
+        CC_MD5_Init(context)
+        CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
+        CC_MD5_Final(&digest, context)
+        context.deallocate(capacity: 1)
+        var hexString = ""
+        for byte in digest {
+            hexString += String(format:"%02x", byte)
+        }
+
+        return hexString
+    }
 }
