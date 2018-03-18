@@ -99,7 +99,7 @@ class ShareViewController: SLComposeServiceViewController {
         item.tapHandler={
             let alert = UIAlertController(title:"Please enter a sulg:",message:"",preferredStyle:.alert)
             alert.addTextField(configurationHandler: {(textField)in
-                textField.placeholder="Title"
+                textField.placeholder="Sulg"
                 textField.keyboardType = .default
             })
             let cancel=UIAlertAction(title:"Cancel",style:.cancel)
