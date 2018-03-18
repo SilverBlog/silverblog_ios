@@ -24,7 +24,7 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
-        if (global_value.password == "" && password.text != nil){
+        if (global_value.password == "" && password.text != ""){
             global_value.password = public_func.md5(password.text!)
         }
         print(global_value.password)
@@ -32,10 +32,10 @@ class ViewController: UIViewController {
         shared.set(global_value.password, forKey: "password")
         shared.synchronize()
         let alertController = UIAlertController(title: "Success", message: "Your settings have been saved.", preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
-            exit(0)
-        }
-        alertController.addAction(okAction);
+        //let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
+        //    exit(0)
+        //}
+        //alertController.addAction(okAction);
         self.present(alertController, animated: true, completion: nil)
         //print("server_url:" + global_value.server_url)
         //print("password:" + global_value.password)
