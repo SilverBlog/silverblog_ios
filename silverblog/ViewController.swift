@@ -24,10 +24,10 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
-        if (global_value.password != "" && password.text != nil){
+        if (global_value.password == "" && password.text != nil){
             global_value.password = public_func.md5(password.text!)
         }
-
+        print(global_value.password)
         shared.set(global_value.server_url, forKey: "server")
         shared.set(global_value.password, forKey: "password")
         shared.synchronize()

@@ -27,8 +27,9 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-
-        var sign = md5(post_title+shared.string(forKey: "password"))
+        let password = shared.string(forKey: "password")!
+        let server = shared.string(forKey: "server")!
+        let sign = md5(post_title+password)
 
         let parameters : Parameters = [
             "title":post_title,
@@ -36,10 +37,12 @@ class ShareViewController: SLComposeServiceViewController {
             "content":contentText,
             "name":sulg
         ]
-        Alamofire.request(shared.string(forKey: "server")+"/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request(server+"/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result {
             case .success:
+
                 print("Validation Successful")
+                self.displayUIAlertController(title: "Done", message: "ok")
             case .failure(let error):
                 print(error)
             }
@@ -53,7 +56,16 @@ class ShareViewController: SLComposeServiceViewController {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         return [title_item,sulg_item]
     }
+    func displayUIAlertController(title: String, message: String) {
 
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+            self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        }))
+
+        self.present(alert, animated: true, completion: nil)
+    }
     lazy var title_item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!
         item.title = "Title"
