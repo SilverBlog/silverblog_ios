@@ -16,16 +16,16 @@ class ViewController: UIViewController {
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
         global_value.server_url = server_name.text!
-        if (global_value.server_url == "") {
+        if (global_value.password == "" && password.text != ""){
+            global_value.password = public_func.md5(password.text!)
+        }
+        if (global_value.server_url == "" || global_value.password == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
                 return
             }
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
-        }
-        if (global_value.password == "" && password.text != ""){
-            global_value.password = public_func.md5(password.text!)
         }
         print(global_value.password)
         shared.set(global_value.server_url, forKey: "server")
@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         if (shared.string(forKey: "server") != nil) {
             global_value.server_url = shared.string(forKey: "server")!
+            global_value.password = shared.string(forKey: "password")!
             server_name.text = global_value.server_url
         }
     }
