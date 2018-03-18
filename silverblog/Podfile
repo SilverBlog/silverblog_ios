@@ -1,0 +1,9 @@
+platform :ios, '11.0'
+use_frameworks!
+project '../silverblog.xcodeproj'
+target 'silverblog' do
+  pod 'Alamofire'
+end
+target 'silverblog_share' do
+  pod 'Alamofire'
+end

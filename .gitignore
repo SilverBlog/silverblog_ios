@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.idea/
+silverblog.xcodeproj/project.xcworkspace/xcuserdata/qwe7002.xcuserdatad/xcschemes/
+silverblog.xcodeproj/xcuserdata/qwe7002.xcuserdatad/xcdebugger/
+silverblog.xcodeproj/xcuserdata/qwe7002.xcuserdatad/xcschemes/silverblog.xcscheme
+silverblog/.idea/
+silverblog/Podfile.lock
+silverblog/Pods/
+silverblog/silverblog.xcworkspace/
