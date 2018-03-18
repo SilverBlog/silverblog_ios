@@ -4,4 +4,4 @@ release_github:
   only:
   - master
   script:
-  - git push --set-upstream https://${github_key}@github.com/SilverBlogTeam/silverblog_ios.git HEAD:master
+  - git push -u --set-upstream https://${github_key}@github.com/SilverBlogTeam/silverblog_ios.git HEAD:master
