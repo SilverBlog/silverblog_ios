@@ -40,9 +40,12 @@ class ShareViewController: SLComposeServiceViewController {
         Alamofire.request(server+"/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result {
             case .success:
-
-                print("Validation Successful")
-                self.displayUIAlertController(title: "Done", message: "ok")
+                let result = response.result.value as? NSDictionary
+                result_message = "Article publication failed."
+                if (result["status"]) {
+                    result_message = "The article has been successfully published."
+                }
+                self.displayUIAlertController(title: "Article release completed", message: result_message)
             case .failure(let error):
                 print(error)
             }
