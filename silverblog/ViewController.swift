@@ -27,7 +27,6 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
-        print(global_value.password)
         shared.set(global_value.server_url, forKey: "server")
         shared.set(global_value.password, forKey: "password")
         shared.synchronize()
