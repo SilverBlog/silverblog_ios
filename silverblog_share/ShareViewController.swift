@@ -46,10 +46,10 @@ class ShareViewController: SLComposeServiceViewController {
                 if (status) {
                     result_message = "The article has been successfully published."
                 }
-                self.displayUIAlertController(title: "Article release completed", message: result_message)
             case .failure(let error):
-                print(error)
+                result_message = error
             }
+            self.displayUIAlertController(title: "Article release completed", message: result_message)
         }
 
         // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
@@ -79,6 +79,7 @@ class ShareViewController: SLComposeServiceViewController {
             alert.addTextField(configurationHandler: {(textField)in
                 textField.placeholder="Title"
                 textField.keyboardType = .default
+                textField.text = self.post_title
             })
             let cancel=UIAlertAction(title:"Cancel",style:.cancel)
             let confirm=UIAlertAction(title:"Ok",style:.default){(action)in
@@ -101,6 +102,7 @@ class ShareViewController: SLComposeServiceViewController {
             alert.addTextField(configurationHandler: {(textField)in
                 textField.placeholder="Title"
                 textField.keyboardType = .default
+                textField.text=self.sulg
             })
             let cancel=UIAlertAction(title:"Cancel",style:.cancel)
             let confirm=UIAlertAction(title:"Ok",style:.default){(action)in
