@@ -19,13 +19,15 @@ class ShareViewController: SLComposeServiceViewController {
         if (contentText.isEmpty) {
             return false
         }
-        if (shared.string(forKey: "server")?.isEmpty)! {
-            return false
-        }
         // Do validation of contentText and/or NSExtensionContext attachments here
         return true
     }
-
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if (shared.string(forKey: "server")?.isEmpty)! {
+            self.displayUIAlertController(title: "Please set the server information first.", message: "")
+        }
+    }
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         let password = shared.string(forKey: "password")!
