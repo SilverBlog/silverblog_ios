@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,6 +75,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="36.431784107946029"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="Yad-Ra-3zL">
+            <objects>
+                <viewController id="GD8-m6-YSP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e5g-iE-VWn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IaD-SG-FyQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="Sdh-q4-Vas"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ay4-mc-rRC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1690" y="368"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="qYa-rs-Jc5">
+            <objects>
+                <viewController id="8G2-Mb-qIV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cDI-vT-nAY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="utZ-yM-TKQ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="7MZ-HZ-Wwl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9W-CY-e68" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1690" y="-296"/>
+        </scene>
+        <!--Tabbarcontroller-->
+        <scene sceneID="nm3-Ie-Ngh">
+            <objects>
+                <tabBarController storyboardIdentifier="post_list" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wbg-qx-v3m" customClass="tabbarcontroller" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eNW-tU-RjG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="8G2-Mb-qIV" kind="relationship" relationship="viewControllers" id="1TN-0y-xoe"/>
+                        <segue destination="GD8-m6-YSP" kind="relationship" relationship="viewControllers" id="bR2-WZ-d7l"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="347-w1-bZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="738" y="36"/>
         </scene>
     </scenes>
 </document>

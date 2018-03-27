@@ -32,9 +32,13 @@ class ViewController: UIViewController {
         shared.synchronize()
         let alertController = UIAlertController(title: "Success", message: "Your settings have been saved.", preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
+            let sb = UIStoryboard(name:"Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "post_list") as! UITabBarController
+            self.present(vc, animated: true, completion: nil)
         }
         alertController.addAction(okAction);
         self.present(alertController, animated: true, completion: nil)
+
     }
 
     override func viewDidLoad() {
