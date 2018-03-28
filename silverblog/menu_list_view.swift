@@ -20,6 +20,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl)
+        self.load_data()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")

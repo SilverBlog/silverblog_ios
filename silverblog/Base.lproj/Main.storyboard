@@ -41,7 +41,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM0-yz-4cA">
                                         <rect key="frame" x="0.0" y="100" width="343" height="30"/>
-                                        <state key="normal" title="Save"/>
+                                        <state key="normal" title="Enter"/>
                                         <connections>
                                             <action selector="on_enter_click:" destination="BYZ-38-t0r" eventType="touchDown" id="tkk-Gz-iD3"/>
                                         </connections>
