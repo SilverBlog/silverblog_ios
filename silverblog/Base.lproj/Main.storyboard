@@ -91,20 +91,31 @@
                                     <navigationItem title="Menu" largeTitleDisplayMode="always" id="Vth-wi-cDe"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4p-1G-7F8">
+                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="top" secondItem="chr-OB-8ha" secondAttribute="bottom" id="217-Ry-G5i"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="leading" secondItem="QQQ-cy-Vgo" secondAttribute="leading" id="cZI-yB-TRO"/>
                             <constraint firstItem="chr-OB-8ha" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="gBh-03-Mbo"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="l6U-j5-7c5"/>
                             <constraint firstItem="chr-OB-8ha" firstAttribute="leading" secondItem="QQQ-cy-Vgo" secondAttribute="leading" id="lYt-8T-eHI"/>
                             <constraint firstItem="chr-OB-8ha" firstAttribute="top" secondItem="0lS-Dj-q39" secondAttribute="top" id="szU-eh-wnc"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="bottom" secondItem="QQQ-cy-Vgo" secondAttribute="bottom" id="ybO-9A-a0k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QQQ-cy-Vgo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Menu" id="2UT-YF-jss"/>
+                    <connections>
+                        <outlet property="tableView" destination="Z4p-1G-7F8" id="PEU-Xo-rpJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crz-74-GKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1690" y="368"/>
+            <point key="canvasLocation" x="1688.8" y="367.46626686656674"/>
         </scene>
         <!--Post-->
         <scene sceneID="HDc-Ks-JR5">

@@ -11,15 +11,15 @@ import Alamofire
 import SwiftyJSON
 class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    var arrjson = JSON()
+    var array_json = JSON()
     override func viewDidLoad() {
         super.viewDidLoad()
         Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
                 if let value = response.result.value {
-                    self.arrjson = JSON(value)
-                    print(self.arrjson)
+                    self.array_json = JSON(value)
+                    print(self.array_json)
                     self.tableView.reloadData()
                 }
             case false:
@@ -31,13 +31,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.arrjson.count)
-        return self.arrjson.count
+        print(self.array_json.count)
+        return self.array_json.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel?.text = self.arrjson[indexPath.row]["title"].string
+        cell.textLabel?.text = self.array_json[indexPath.row]["title"].string
         return cell
     }
 

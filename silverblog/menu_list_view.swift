@@ -7,24 +7,38 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-class menu_list_view: UIViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    var array_json = JSON()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print("load menu")
-        // Do any additional setup after loading the view.
+        Alamofire.request(global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    self.array_json = JSON(value)
+                    print(self.array_json)
+                    self.tableView.reloadData()
+                }
+            case false:
+                print(response.result.error)
+            }
+        }
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.array_json.count)
+        return self.array_json.count
     }
-    */
 
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        cell.textLabel?.text = self.array_json[indexPath.row]["title"].string
+        return cell
+    }
 }
