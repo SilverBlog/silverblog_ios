@@ -15,6 +15,17 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     var array_json = JSON()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let alertController = UIAlertController(title: "Now Loading, please wait...", message: "", preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.tableView.addSubview(refreshControl)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+
+    func load_data(){
         Alamofire.request(global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
@@ -27,10 +38,12 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 print(response.result.error)
             }
         }
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    @objc func refresh(refreshControl: UIRefreshControl) {
+        load_data()
+        refreshControl.endRefreshing()
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.array_json.count
     }
