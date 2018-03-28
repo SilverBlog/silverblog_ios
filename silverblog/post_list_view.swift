@@ -14,24 +14,55 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     var array_json = JSON()
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
-            switch response.result.isSuccess {
-            case true:
-                if let value = response.result.value {
-                    self.array_json = JSON(value)
-                    print(self.array_json)
-                    self.tableView.reloadData()
-                }
-            case false:
-                print(response.result.error)
-            }
-        }
+        let alertController = UIAlertController(title: "Now Loading, please wait...", message: "", preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
+        self.load_data()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    func load_data(){
+        Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            switch response.result.isSuccess {
+            case true:
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+                if let value = response.result.value {
+                    self.array_json = JSON(value)
+                    print(self.array_json)
+                    self.tableView.reloadData()
+            case false:
+                print(response.result.error)
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let parameters: Parameters = [
+            "post_id": indexPath.row,
+            "sign": public_func.md5(String(indexPath.row) + array_json[indexPath.row]["title"].string! + global_value.password)
+        ]
+        var result_message = ""
+        let alertController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
+        Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            switch response.result {
+            case .success(let json):
+                print(json)
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+                let dict = json as! Dictionary<String, AnyObject>
+                let status = dict["status"] as! Bool
+                if (status) {
+                    self.load_data()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Delete"
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.array_json.count)
         return self.array_json.count
     }
 
