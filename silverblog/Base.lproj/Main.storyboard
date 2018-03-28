@@ -77,23 +77,36 @@
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="36.431784107946029"/>
         </scene>
-        <!--Item 2-->
+        <!--Menu-->
         <scene sceneID="8vR-aC-Vlu">
             <objects>
-                <viewController id="WJB-Xi-FI6" sceneMemberID="viewController">
+                <viewController id="WJB-Xi-FI6" customClass="menu_list_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0lS-Dj-q39">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chr-OB-8ha">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <items>
+                                    <navigationItem title="Menu" largeTitleDisplayMode="always" id="Vth-wi-cDe"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="chr-OB-8ha" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="gBh-03-Mbo"/>
+                            <constraint firstItem="chr-OB-8ha" firstAttribute="leading" secondItem="QQQ-cy-Vgo" secondAttribute="leading" id="lYt-8T-eHI"/>
+                            <constraint firstItem="chr-OB-8ha" firstAttribute="top" secondItem="0lS-Dj-q39" secondAttribute="top" id="szU-eh-wnc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QQQ-cy-Vgo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="2UT-YF-jss"/>
+                    <tabBarItem key="tabBarItem" title="Menu" id="2UT-YF-jss"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crz-74-GKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1690" y="368"/>
         </scene>
-        <!--Item 1-->
+        <!--Post-->
         <scene sceneID="HDc-Ks-JR5">
             <objects>
                 <viewController id="IjO-O4-Wio" customClass="post_list_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,21 +114,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7z-xC-yl2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7z-xC-yl2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                 <items>
-                                    <navigationItem title="Title" largeTitleDisplayMode="always" id="cdB-uw-5PZ"/>
+                                    <navigationItem title="Post" largeTitleDisplayMode="always" id="cdB-uw-5PZ"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e8n-t9-k0A">
+                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="M7z-xC-yl2" firstAttribute="top" secondItem="XUG-dd-T8q" secondAttribute="top" id="Blg-fs-FYf"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="top" secondItem="M7z-xC-yl2" secondAttribute="bottom" id="GWR-2p-q80"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="trailing" secondItem="fup-wT-oQw" secondAttribute="trailing" id="Hth-88-kH9"/>
                             <constraint firstItem="M7z-xC-yl2" firstAttribute="leading" secondItem="fup-wT-oQw" secondAttribute="leading" id="JJj-e8-Ghs"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="bottom" secondItem="fup-wT-oQw" secondAttribute="bottom" id="VUe-1i-kYH"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="leading" secondItem="fup-wT-oQw" secondAttribute="leading" id="fle-rM-WnX"/>
                             <constraint firstItem="M7z-xC-yl2" firstAttribute="trailing" secondItem="fup-wT-oQw" secondAttribute="trailing" id="tB5-Jm-ou5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fup-wT-oQw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="HbB-ry-2Ae"/>
+                    <tabBarItem key="tabBarItem" title="Post" id="HbB-ry-2Ae"/>
+                    <connections>
+                        <outlet property="tableView" destination="e8n-t9-k0A" id="OFF-SL-SRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKU-LS-y6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
