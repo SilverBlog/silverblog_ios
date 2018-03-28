@@ -18,6 +18,7 @@
 		5EC1AF67205E7CB900D094BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC1AF66205E7CB900D094BC /* Images.xcassets */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34DA32055219C0023A9F7 /* public_func.swift */; };
+		5EEE0E11206B89D900CD8E38 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE0E10206B89D900CD8E38 /* Post.storyboard */; };
 		877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; };
 		D2A8440FF06BD5A401AB216D /* Pods_silverblog_share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		5EC34DA32055219C0023A9F7 /* public_func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = public_func.swift; sourceTree = "<group>"; };
 		5EC85519205598F000228E6E /* SwiftyJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyJSON; path = silverblog/Pods/SwiftyJSON; sourceTree = "<group>"; };
 		5EC8551B205598FC00228E6E /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = silverblog/Pods/Alamofire; sourceTree = "<group>"; };
+		5EEE0E10206B89D900CD8E38 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		7D6C16E3FEC5C36D604C6BE9 /* Pods-silverblog_share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog_share.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog_share/Pods-silverblog_share.debug.xcconfig"; sourceTree = "<group>"; };
 		870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
 		EB788647ABA352821A4A34B3 /* Pods-silverblog_share.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog_share.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog_share/Pods-silverblog_share.release.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				2A59DA7642260DB007D67CD9 /* Podfile */,
 				5EC1AF66205E7CB900D094BC /* Images.xcassets */,
 				5EC0941A206AAB2B006E27EF /* post_list_view.swift */,
+				5EEE0E10206B89D900CD8E38 /* Post.storyboard */,
 			);
 			path = silverblog;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EEE0E11206B89D900CD8E38 /* Post.storyboard in Resources */,
 				5EC1AF67205E7CB900D094BC /* Images.xcassets in Resources */,
 				5E8042262054A52D008FE7EF /* Main.storyboard in Resources */,
 				2A59D01130311F92BCA27F6C /* Podfile in Resources */,

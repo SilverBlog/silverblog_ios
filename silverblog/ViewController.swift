@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
-        let sb = UIStoryboard(name:"Main", bundle: nil)
+        let sb = UIStoryboard(name:"Post", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "post_list") as! UITabBarController
         self.present(vc, animated: true, completion: nil)
 
