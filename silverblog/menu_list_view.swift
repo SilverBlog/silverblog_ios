@@ -29,6 +29,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         Alamofire.request(global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
                 if let value = response.result.value {
                     self.array_json = JSON(value)
                     print(self.array_json)
