@@ -20,7 +20,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        var refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl)
     }
@@ -68,7 +68,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Delete"
     }
+    
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at:indexPath, animated: true);
+        print(indexPath.row)
+
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.array_json.count
     }
