@@ -20,6 +20,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.tableView.addSubview(refreshControl)
+    }
+    @objc func refresh(refreshControl: UIRefreshControl) {
+        load_data()
+        refreshControl.endRefreshing()
     }
     func load_data(){
         Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
@@ -30,6 +37,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.array_json = JSON(value)
                     print(self.array_json)
                     self.tableView.reloadData()
+                }
             case false:
                 print(response.result.error)
             }
@@ -40,7 +48,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             "post_id": indexPath.row,
             "sign": public_func.md5(String(indexPath.row) + array_json[indexPath.row]["title"].string! + global_value.password)
         ]
-        var result_message = ""
         let alertController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
         Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
