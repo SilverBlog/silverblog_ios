@@ -11,15 +11,19 @@ import Alamofire
 import SwiftyJSON
 class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    
+    var arrjson = JSON()
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).responseString { response in
-
-            let json = JSON(response.result.value)
-
-            if let title = json[0]["title"].string {
-                print(title)
+        Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    self.arrjson = JSON(value)
+                    print(self.arrjson)
+                    self.tableView.reloadData()
+                }
+            case false:
+                print(response.result.error)
             }
         }
         self.tableView.dataSource = self
@@ -27,12 +31,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print(self.arrjson.count)
+        return self.arrjson.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel?.text = "abcde"
+        cell.textLabel?.text = self.arrjson[indexPath.row]["title"].string
         return cell
     }
 
