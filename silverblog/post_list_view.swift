@@ -26,13 +26,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     @objc func refresh(refreshControl: UIRefreshControl) {
         load_data()
+        self.presentedViewController?.dismiss(animated: false, completion: nil)
         refreshControl.endRefreshing()
     }
     func load_data(){
         Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
-                self.presentedViewController?.dismiss(animated: false, completion: nil)
                 if let value = response.result.value {
                     self.array_json = JSON(value)
                     print(self.array_json)
@@ -41,6 +41,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             case false:
                 print(response.result.error)
             }
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

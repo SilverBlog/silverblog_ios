@@ -15,13 +15,11 @@ class edit_post_view: UIViewController {
     var menu = false
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Sulg_input: UITextField!
-    
-    @IBOutlet var Backbutton: UIBarButtonItem!
     @IBOutlet var Content_input: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         load_post()
-
     }
     func load_post(){
         var function = "post"
