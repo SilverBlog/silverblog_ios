@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A59D01130311F92BCA27F6C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A59DA7642260DB007D67CD9 /* Podfile */; };
+		5E155CFB206D5ADF00035A4B /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E155CFA206D5ADF00035A4B /* NavigationBar.swift */; };
 		5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042202054A52D008FE7EF /* AppDelegate.swift */; };
 		5E8042232054A52D008FE7EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042222054A52D008FE7EF /* ViewController.swift */; };
 		5E8042262054A52D008FE7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042242054A52D008FE7EF /* Main.storyboard */; };
@@ -52,6 +53,7 @@
 		2A59DA7642260DB007D67CD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E155CFA206D5ADF00035A4B /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8042202054A52D008FE7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8042222054A52D008FE7EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5EC1AF66205E7CB900D094BC /* Images.xcassets */,
 				5EC0941A206AAB2B006E27EF /* post_list_view.swift */,
 				5EA6A086206CF412002BA695 /* edit_post_view.swift */,
+				5E155CFA206D5ADF00035A4B /* NavigationBar.swift */,
 			);
 			path = silverblog;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				5EC34D9E205518590023A9F7 /* global_value.swift in Sources */,
 				5EA6A085206B962F002BA695 /* menu_list_view.swift in Sources */,
 				5EA6A087206CF412002BA695 /* edit_post_view.swift in Sources */,
+				5E155CFB206D5ADF00035A4B /* NavigationBar.swift in Sources */,
 				5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */,
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
 				5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */,

@@ -23,6 +23,10 @@ class edit_post_view: UIViewController {
         self.present(vc, animated: true, completion: nil)
 
     }
+    @IBAction func Back_Button(_ sender: Any) {
+    }
+    @IBAction func Save_Button(_ sender: Any) {
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         load_post()

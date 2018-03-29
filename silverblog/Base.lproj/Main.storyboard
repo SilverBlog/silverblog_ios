@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW6-IN-Y4I">
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW6-IN-Y4I" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
                                 <items>
@@ -86,32 +86,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar autoresizesSubviews="NO" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sD4-Ux-D2n">
+                            <navigationBar autoresizesSubviews="NO" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sD4-Ux-D2n" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
                                 <viewLayoutGuide key="safeArea" id="Tdt-Dr-bWN"/>
                                 <items>
                                     <navigationItem title="Edit Post" largeTitleDisplayMode="always" id="b3i-Ib-IcO">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="PcQ-sJ-kQs">
-                                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ukr-hL-WNk">
-                                                <rect key="frame" x="16" y="7" width="55" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="titleEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Back"/>
-                                                <connections>
-                                                    <action selector="Back_button:" destination="4C3-JF-VWR" eventType="touchDown" id="ho6-zD-vRi"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="r0y-0o-n52">
+                                            <connections>
+                                                <action selector="Back_Button:" destination="4C3-JF-VWR" id="kym-8a-luK"/>
+                                            </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Q5q-3W-CcN">
-                                            <inset key="largeContentSizeImageInsets" minX="17" minY="1" maxX="0.0" maxY="0.0"/>
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TTO-ud-kM1">
-                                                <rect key="frame" x="325" y="7" width="34" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <inset key="titleEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Save"/>
-                                            </button>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="Ssq-Ff-tqM">
+                                            <connections>
+                                                <action selector="Save_Button:" destination="4C3-JF-VWR" id="grd-CT-H57"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -171,7 +160,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chr-OB-8ha">
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chr-OB-8ha" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
                                 <items>
@@ -179,7 +168,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4p-1G-7F8">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <viewLayoutGuide key="safeArea" id="uqQ-Q4-Kmt"/>
@@ -188,7 +177,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="top" secondItem="chr-OB-8ha" secondAttribute="bottom" id="217-Ry-G5i"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="top" secondItem="chr-OB-8ha" secondAttribute="bottom" constant="2" id="217-Ry-G5i"/>
                             <constraint firstItem="Z4p-1G-7F8" firstAttribute="leading" secondItem="QQQ-cy-Vgo" secondAttribute="leading" id="cZI-yB-TRO"/>
                             <constraint firstItem="chr-OB-8ha" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="gBh-03-Mbo"/>
                             <constraint firstItem="Z4p-1G-7F8" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="l6U-j5-7c5"/>
@@ -215,7 +204,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7z-xC-yl2">
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7z-xC-yl2" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
                                 <items>
@@ -223,7 +212,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e8n-t9-k0A">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <viewLayoutGuide key="safeArea" id="xwM-KI-Jde"/>
@@ -233,7 +222,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="M7z-xC-yl2" firstAttribute="top" secondItem="XUG-dd-T8q" secondAttribute="top" id="Blg-fs-FYf"/>
-                            <constraint firstItem="e8n-t9-k0A" firstAttribute="top" secondItem="M7z-xC-yl2" secondAttribute="bottom" id="GWR-2p-q80"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="top" secondItem="M7z-xC-yl2" secondAttribute="bottom" constant="2" id="GWR-2p-q80"/>
                             <constraint firstItem="e8n-t9-k0A" firstAttribute="trailing" secondItem="fup-wT-oQw" secondAttribute="trailing" id="Hth-88-kH9"/>
                             <constraint firstItem="M7z-xC-yl2" firstAttribute="leading" secondItem="fup-wT-oQw" secondAttribute="leading" id="JJj-e8-Ghs"/>
                             <constraint firstItem="e8n-t9-k0A" firstAttribute="bottom" secondItem="fup-wT-oQw" secondAttribute="bottom" id="VUe-1i-kYH"/>
