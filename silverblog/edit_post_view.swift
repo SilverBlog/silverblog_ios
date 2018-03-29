@@ -17,6 +17,12 @@ class edit_post_view: UIViewController {
     @IBOutlet var Sulg_input: UITextField!
     @IBOutlet var Content_input: UITextView!
     
+    @IBAction func Back_button(_ sender: Any) {
+        let sb = UIStoryboard(name:"Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "post_list_view") as! post_list_view
+        self.present(vc, animated: true, completion: nil)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         load_post()
