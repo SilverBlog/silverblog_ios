@@ -17,7 +17,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         let alertController = UIAlertController(title: "Now Loading, please wait...", message: "", preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
-        var refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl)
         self.load_data()
