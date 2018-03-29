@@ -15,6 +15,7 @@
 		5EA269ED205ACD1E00888C61 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EA269EB205ACD1E00888C61 /* MainInterface.storyboard */; };
 		5EA269F2205ACD1E00888C61 /* silverblog_share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5EA6A085206B962F002BA695 /* menu_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6A084206B962F002BA695 /* menu_list_view.swift */; };
+		5EA6A087206CF412002BA695 /* edit_post_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6A086206CF412002BA695 /* edit_post_view.swift */; };
 		5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0941A206AAB2B006E27EF /* post_list_view.swift */; };
 		5EC1AF67205E7CB900D094BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EC1AF66205E7CB900D094BC /* Images.xcassets */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
@@ -48,7 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2A59DA7642260DB007D67CD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		2A59DA7642260DB007D67CD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +64,7 @@
 		5EA269EC205ACD1E00888C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		5EA269EE205ACD1E00888C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EA6A084206B962F002BA695 /* menu_list_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menu_list_view.swift; sourceTree = "<group>"; };
+		5EA6A086206CF412002BA695 /* edit_post_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = edit_post_view.swift; sourceTree = "<group>"; };
 		5EC0941A206AAB2B006E27EF /* post_list_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post_list_view.swift; sourceTree = "<group>"; };
 		5EC1AF66205E7CB900D094BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5EC34D9D205518590023A9F7 /* global_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global_value.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				2A59DA7642260DB007D67CD9 /* Podfile */,
 				5EC1AF66205E7CB900D094BC /* Images.xcassets */,
 				5EC0941A206AAB2B006E27EF /* post_list_view.swift */,
+				5EA6A086206CF412002BA695 /* edit_post_view.swift */,
 			);
 			path = silverblog;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			files = (
 				5EC34D9E205518590023A9F7 /* global_value.swift in Sources */,
 				5EA6A085206B962F002BA695 /* menu_list_view.swift in Sources */,
+				5EA6A087206CF412002BA695 /* edit_post_view.swift in Sources */,
 				5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */,
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
 				5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */,

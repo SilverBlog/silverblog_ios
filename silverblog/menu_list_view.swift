@@ -45,7 +45,10 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         load_data()
         refreshControl.endRefreshing()
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print("选中了第\(indexPath.row)个cell")
 
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.array_json.count
     }

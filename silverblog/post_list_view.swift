@@ -26,13 +26,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     @objc func refresh(refreshControl: UIRefreshControl) {
         load_data()
+        self.presentedViewController?.dismiss(animated: false, completion: nil)
         refreshControl.endRefreshing()
     }
     func load_data(){
         Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
-                self.presentedViewController?.dismiss(animated: false, completion: nil)
                 if let value = response.result.value {
                     self.array_json = JSON(value)
                     print(self.array_json)
@@ -41,29 +41,42 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             case false:
                 print(response.result.error)
             }
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let parameters: Parameters = [
-            "post_id": indexPath.row,
-            "sign": public_func.md5(String(indexPath.row) + array_json[indexPath.row]["title"].string! + global_value.password)
-        ]
-        let alertController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            switch response.result {
-            case .success(let json):
-                print(json)
-                self.presentedViewController?.dismiss(animated: false, completion: nil)
-                let dict = json as! Dictionary<String, AnyObject>
-                let status = dict["status"] as! Bool
-                if (status) {
+        let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertControllerStyle.alert)
+        let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){(ACTION) in
+            let parameters: Parameters = [
+                "post_id": indexPath.row,
+                "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
+            ]
+            let doneController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
+            self.present(doneController, animated: true, completion: nil)
+            Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+                switch response.result {
+                case .success(let json):
+                    print(json)
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
                     self.load_data()
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
+        alertController.addAction(okAction);
+        alertController.addAction(CancelAction);
+        self.present(alertController, animated: true, completion: nil)
+
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name:"Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+        vc.row = indexPath.row
+        vc.menu = false
+        self.present(vc, animated: true, completion: nil)
+
     }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Delete"
