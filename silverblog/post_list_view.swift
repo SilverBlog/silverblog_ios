@@ -65,6 +65,10 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print("选中了第\(indexPath.row)个cell")
+
+    }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Delete"
     }

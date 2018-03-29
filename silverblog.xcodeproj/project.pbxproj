@@ -48,7 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2A59DA7642260DB007D67CD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		2A59DA7642260DB007D67CD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
