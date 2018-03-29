@@ -71,10 +71,10 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name:"Main", bundle: nil)
-        //todo
-        //let vc = sb.instantiateViewController(withIdentifier: "post_list") as! UITabBarController
-        //vc.params = indexPath.row
-        //self.present(vc, animated: true, completion: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+        vc.row = indexPath.row
+        vc.menu = false
+        self.present(vc, animated: true, completion: nil)
 
     }
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
