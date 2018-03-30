@@ -58,9 +58,6 @@ class ShareViewController: SLComposeServiceViewController {
             }
             self.displayUIAlertController(title: "Article release completed", message: result_message)
         }
-
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        //self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
 
     override func configurationItems() -> [Any]! {

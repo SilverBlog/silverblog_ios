@@ -13,20 +13,22 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     var array_json = JSON()
+    let refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
-        let alertController = UIAlertController(title: "Now Loading, please wait...", message: "", preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.addSubview(refreshControl)
-        self.load_data()
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.load_data()
+    }
     func load_data(){
+        let alertController = UIAlertController(title: "Now Loading, please wait...", message: "", preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
         Alamofire.request(global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
@@ -35,6 +37,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.array_json = JSON(value)
                     print(self.array_json)
                     self.tableView.reloadData()
+                    self.refreshControl.endRefreshing()
                 }
             case false:
                 print(response.result.error)
@@ -43,7 +46,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     @objc func refresh(refreshControl: UIRefreshControl) {
         load_data()
-        refreshControl.endRefreshing()
+
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("选中了第\(indexPath.row)个cell")

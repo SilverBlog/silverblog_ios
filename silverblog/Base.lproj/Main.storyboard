@@ -92,12 +92,12 @@
                                 <viewLayoutGuide key="safeArea" id="Tdt-Dr-bWN"/>
                                 <items>
                                     <navigationItem title="Edit Post" largeTitleDisplayMode="always" id="b3i-Ib-IcO">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="r0y-0o-n52">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="r0y-0o-n52">
                                             <connections>
                                                 <action selector="Back_Button:" destination="4C3-JF-VWR" id="kym-8a-luK"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="Ssq-Ff-tqM">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="Ssq-Ff-tqM">
                                             <connections>
                                                 <action selector="Save_Button:" destination="4C3-JF-VWR" id="grd-CT-H57"/>
                                             </connections>
@@ -144,7 +144,7 @@
                     </view>
                     <connections>
                         <outlet property="Content_input" destination="8qi-jO-CFD" id="opK-eY-Vy9"/>
-                        <outlet property="Sulg_input" destination="FRP-Ny-ufU" id="MYU-lh-jKl"/>
+                        <outlet property="Slug_input" destination="FRP-Ny-ufU" id="k5n-oU-AB7"/>
                         <outlet property="Title_input" destination="JkV-hB-PnP" id="qzx-sN-EW9"/>
                     </connections>
                 </viewController>
