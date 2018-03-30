@@ -62,6 +62,8 @@ class edit_post_view: UIViewController {
         self.load_post()
     }
 
+
+
     func load_post() {
         let parameters: Parameters = [
             "post_id": row

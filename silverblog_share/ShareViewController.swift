@@ -11,7 +11,7 @@ import Social
 import Alamofire
 
 class ShareViewController: SLComposeServiceViewController {
-    let shared = UserDefaults(suiteName: "group.silverblog")!
+    let shared = UserDefaults(suiteName: "group.silverblog.client")!
     var post_title = "No Title"
     var sulg = ""
 

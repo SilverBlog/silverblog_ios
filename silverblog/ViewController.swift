@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let shared = UserDefaults(suiteName: "group.silverblog")!
+    let shared = UserDefaults(suiteName: "group.silverblog.client")!
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
 
