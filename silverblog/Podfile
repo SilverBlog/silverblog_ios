@@ -3,6 +3,8 @@ use_frameworks!
 project '../silverblog.xcodeproj'
 target 'silverblog' do
   pod 'Alamofire'
+  pod 'SwiftyJSON'
+  pod 'IQKeyboardManagerSwift'
 end
 target 'silverblog_share' do
   pod 'Alamofire'

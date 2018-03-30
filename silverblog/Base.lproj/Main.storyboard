@@ -18,14 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW6-IN-Y4I">
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uW6-IN-Y4I" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
                                 <items>
                                     <navigationItem title="Login" largeTitleDisplayMode="always" id="66F-Wu-TyU"/>
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-Na-Lcb">
-                                <rect key="frame" x="16" y="134" width="343" height="130"/>
+                                <rect key="frame" x="16" y="116" width="343" height="130"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="site address(https://demo.silverblog.org)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -41,7 +42,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM0-yz-4cA">
                                         <rect key="frame" x="0.0" y="100" width="343" height="30"/>
-                                        <state key="normal" title="Save"/>
+                                        <state key="normal" title="Enter"/>
                                         <connections>
                                             <action selector="on_enter_click:" destination="BYZ-38-t0r" eventType="touchDown" id="tkk-Gz-iD3"/>
                                         </connections>
@@ -63,7 +64,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nWb-Na-Lcb" secondAttribute="trailing" constant="16" id="5MJ-s1-DCX"/>
                             <constraint firstItem="uW6-IN-Y4I" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="PmR-Ku-Ls1"/>
                             <constraint firstItem="uW6-IN-Y4I" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="RxD-gx-0tJ"/>
-                            <constraint firstItem="nWb-Na-Lcb" firstAttribute="top" secondItem="uW6-IN-Y4I" secondAttribute="bottom" constant="38" id="Zkk-uQ-Moi"/>
+                            <constraint firstItem="nWb-Na-Lcb" firstAttribute="top" secondItem="uW6-IN-Y4I" secondAttribute="bottom" constant="20" id="Zkk-uQ-Moi"/>
                             <constraint firstItem="nWb-Na-Lcb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="uAH-mF-Qqf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -76,6 +77,187 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="36.431784107946029"/>
+        </scene>
+        <!--Edit post view-->
+        <scene sceneID="2cd-Sl-GbX">
+            <objects>
+                <viewController storyboardIdentifier="edit_post_view" id="4C3-JF-VWR" customClass="edit_post_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pcb-4R-Hb4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar autoresizesSubviews="NO" contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sD4-Ux-D2n" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
+                                <viewLayoutGuide key="safeArea" id="Tdt-Dr-bWN"/>
+                                <items>
+                                    <navigationItem title="Edit Post" largeTitleDisplayMode="always" id="b3i-Ib-IcO">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="r0y-0o-n52">
+                                            <connections>
+                                                <action selector="Back_Button:" destination="4C3-JF-VWR" id="kym-8a-luK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="Ssq-Ff-tqM">
+                                            <connections>
+                                                <action selector="Save_Button:" destination="4C3-JF-VWR" id="grd-CT-H57"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-hB-PnP">
+                                <rect key="frame" x="16" y="116" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sulg" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRP-Ny-ufU">
+                                <rect key="frame" x="16" y="154" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-jO-CFD">
+                                <rect key="frame" x="16" y="192" width="343" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JkV-hB-PnP" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" constant="16" id="3Oe-qD-EJu"/>
+                            <constraint firstItem="JkV-hB-PnP" firstAttribute="top" secondItem="sD4-Ux-D2n" secondAttribute="bottom" constant="20" id="7pm-9h-l4L"/>
+                            <constraint firstItem="FRP-Ny-ufU" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" constant="16" id="8qm-K7-WfF"/>
+                            <constraint firstItem="8qi-jO-CFD" firstAttribute="top" secondItem="FRP-Ny-ufU" secondAttribute="bottom" constant="8" id="AAC-k5-DF2"/>
+                            <constraint firstItem="FRP-Ny-ufU" firstAttribute="top" secondItem="JkV-hB-PnP" secondAttribute="bottom" constant="8" id="CP5-vz-8RO"/>
+                            <constraint firstAttribute="trailing" secondItem="8qi-jO-CFD" secondAttribute="trailing" constant="16" id="DPP-pD-H02"/>
+                            <constraint firstItem="8qi-jO-CFD" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" constant="16" id="IHo-vm-gqe"/>
+                            <constraint firstAttribute="bottom" secondItem="8qi-jO-CFD" secondAttribute="bottom" constant="20" id="JCY-F1-cWx"/>
+                            <constraint firstItem="sD4-Ux-D2n" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" id="QeZ-Nk-3Ja"/>
+                            <constraint firstItem="sD4-Ux-D2n" firstAttribute="trailing" secondItem="pcb-4R-Hb4" secondAttribute="trailing" id="UAf-XB-6xb"/>
+                            <constraint firstItem="sD4-Ux-D2n" firstAttribute="top" secondItem="pcb-4R-Hb4" secondAttribute="top" id="fsN-rv-gIq"/>
+                            <constraint firstAttribute="trailing" secondItem="JkV-hB-PnP" secondAttribute="trailing" constant="16" id="h7g-FF-A7R"/>
+                            <constraint firstAttribute="trailing" secondItem="FRP-Ny-ufU" secondAttribute="trailing" constant="16" id="qrp-lf-E7o"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EJJ-OZ-dqy"/>
+                    </view>
+                    <connections>
+                        <outlet property="Content_input" destination="8qi-jO-CFD" id="opK-eY-Vy9"/>
+                        <outlet property="Slug_input" destination="FRP-Ny-ufU" id="k5n-oU-AB7"/>
+                        <outlet property="Title_input" destination="JkV-hB-PnP" id="qzx-sN-EW9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXX-JM-bRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741.60000000000002" y="784.85757121439292"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="8vR-aC-Vlu">
+            <objects>
+                <viewController id="WJB-Xi-FI6" customClass="menu_list_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0lS-Dj-q39">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="chr-OB-8ha" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
+                                <items>
+                                    <navigationItem title="Menu" largeTitleDisplayMode="always" id="Vth-wi-cDe"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Z4p-1G-7F8">
+                                <rect key="frame" x="0.0" y="98" width="375" height="520"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <viewLayoutGuide key="safeArea" id="uqQ-Q4-Kmt"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="top" secondItem="chr-OB-8ha" secondAttribute="bottom" constant="2" id="217-Ry-G5i"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="leading" secondItem="QQQ-cy-Vgo" secondAttribute="leading" id="cZI-yB-TRO"/>
+                            <constraint firstItem="chr-OB-8ha" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="gBh-03-Mbo"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="trailing" secondItem="QQQ-cy-Vgo" secondAttribute="trailing" id="l6U-j5-7c5"/>
+                            <constraint firstItem="chr-OB-8ha" firstAttribute="leading" secondItem="QQQ-cy-Vgo" secondAttribute="leading" id="lYt-8T-eHI"/>
+                            <constraint firstItem="chr-OB-8ha" firstAttribute="top" secondItem="0lS-Dj-q39" secondAttribute="top" id="szU-eh-wnc"/>
+                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="bottom" secondItem="QQQ-cy-Vgo" secondAttribute="bottom" id="ybO-9A-a0k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QQQ-cy-Vgo"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Menu" id="2UT-YF-jss"/>
+                    <connections>
+                        <outlet property="tableView" destination="Z4p-1G-7F8" id="PEU-Xo-rpJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="crz-74-GKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1665" y="367"/>
+        </scene>
+        <!--Post-->
+        <scene sceneID="HDc-Ks-JR5">
+            <objects>
+                <viewController id="IjO-O4-Wio" customClass="post_list_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XUG-dd-T8q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7z-xC-yl2" customClass="NavigationBar" customModule="silverblog" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                                <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="8"/>
+                                <items>
+                                    <navigationItem title="Post" largeTitleDisplayMode="always" id="cdB-uw-5PZ"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e8n-t9-k0A">
+                                <rect key="frame" x="0.0" y="98" width="375" height="520"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <viewLayoutGuide key="safeArea" id="xwM-KI-Jde"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M7z-xC-yl2" firstAttribute="top" secondItem="XUG-dd-T8q" secondAttribute="top" id="Blg-fs-FYf"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="top" secondItem="M7z-xC-yl2" secondAttribute="bottom" constant="2" id="GWR-2p-q80"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="trailing" secondItem="fup-wT-oQw" secondAttribute="trailing" id="Hth-88-kH9"/>
+                            <constraint firstItem="M7z-xC-yl2" firstAttribute="leading" secondItem="fup-wT-oQw" secondAttribute="leading" id="JJj-e8-Ghs"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="bottom" secondItem="fup-wT-oQw" secondAttribute="bottom" id="VUe-1i-kYH"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="leading" secondItem="fup-wT-oQw" secondAttribute="leading" id="fle-rM-WnX"/>
+                            <constraint firstItem="M7z-xC-yl2" firstAttribute="trailing" secondItem="fup-wT-oQw" secondAttribute="trailing" id="tB5-Jm-ou5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fup-wT-oQw"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Post" id="HbB-ry-2Ae"/>
+                    <navigationItem key="navigationItem" id="WXV-N3-duF"/>
+                    <connections>
+                        <outlet property="tableView" destination="e8n-t9-k0A" id="OFF-SL-SRc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EKU-LS-y6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1665" y="-298"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Scd-wd-rC5">
+            <objects>
+                <tabBarController storyboardIdentifier="post_list" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ktl-2I-zsS" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="r7O-Jk-JMk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="IjO-O4-Wio" kind="relationship" relationship="viewControllers" id="T8I-EH-cXv"/>
+                        <segue destination="WJB-Xi-FI6" kind="relationship" relationship="viewControllers" id="m0G-ZT-1XS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eB8-UO-iLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="742" y="36"/>
         </scene>
     </scenes>
 </document>
