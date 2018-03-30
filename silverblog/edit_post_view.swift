@@ -25,7 +25,7 @@ class edit_post_view: UIViewController {
 
     @IBAction func Save_Button(_ sender: Any) {
         let alertController = UIAlertController(title: "Now publishing, please wait...", message: "", preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: false, completion: nil)
         let sign = public_func.md5(Title_input.text! as String + global_value.password)
         let parameters: Parameters = [
             "post_id": self.row,
@@ -36,23 +36,22 @@ class edit_post_view: UIViewController {
         ]
         var result_message = ""
         Alamofire.request(global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
             switch response.result {
             case .success(let json):
-                self.presentedViewController?.dismiss(animated: false, completion: nil)
                 let dict = json as! Dictionary<String, AnyObject>
                 let status = dict["status"] as! Bool
                 result_message = "Article publication failed."
                 if (status) {
-                    result_message = "The article has been successfully published."
-                    //self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    return
                 }
-                let alert = UIAlertController(title: "Success", message: result_message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-
             case .failure(let error):
                 result_message = "Article publication failed.Please check the network."
             }
+            let alert = UIAlertController(title: "Failure", message: result_message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     override func viewDidAppear(_ animated: Bool) {

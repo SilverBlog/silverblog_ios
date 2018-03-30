@@ -49,7 +49,12 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //print("选中了第\(indexPath.row)个cell")
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let sb = UIStoryboard(name:"Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+        vc.row = indexPath.row
+        vc.menu = true
+        self.present(vc, animated: true, completion: nil)
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
