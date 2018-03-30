@@ -44,7 +44,9 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.refreshControl.endRefreshing()
                 }
             case false:
-                print(response.result.error)
+                let alert = UIAlertController(title: "Failure", message: response.result.error as! String, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
 
         }
@@ -67,7 +69,9 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                     self.load_data()
                 case .failure(let error):
-                    print(error)
+                    let alert = UIAlertController(title: "Failure", message: error as! String, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }

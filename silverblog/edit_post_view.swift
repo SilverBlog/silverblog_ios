@@ -80,7 +80,9 @@ class edit_post_view: UIViewController {
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                 }
             case false:
-                print(response.result.error)
+                let alert = UIAlertController(title: "Failure", message: response.result.error as! String, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
 
         }
