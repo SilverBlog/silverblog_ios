@@ -24,7 +24,10 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.load_data()
+        if(global_value.reflush || array_json==JSON()){
+            global_value.reflush = false
+            self.load_data()
+        }
     }
 
     @objc func refresh(refreshControl: UIRefreshControl) {

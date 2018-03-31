@@ -43,10 +43,11 @@ class edit_post_view: UIViewController {
                 let status = dict["status"] as! Bool
                 result_message = "Article publication failed."
                 if (status) {
+                    global_value.reflush = true
                     self.dismiss(animated: true, completion: nil)
                     return
                 }
-            case .failure(let error):
+            case .failure(_):
                 result_message = "Article publication failed.Please check the network."
             }
             let alert = UIAlertController(title: "Failure", message: result_message, preferredStyle: .alert)
