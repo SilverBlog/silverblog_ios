@@ -24,7 +24,11 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.load_data()
+        if(global_value.reflush || array_json==JSON()){
+           global_value.reflush = false
+           self.load_data()
+        }
+        
     }
     func load_data(){
         let alertController = UIAlertController(title: "Now Loading, please wait...", message: "", preferredStyle: .alert)
