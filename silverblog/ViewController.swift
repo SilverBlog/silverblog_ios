@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
-        if (global_value.password != password.text!){
+        if (shared.string(forKey: "password") != password.text! || shared.string(forKey: "server") != server_name.text!){
             global_value.server_url = server_name.text!
             global_value.password = public_func.md5(password.text!)
             shared.set(global_value.server_url, forKey: "server")
@@ -43,14 +43,16 @@ class ViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
 
     }
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        server_name.text = global_value.server_url
+        password.text = global_value.password
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if (shared.string(forKey: "server") != nil) {
             global_value.server_url = shared.string(forKey: "server")!
             global_value.password = shared.string(forKey: "password")!
-            server_name.text = global_value.server_url
-            password.text = global_value.password
         }
     }
 }
