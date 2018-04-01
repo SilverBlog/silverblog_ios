@@ -12,12 +12,14 @@ class ViewController: UIViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
-
+    var isscan = false
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
         if (shared.string(forKey: "password") != password.text! || shared.string(forKey: "server") != server_name.text!){
-            global_value.server_url = server_name.text!
-            global_value.password = public_func.md5(password.text!)
+            if(!isscan){
+                global_value.server_url = server_name.text!
+                global_value.password = public_func.md5(password.text!)
+            }
             shared.set(global_value.server_url, forKey: "server")
             shared.set(global_value.password, forKey: "password")
             shared.synchronize()
@@ -30,6 +32,7 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
+        print(global_value.password)
         if (global_value.server_url == "" || global_value.password == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
@@ -45,8 +48,12 @@ class ViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if (global_value.password != shared.string(forKey: "password")){
+            isscan = true
+        }
         server_name.text = global_value.server_url
         password.text = global_value.password
+        print(global_value.password)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
