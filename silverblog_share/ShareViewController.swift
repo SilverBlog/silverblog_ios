@@ -53,7 +53,7 @@ class ShareViewController: SLComposeServiceViewController {
                 if (status) {
                     result_message = "The article has been successfully published."
                 }
-            case .failure(let error):
+            case .failure(_):
                 result_message = "Article publication failed.Please check the network."
             }
             self.displayUIAlertController(title: "Article release completed", message: result_message)

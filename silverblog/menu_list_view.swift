@@ -17,10 +17,10 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControl)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.refreshControl = refreshControl
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,7 +39,6 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.presentedViewController?.dismiss(animated: false, completion: nil)
                 if let value = response.result.value {
                     self.array_json = JSON(value)
-                    print(self.array_json)
                     self.tableView.reloadData()
                     self.refreshControl.endRefreshing()
                 }
@@ -60,7 +59,8 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
         vc.row = indexPath.row
         vc.menu = true
-        self.present(vc, animated: true, completion: nil)
+        vc.hidesBottomBarWhenPushed=true
+        self.navigationController!.pushViewController(vc, animated:true)
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -5,10 +5,11 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    @IBOutlet var scanview: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.black
+
+        scanview.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -40,10 +41,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer.frame = view.layer.bounds
+        previewLayer.frame = scanview.bounds
         previewLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(previewLayer)
-        
+        scanview.layer.addSublayer(previewLayer)
+
         captureSession.startRunning()
     }
     
@@ -93,10 +94,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
 
     }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait

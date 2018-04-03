@@ -19,7 +19,9 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.tableView.addSubview(refreshControl)
+        self.tableView.refreshControl = refreshControl
+        //self.tableView.addSubview(refreshControl)
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +43,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             case true:
                 if let value = response.result.value {
                     self.array_json = JSON(value)
-                    print(self.array_json)
                     self.tableView.reloadData()
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                     self.refreshControl.endRefreshing()
@@ -68,7 +69,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
                 switch response.result {
                 case .success(let json):
-                    print(json)
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                     self.load_data()
                 case .failure(let error):
@@ -86,10 +86,11 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let sb = UIStoryboard(name:"Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
-        vc.row = indexPath.row
-        vc.menu = false
-        self.present(vc, animated: true, completion: nil)
+        let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+        edit_post.row = indexPath.row
+        edit_post.menu = false
+        edit_post.hidesBottomBarWhenPushed=true
+        self.navigationController!.pushViewController(edit_post, animated:true)
 
 
     }
