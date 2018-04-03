@@ -12,27 +12,11 @@ class ViewController: UIViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
-    var isscan = false
     @IBAction func on_enter_click(_ sender: Any) {
-        self.view.endEditing(true)
-        if (shared.string(forKey: "password") != password.text! || shared.string(forKey: "server") != server_name.text!){
-            if(!isscan){
-                global_value.server_url = server_name.text!
-                global_value.password = public_func.md5(password.text!)
-            }
-            shared.set(global_value.server_url, forKey: "server")
-            shared.set(global_value.password, forKey: "password")
-            shared.synchronize()
-            let alertController = UIAlertController(title: "Success", message: "Your settings have been saved.", preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
-                let sb = UIStoryboard(name:"Main", bundle: nil)
-                let vc = sb.instantiateViewController(withIdentifier: "post_list") as! UITabBarController
-                self.present(vc, animated: true, completion: nil)
-            }
-            alertController.addAction(okAction);
-            self.present(alertController, animated: true, completion: nil)
+        if (shared.string(forKey: "password") != password.text! || shared.string(forKey: "server") != server_name.text!) {
+            save_info()
         }
-        print(global_value.password)
+        self.view.endEditing(true)
         if (global_value.server_url == "" || global_value.password == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
@@ -41,15 +25,26 @@ class ViewController: UIViewController {
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
         }
+        push_view()
+
+
+    }
+    func push_view(){
         let sb = UIStoryboard(name:"Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "post_list") as! UITabBarController
-        self.present(vc, animated: true, completion: nil)
-
+        self.navigationController!.pushViewController(vc, animated:true)
+    }
+    func save_info(){
+            shared.set(global_value.server_url, forKey: "server")
+            shared.set(global_value.password, forKey: "password")
+            shared.synchronize()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (global_value.password != shared.string(forKey: "password")){
-            isscan = true
+        if (global_value.isscan){
+            global_value.isscan=false
+            save_info()
+            push_view()
         }
         server_name.text = global_value.server_url
         password.text = global_value.password

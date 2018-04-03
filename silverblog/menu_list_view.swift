@@ -21,6 +21,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.refreshControl = refreshControl
+        self.tabBarController!.title="Menu"
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -59,7 +60,6 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
         vc.row = indexPath.row
         vc.menu = true
-        vc.hidesBottomBarWhenPushed=true
         self.navigationController!.pushViewController(vc, animated:true)
 
     }

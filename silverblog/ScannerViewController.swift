@@ -80,8 +80,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
-        
-        dismiss(animated: true)
+
+        self.navigationController!.popToRootViewController(animated: true)
     }
     
     func found(code: String) {
@@ -91,7 +91,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if(url != nil || password != nil){
             global_value.server_url = url!
             global_value.password = password!
+            global_value.isscan=true
         }
+
 
     }
 

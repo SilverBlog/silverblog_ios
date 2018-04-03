@@ -44,7 +44,7 @@ class edit_post_view: UIViewController {
                 result_message = "Article publication failed."
                 if (status) {
                     global_value.reflush = true
-                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController!.popToRootViewController(animated: true)
                     return
                 }
             case .failure(_):
