@@ -13,9 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBAction func on_enter_click(_ sender: Any) {
-        if (shared.string(forKey: "password") != password.text! || shared.string(forKey: "server") != server_name.text!) {
-            save_info()
-        }
+        global_value.password=password.text!
+        global_value.server_url=server_name.text!
+        save_info()
         self.view.endEditing(true)
         if (global_value.server_url == "" || global_value.password == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
@@ -48,7 +48,6 @@ class ViewController: UIViewController {
         }
         server_name.text = global_value.server_url
         password.text = global_value.password
-        print(global_value.password)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
