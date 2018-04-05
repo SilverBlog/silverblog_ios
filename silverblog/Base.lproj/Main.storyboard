@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="1079" y="-320"/>
         </scene>
-        <!--Article list-->
+        <!--Post-->
         <scene sceneID="Hd4-8X-BkF">
             <objects>
-                <tabBarController storyboardIdentifier="post_list" title="Article list" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRR-NC-d9B" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="post_list" title="Post" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sRR-NC-d9B" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Rv-If-yxf">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
