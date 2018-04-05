@@ -22,7 +22,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
-        self.tabBarController!.title="Post"
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -31,6 +31,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             global_value.reflush = false
             self.load_data()
         }
+        self.tabBarController!.title="Post"
     }
 
     @objc func refresh(refreshControl: UIRefreshControl) {

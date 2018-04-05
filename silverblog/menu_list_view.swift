@@ -21,7 +21,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.refreshControl = refreshControl
-        self.tabBarController!.title="Menu"
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -29,6 +29,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
            global_value.reflush = false
            self.load_data()
         }
+        self.tabBarController!.title="Menu"
         
     }
     func load_data(){
