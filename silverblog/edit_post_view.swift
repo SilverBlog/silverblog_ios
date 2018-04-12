@@ -61,9 +61,8 @@ class edit_post_view: UIViewController {
             function = "menu"
         }
         self.load_post()
+        
     }
-
-
 
     func load_post() {
         let parameters: Parameters = [
@@ -83,7 +82,7 @@ class edit_post_view: UIViewController {
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                 }
             case false:
-                let alert = UIAlertController(title: "Failure", message: response.result.error as! String, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failure", message: response.result.error as? String, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
