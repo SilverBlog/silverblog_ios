@@ -122,15 +122,15 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Sulg" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRP-Ny-ufU">
-                                <rect key="frame" x="16" y="78" width="343" height="30"/>
+                                <rect key="frame" x="16" y="80" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-jO-CFD">
-                                <rect key="frame" x="16" y="116" width="343" height="531"/>
+                                <rect key="frame" x="16" y="120" width="343" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -138,8 +138,8 @@
                         <constraints>
                             <constraint firstItem="JkV-hB-PnP" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" constant="16" id="3Oe-qD-EJu"/>
                             <constraint firstItem="FRP-Ny-ufU" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" constant="16" id="8qm-K7-WfF"/>
-                            <constraint firstItem="8qi-jO-CFD" firstAttribute="top" secondItem="FRP-Ny-ufU" secondAttribute="bottom" constant="8" id="AAC-k5-DF2"/>
-                            <constraint firstItem="FRP-Ny-ufU" firstAttribute="top" secondItem="JkV-hB-PnP" secondAttribute="bottom" constant="8" id="CP5-vz-8RO"/>
+                            <constraint firstItem="8qi-jO-CFD" firstAttribute="top" secondItem="FRP-Ny-ufU" secondAttribute="bottom" constant="10" id="AAC-k5-DF2"/>
+                            <constraint firstItem="FRP-Ny-ufU" firstAttribute="top" secondItem="JkV-hB-PnP" secondAttribute="bottom" constant="10" id="CP5-vz-8RO"/>
                             <constraint firstAttribute="trailing" secondItem="8qi-jO-CFD" secondAttribute="trailing" constant="16" id="DPP-pD-H02"/>
                             <constraint firstItem="8qi-jO-CFD" firstAttribute="leading" secondItem="pcb-4R-Hb4" secondAttribute="leading" constant="16" id="IHo-vm-gqe"/>
                             <constraint firstAttribute="bottom" secondItem="8qi-jO-CFD" secondAttribute="bottom" constant="20" id="JCY-F1-cWx"/>
@@ -164,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXX-JM-bRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="-16"/>
+            <point key="canvasLocation" x="1893.5999999999999" y="-16.641679160419791"/>
         </scene>
         <!--Menu-->
         <scene sceneID="8vR-aC-Vlu">
