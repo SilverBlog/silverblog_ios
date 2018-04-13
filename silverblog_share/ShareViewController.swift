@@ -24,6 +24,10 @@ class ShareViewController: SLComposeServiceViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if (shared.string(forKey: "server")?.isEmpty)! {
             self.displayUIAlertController(title: "Please set the server information first.", message: "")
         }
@@ -62,6 +66,12 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
+        if (!contentText.isEmpty){
+            let split = contentText.components(separatedBy: "\n")
+            if (split[0].hasPrefix("# ")){
+                post_title=split[0].replacingOccurrences(of:"# ",with: "")
+            }
+        }
         return [title_item, sulg_item]
     }
 
@@ -79,7 +89,7 @@ class ShareViewController: SLComposeServiceViewController {
     lazy var title_item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!
         item.title = "Title"
-        item.value = "No Title"
+        item.value = self.post_title
         item.tapHandler = {
             let alert = UIAlertController(title: "Please enter a title:", message: "", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
@@ -115,7 +125,6 @@ class ShareViewController: SLComposeServiceViewController {
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value = textField.text
                 self.sulg = textField.text!
-                //print("Text field: \(textField.text)")
             }
             alert.addAction(cancel)
             alert.addAction(confirm)
@@ -131,7 +140,7 @@ class ShareViewController: SLComposeServiceViewController {
         CC_MD5_Init(context)
         CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
         CC_MD5_Final(&digest, context)
-        context.deallocate(capacity: 1)
+        context.deallocate()
         var hexString = ""
         for byte in digest {
             hexString += String(format: "%02x", byte)

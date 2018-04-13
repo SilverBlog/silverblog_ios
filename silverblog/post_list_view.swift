@@ -72,11 +72,11 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(doneController, animated: true, completion: nil)
             Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
                 switch response.result {
-                case .success(let json):
+                case .success( _):
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
                     self.load_data()
                 case .failure(let error):
-                    let alert = UIAlertController(title: "Failure", message: error as! String, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
