@@ -548,7 +548,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
@@ -570,7 +570,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
