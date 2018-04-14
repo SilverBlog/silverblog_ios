@@ -36,7 +36,7 @@ class ShareViewController: SLComposeServiceViewController {
         let password = shared.string(forKey: "password")!
         let server = shared.string(forKey: "server")!
         let sign = md5(post_title + password)
-        let alertController = UIAlertController(title: "please wait...", message: "Now publishing", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Please wait...", message: "Now publishing", preferredStyle: .alert)
         //create an activity indicator
         let indicator = UIActivityIndicatorView(frame: alertController.view.bounds)
         indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]

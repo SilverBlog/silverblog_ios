@@ -24,7 +24,7 @@ class edit_post_view: UIViewController {
     }
 
     @IBAction func Save_Button(_ sender: Any) {
-        let alertController = UIAlertController(title: "please wait...", message: "Now publishing", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Please wait...", message: "Now publishing", preferredStyle: .alert)
         self.present(alertController, animated: false, completion: nil)
         let sign = public_func.md5(Title_input.text! as String + global_value.password)
         let parameters: Parameters = [
@@ -68,7 +68,7 @@ class edit_post_view: UIViewController {
         let parameters: Parameters = [
             "post_id": row
         ]
-        let alertController = UIAlertController(title: "please wait...", message: "Now Loading", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Please wait...", message: "Now Loading", preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
         Alamofire.request(global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {

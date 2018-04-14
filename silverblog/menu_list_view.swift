@@ -33,7 +33,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     func load_data(){
-        let alertController = UIAlertController(title: "please wait...", message: "Now Loading", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Please wait...", message: "Now Loading", preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
         Alamofire.request(global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {

@@ -39,7 +39,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func load_data() {
-        let alertController = UIAlertController(title: "please wait...", message: "Now Loading", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Please wait...", message: "Now Loading", preferredStyle: .alert)
         self.present(alertController, animated: true, completion: nil)
         Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
@@ -68,7 +68,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
             ]
-            let doneController = UIAlertController(title: "please wait...", message: "Now Deleteing", preferredStyle: .alert)
+            let doneController = UIAlertController(title: "Please wait...", message: "Now Deleteing", preferredStyle: .alert)
             self.present(doneController, animated: true, completion: nil)
             Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
                 switch response.result {
