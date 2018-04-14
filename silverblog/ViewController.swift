@@ -13,8 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBAction func on_enter_click(_ sender: Any) {
-        global_value.password=public_func.md5(password.text!)
-        global_value.server_url=server_name.text!
+        if(password.text != global_value.password){
+            global_value.password=public_func.md5(password.text!)
+            global_value.server_url=server_name.text!
+        }
         save_info()
         self.view.endEditing(true)
         if (global_value.server_url == "" || global_value.password == "") {
