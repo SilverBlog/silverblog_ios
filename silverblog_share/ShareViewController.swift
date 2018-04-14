@@ -33,11 +33,18 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
         let password = shared.string(forKey: "password")!
         let server = shared.string(forKey: "server")!
         let sign = md5(post_title + password)
-        let alertController = UIAlertController(title: "Now publishing, please wait...", message: "", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "please wait...", message: "Now publishing", preferredStyle: .alert)
+        //create an activity indicator
+        let indicator = UIActivityIndicatorView(frame: alertController.view.bounds)
+        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        //add the activity indicator as a subview of the alert controller's view
+        alertController.view.addSubview(indicator)
+        indicator.isUserInteractionEnabled = false // required otherwise if there buttons in the UIAlertController you will not be able to press them
+        indicator.startAnimating()
         self.present(alertController, animated: true, completion: nil)
 
         let parameters: Parameters = [
@@ -65,11 +72,13 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         if (!contentText.isEmpty){
             let split = contentText.components(separatedBy: "\n")
             if (split[0].hasPrefix("# ")){
                 post_title=split[0].replacingOccurrences(of:"# ",with: "")
+            }
+            if(split[0].count<=25){
+                post_title=split[0]
             }
         }
         return [title_item, sulg_item]
