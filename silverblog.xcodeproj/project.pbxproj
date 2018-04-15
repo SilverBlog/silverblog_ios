@@ -11,7 +11,7 @@
 		5E155CFC206E95B200035A4B /* silverblog_share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5E7033442074D46C004B52C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7033432074D46C004B52C6 /* LaunchScreen.storyboard */; };
 		5E7033462074D64E004B52C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E7033452074D64E004B52C6 /* Images.xcassets */; };
-		5E722BDF20810E7E007D99D4 /* Maininterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E722BDE20810E7E007D99D4 /* Maininterface.storyboard */; };
+		5E7DD6C620831A4900DDF14D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7DD6C420831A4900DDF14D /* MainInterface.storyboard */; };
 		5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042202054A52D008FE7EF /* AppDelegate.swift */; };
 		5E8042232054A52D008FE7EF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8042222054A52D008FE7EF /* ViewController.swift */; };
 		5E8042262054A52D008FE7EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8042242054A52D008FE7EF /* Main.storyboard */; };
@@ -56,7 +56,7 @@
 		4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7033432074D46C004B52C6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E7033452074D64E004B52C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5E722BDE20810E7E007D99D4 /* Maininterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Maininterface.storyboard; sourceTree = "<group>"; };
+		5E7DD6C520831A4900DDF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8042202054A52D008FE7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8042222054A52D008FE7EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		5EA269E8205ACD1E00888C61 /* silverblog_share */ = {
 			isa = PBXGroup;
 			children = (
-				5E722BDE20810E7E007D99D4 /* Maininterface.storyboard */,
+				5E7DD6C420831A4900DDF14D /* MainInterface.storyboard */,
 				5E85BC7A205BB16D00D0DEF3 /* silverblog_share.entitlements */,
 				5EA269E9205ACD1E00888C61 /* ShareViewController.swift */,
 				5EA269EE205ACD1E00888C61 /* Info.plist */,
@@ -289,7 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E722BDF20810E7E007D99D4 /* Maininterface.storyboard in Resources */,
+				5E7DD6C620831A4900DDF14D /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +421,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5E7DD6C420831A4900DDF14D /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E7DD6C520831A4900DDF14D /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		5E8042242054A52D008FE7EF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
