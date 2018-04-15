@@ -68,11 +68,11 @@ class ShareViewController: SLComposeServiceViewController {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         if (!contentText.isEmpty){
             let split = contentText.components(separatedBy: "\n")
-            if (split[0].hasPrefix("# ")){
-                post_title=split[0].replacingOccurrences(of:"# ",with: "")
-            }
             if (split[0].count<=25){
                 post_title=split[0]
+            }
+            if (split[0].hasPrefix("# ")){
+                post_title=split[0].replacingOccurrences(of:"# ",with: "")
             }
         }
         return [title_item, sulg_item]
