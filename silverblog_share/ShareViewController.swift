@@ -71,6 +71,9 @@ class ShareViewController: SLComposeServiceViewController {
             if (split[0].hasPrefix("# ")){
                 post_title=split[0].replacingOccurrences(of:"# ",with: "")
             }
+            if (split[0].count<=25){
+                post_title=split[0]
+            }
         }
         return [title_item, sulg_item]
     }
