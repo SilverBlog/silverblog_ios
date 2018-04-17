@@ -55,6 +55,7 @@ class edit_post_view: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (menu == true) {

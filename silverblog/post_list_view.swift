@@ -95,8 +95,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         edit_post.row = indexPath.row
         edit_post.menu = false
         self.navigationController!.pushViewController(edit_post, animated: true)
-
-
     }
 
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {

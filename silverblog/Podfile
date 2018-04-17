@@ -4,7 +4,7 @@ project '../silverblog.xcodeproj'
 target 'silverblog' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'IQKeyboardManagerSwift'
+  pod 'IQKeyboardManagerSwift', '6.0.1'
 end
 target 'silverblog_share' do
   pod 'Alamofire'
