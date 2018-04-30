@@ -93,7 +93,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             global_value.password = password!
             global_value.isscan=true
         }
-
+        
 
     }
 
