@@ -56,7 +56,6 @@ class ViewController: UIViewController {
         if (shared.string(forKey: "server") != nil) {
             global_value.server_url = shared.string(forKey: "server")!
             global_value.password = shared.string(forKey: "password")!
-            global_value.isscan = true
         }
     }
 }
