@@ -39,8 +39,14 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func load_data() {
-        let alertController = UIAlertController(title: "Please wait...", message: "Now Loading", preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
+        
         Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
@@ -68,7 +74,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
             ]
-            let doneController = UIAlertController(title: "Please wait...", message: "Now Deleteing", preferredStyle: .alert)
+            let doneController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
             self.present(doneController, animated: true, completion: nil)
             Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
                 switch response.result {
@@ -95,8 +101,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         edit_post.row = indexPath.row
         edit_post.menu = false
         self.navigationController!.pushViewController(edit_post, animated: true)
-
-
     }
 
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {

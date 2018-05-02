@@ -74,6 +74,9 @@ class ShareViewController: SLComposeServiceViewController {
     override func configurationItems() -> [Any]! {
         if (!contentText.isEmpty){
             let split = contentText.components(separatedBy: "\n")
+            if (split[0].count<=25){
+                post_title=split[0]
+            }
             if (split[0].hasPrefix("# ")){
                 post_title=split[0].replacingOccurrences(of:"# ",with: "")
             }

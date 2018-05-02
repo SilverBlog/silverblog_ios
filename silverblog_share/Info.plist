@@ -26,10 +26,10 @@
 		<dict>
 			<key>NSExtensionActivationRule</key>
 			<dict>
-				<key>NSExtensionActivationSupportsAttachmentsWithMaxCount</key>
-				<integer>0</integer>
 				<key>NSExtensionActivationSupportsText</key>
 				<true/>
+				<key>NSExtensionActivationDictionaryVersion</key>
+				<integer>2</integer>
 			</dict>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>

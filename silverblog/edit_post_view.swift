@@ -24,8 +24,14 @@ class edit_post_view: UIViewController {
     }
 
     @IBAction func Save_Button(_ sender: Any) {
-        let alertController = UIAlertController(title: "Please wait...", message: "Now publishing", preferredStyle: .alert)
-        self.present(alertController, animated: false, completion: nil)
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        alertController.view.addSubview(loadingIndicator)
+        self.present(alertController, animated: true, completion: nil)
+        
         let sign = public_func.md5(Title_input.text! as String + global_value.password)
         let parameters: Parameters = [
             "post_id": self.row,
@@ -55,6 +61,7 @@ class edit_post_view: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (menu == true) {
@@ -68,8 +75,15 @@ class edit_post_view: UIViewController {
         let parameters: Parameters = [
             "post_id": row
         ]
-        let alertController = UIAlertController(title: "Please wait...", message: "Now Loading", preferredStyle: .alert)
+        
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
+        
         Alamofire.request(global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
