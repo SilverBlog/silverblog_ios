@@ -74,7 +74,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
             ]
-            let doneController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
+            let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.startAnimating();
+            doneController.view.addSubview(loadingIndicator)
             self.present(doneController, animated: true, completion: nil)
             Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
                 switch response.result {
