@@ -107,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="-889" y="801"/>
         </scene>
-        <!--Edit Post-->
+        <!--Edit-->
         <scene sceneID="2cd-Sl-GbX">
             <objects>
                 <viewController storyboardIdentifier="edit_post_view" hidesBottomBarWhenPushed="YES" id="4C3-JF-VWR" customClass="edit_post_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
@@ -153,7 +153,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EJJ-OZ-dqy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Post" id="b3i-Ib-IcO">
+                    <navigationItem key="navigationItem" title="Edit" largeTitleDisplayMode="never" id="b3i-Ib-IcO">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Ssq-Ff-tqM">
                             <connections>
                                 <action selector="Save_Button:" destination="4C3-JF-VWR" id="grd-CT-H57"/>
