@@ -33,6 +33,38 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     override func didSelectPost() {
+        var content = contentText
+        let split = content!.components(separatedBy: "\n")
+        if (split[0].hasPrefix("# ")){
+            let alertQuestController = UIAlertController(title: "Notice", message: "The title has been found in the content. Do you want to remove the title?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+                action in
+                self.send_post(content:content!)
+            })
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+                action in
+                content = content!.replacingOccurrences(of:split[0]+"\n",with: "")
+                self.send_post(content:content!)
+            })
+            alertQuestController.addAction(cancelAction)
+            alertQuestController.addAction(okAction)
+            self.present(alertQuestController, animated: true, completion: nil)
+
+        }
+
+    }
+
+    override func configurationItems() -> [Any]! {
+        if (!contentText.isEmpty){
+            let split = contentText.components(separatedBy: "\n")
+            if (split[0].hasPrefix("# ")){
+                post_title=split[0].replacingOccurrences(of:"# ",with: "")
+            }
+        }
+        return [title_item, sulg_item]
+    }
+
+    func send_post(content:String){
         let password = shared.string(forKey: "password")!
         let server = shared.string(forKey: "server")!
         let sign = md5(post_title + password)
@@ -43,12 +75,12 @@ class ShareViewController: SLComposeServiceViewController {
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-        
+
 
         let parameters: Parameters = [
             "title": post_title,
             "sign": sign,
-            "content": contentText,
+            "content": content,
             "name": sulg
         ]
         var result_message = ""
@@ -68,23 +100,6 @@ class ShareViewController: SLComposeServiceViewController {
             self.displayUIAlertController(title: "Article release completed", message: result_message)
         }
     }
-
-    override func configurationItems() -> [Any]! {
-        if (!contentText.isEmpty){
-            let split = contentText.components(separatedBy: "\n")
-            if (split[0].count<=25){
-                post_title=split[0]
-            }
-            if (split[0].hasPrefix("# ")){
-                post_title=split[0].replacingOccurrences(of:"# ",with: "")
-            }
-            if(split[0].count<=25){
-                post_title=split[0]
-            }
-        }
-        return [title_item, sulg_item]
-    }
-
     func displayUIAlertController(title: String, message: String) {
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
