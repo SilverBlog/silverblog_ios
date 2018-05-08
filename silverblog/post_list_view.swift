@@ -86,13 +86,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 case .success(let json):
                     let dict = json as! Dictionary<String, AnyObject>
                     let status = dict["status"] as! Bool
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
                     if (!status) {
                         let alert = UIAlertController(title: "Failure", message: "Delete failed.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                     if(status){
-                        self.presentedViewController?.dismiss(animated: false, completion: nil)
                         self.load_data()
                     }
                 case .failure(let error):
