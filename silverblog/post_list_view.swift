@@ -79,6 +79,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if net?.isReachable==false {
+            let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertControllerStyle.alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (ACTION) in
