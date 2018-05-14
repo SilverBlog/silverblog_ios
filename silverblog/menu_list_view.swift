@@ -66,6 +66,12 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     @objc func refresh(refreshControl: UIRefreshControl) {
+        if net?.isReachable==false {
+            let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         load_data()
 
     }
