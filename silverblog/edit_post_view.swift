@@ -14,6 +14,7 @@ class edit_post_view: UIViewController {
     var row = 1
     var menu = false
     var function = "post"
+    let net = NetworkReachabilityManager()
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
 
@@ -66,6 +67,15 @@ class edit_post_view: UIViewController {
         super.viewDidAppear(animated)
         if (menu == true) {
             function = "menu"
+        }
+        if net?.isReachable==false {
+            let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                self.navigationController!.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+
         }
         self.load_post()
         

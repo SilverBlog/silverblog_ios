@@ -14,7 +14,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var tableView: UITableView!
     var array_json = JSON()
     let refreshControl = UIRefreshControl()
-
+    let net = NetworkReachabilityManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -29,6 +29,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidAppear(animated)
         if (global_value.reflush || array_json == JSON()) {
             global_value.reflush = false
+            if net?.isReachable==false {
+                let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             self.load_data()
         }
         self.tabBarController!.title="Post"
