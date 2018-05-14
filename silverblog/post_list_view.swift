@@ -80,14 +80,29 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
             ]
-            let doneController = UIAlertController(title: "Now Deleteing, please wait...", message: "", preferredStyle: .alert)
+            let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.startAnimating();
+            doneController.view.addSubview(loadingIndicator)
             self.present(doneController, animated: true, completion: nil)
             Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
                 switch response.result {
-                case .success( _):
+                case .success(let json):
+                    let dict = json as! Dictionary<String, AnyObject>
+                    let status = dict["status"] as! Bool
                     self.presentedViewController?.dismiss(animated: false, completion: nil)
-                    self.load_data()
+                    if (!status) {
+                        let alert = UIAlertController(title: "Failure", message: "Delete failed.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    if(status){
+                        self.load_data()
+                    }
                 case .failure(let error):
+                    self.presentedViewController?.dismiss(animated: false, completion: nil)
                     let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
