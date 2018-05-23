@@ -49,6 +49,8 @@ class ShareViewController: SLComposeServiceViewController {
             alertQuestController.addAction(okAction)
             self.present(alertQuestController, animated: true, completion: nil)
 
+        }else{
+            self.send_post(content:content!)
         }
 
     }
