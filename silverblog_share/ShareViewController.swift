@@ -43,8 +43,7 @@ class ShareViewController: SLComposeServiceViewController {
             })
             let okAction = UIAlertAction(title: "OK", style: .default, handler: {
                 action in
-                content = content!.replacingOccurrences(of:split[0]+"\n",with: "")
-                self.send_post(content:content!)
+                self.send_post(content:content!.replacingOccurrences(of:split[0]+"\n",with: ""))
             })
             alertQuestController.addAction(cancelAction)
             alertQuestController.addAction(okAction)
@@ -85,9 +84,9 @@ class ShareViewController: SLComposeServiceViewController {
         ]
         var result_message = ""
         Alamofire.request(server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
             switch response.result {
             case .success(let json):
-                self.presentedViewController?.dismiss(animated: false, completion: nil)
                 let dict = json as! Dictionary<String, AnyObject>
                 let status = dict["status"] as! Bool
                 result_message = "Article publication failed."
