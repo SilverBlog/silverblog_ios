@@ -33,7 +33,7 @@ class ShareViewController: SLComposeServiceViewController {
         }
     }
     override func didSelectPost() {
-        var content = contentText
+        let content = contentText
         let split = content!.components(separatedBy: "\n")
         if (split[0].hasPrefix("# ")){
             let alertQuestController = UIAlertController(title: "Notice", message: "The title has been found in the content. Do you want to remove the title?", preferredStyle: .alert)
@@ -96,7 +96,7 @@ class ShareViewController: SLComposeServiceViewController {
             case .failure(_):
                 result_message = "Article publication failed.Please check the network."
             }
-            self.displayUIAlertController(title: "Article release completed", message: result_message)
+            self.displayUIAlertController(title: "Notice", message: result_message)
         }
     }
     func displayUIAlertController(title: String, message: String) {
