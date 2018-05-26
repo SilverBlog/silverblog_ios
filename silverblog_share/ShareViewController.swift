@@ -16,10 +16,9 @@ class ShareViewController: SLComposeServiceViewController {
     var sulg = ""
 
     override func isContentValid() -> Bool {
-        if (contentText.isEmpty) {
+        if (contentText.isEmpty || shared.string(forKey: "server") == nil) {
             return false
         }
-        // Do validation of contentText and/or NSExtensionContext attachments here
         return true
     }
     override func viewDidLoad() {
@@ -28,7 +27,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (shared.string(forKey: "server")?.isEmpty)! {
+       if (shared.string(forKey: "server") == nil) {
             self.displayUIAlertController(title: "Please set the server information first.", message: "")
         }
     }
