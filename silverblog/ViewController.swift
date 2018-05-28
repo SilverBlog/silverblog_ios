@@ -12,6 +12,22 @@ class ViewController: UIViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBAction func on_previson_click(_ sender: Any) {
+        shared.dictionary(forKey: <#T##String##Swift.String#>)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
+        //todo dict
+        let array = ["1":"test", "2":"test2"]
+        array.forEach { (key,value) in
+            actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
+            //todo
+                print(value)
+            }))
+        }
+
+        actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
+
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
     @IBAction func on_enter_click(_ sender: Any) {
         
         if(password.text != global_value.password){
