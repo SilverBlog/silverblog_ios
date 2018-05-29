@@ -24,14 +24,13 @@ class ViewController: UIViewController {
         }
 
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
-
         self.present(actionSheetController, animated: true, completion: nil)
     }
     @IBAction func on_enter_click(_ sender: Any) {
         
         if(password.text != global_value.password || server_name.text != global_value.server_url){
             global_value.password=public_func.md5(password.text!)
-            global_value.server_url=server_name.text!
+            global_value.server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         save_info()
         self.view.endEditing(true)
