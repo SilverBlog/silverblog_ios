@@ -10,17 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
+    var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBAction func on_previson_click(_ sender: Any) {
-        shared.dictionary(forKey: <#T##String##Swift.String#>)
+
         let actionSheetController: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
-        //todo dict
-        let array = ["1":"test", "2":"test2"]
-        array.forEach { (key,value) in
+        config_list.forEach { (key,value) in
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
-            //todo
-                print(value)
+                self.server_name.text=key
+                self.password.text = value as? String
             }))
         }
 
@@ -30,7 +29,7 @@ class ViewController: UIViewController {
     }
     @IBAction func on_enter_click(_ sender: Any) {
         
-        if(password.text != global_value.password){
+        if(password.text != global_value.password || server_name.text != global_value.server_url){
             global_value.password=public_func.md5(password.text!)
             global_value.server_url=server_name.text!
         }
@@ -56,6 +55,8 @@ class ViewController: UIViewController {
     func save_info(){
             shared.set(global_value.server_url, forKey: "server")
             shared.set(global_value.password, forKey: "password")
+            config_list[global_value.server_url] = global_value.password
+            shared.set(config_list,forKey: "config_list")
             shared.synchronize()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -70,6 +71,9 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (shared.dictionary(forKey: "config_list") != nil){
+            config_list = shared.dictionary(forKey: "config_list")!
+        }
         if (shared.string(forKey: "server") != nil) {
             global_value.server_url = shared.string(forKey: "server")!
             global_value.password = shared.string(forKey: "password")!
