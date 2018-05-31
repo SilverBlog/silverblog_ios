@@ -21,50 +21,53 @@ class ShareViewController: SLComposeServiceViewController {
         }
         return true
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       if (shared.string(forKey: "server") == nil) {
+        if (shared.string(forKey: "server") == nil) {
             self.displayUIAlertController(title: "Please set the server information first.", message: "")
         }
     }
+
     override func didSelectPost() {
         let content = contentText
         let split = content!.components(separatedBy: "\n")
-        if (split[0].hasPrefix("# ")){
+        if (split[0].hasPrefix("# ")) {
             let alertQuestController = UIAlertController(title: "Notice", message: "The title has been found in the content. Do you want to remove the title?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 action in
-                self.send_post(content:content!)
+                self.send_post(content: content!)
             })
             let okAction = UIAlertAction(title: "OK", style: .default, handler: {
                 action in
-                self.send_post(content:content!.replacingOccurrences(of:split[0]+"\n",with: ""))
+                self.send_post(content: content!.replacingOccurrences(of: split[0] + "\n", with: ""))
             })
             alertQuestController.addAction(cancelAction)
             alertQuestController.addAction(okAction)
             self.present(alertQuestController, animated: true, completion: nil)
 
-        }else{
-            self.send_post(content:content!)
+        } else {
+            self.send_post(content: content!)
         }
 
     }
 
     override func configurationItems() -> [Any]! {
-        if (!contentText.isEmpty){
+        if (!contentText.isEmpty) {
             let split = contentText.components(separatedBy: "\n")
-            if (split[0].hasPrefix("# ")){
-                post_title=split[0].replacingOccurrences(of:"# ",with: "")
+            if (split[0].hasPrefix("# ")) {
+                post_title = split[0].replacingOccurrences(of: "# ", with: "")
             }
         }
         return [title_item, sulg_item]
     }
 
-    func send_post(content:String){
+    func send_post(content: String) {
         let password = shared.string(forKey: "password")!
         let server = shared.string(forKey: "server")!
         let sign = md5(post_title + password)
@@ -85,21 +88,23 @@ class ShareViewController: SLComposeServiceViewController {
         ]
         var result_message = ""
         Alamofire.request(server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            self.presentedViewController?.dismiss(animated: false, completion: nil)
-            switch response.result {
-            case .success(let json):
-                let dict = json as! Dictionary<String, AnyObject>
-                let status = dict["status"] as! Bool
-                result_message = "Article publication failed."
-                if (status) {
-                    result_message = "The article has been successfully published."
+            self.dismiss(animated: true) {
+                switch response.result {
+                case .success(let json):
+                    let dict = json as! Dictionary<String, AnyObject>
+                    let status = dict["status"] as! Bool
+                    result_message = "Article publication failed."
+                    if (status) {
+                        result_message = "The article has been successfully published."
+                    }
+                case .failure(_):
+                    result_message = "Article publication failed.Please check the network."
                 }
-            case .failure(_):
-                result_message = "Article publication failed.Please check the network."
+                self.displayUIAlertController(title: "Notice", message: result_message)
             }
-            self.displayUIAlertController(title: "Notice", message: result_message)
         }
     }
+
     func displayUIAlertController(title: String, message: String) {
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -143,7 +148,7 @@ class ShareViewController: SLComposeServiceViewController {
             alert.addTextField(configurationHandler: { (textField) in
                 textField.placeholder = "Sulg"
                 textField.keyboardType = .default
-                textField.text=self.sulg
+                textField.text = self.sulg
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             let confirm = UIAlertAction(title: "Ok", style: .default) { (action) in

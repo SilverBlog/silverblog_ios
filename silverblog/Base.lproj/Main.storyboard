@@ -42,7 +42,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrF-uB-iCi">
                                         <rect key="frame" x="0.0" y="150" width="343" height="30"/>
-                                        <state key="normal" title="Use the previous configuration"/>
+                                        <state key="normal" title="Use the previous config"/>
                                         <connections>
                                             <action selector="on_previson_click:" destination="BYZ-38-t0r" eventType="touchDown" id="Sp1-YF-fgB"/>
                                         </connections>

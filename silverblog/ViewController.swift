@@ -20,6 +20,7 @@ class ViewController: UIViewController {
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
                 self.server_name.text=key
                 self.password.text = value as? String
+                self.save_info()
             }))
         }
 
