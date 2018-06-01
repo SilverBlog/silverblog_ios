@@ -23,7 +23,11 @@ class ViewController: UIViewController {
                 self.save_info()
             }))
         }
-
+        actionSheetController.addAction(UIAlertAction(title: "Clean", style: .cancel,handler: {(action: UIAlertAction!) -> () in
+            self.config_list = [:]
+            self.shared.set(self.config_list,forKey: "config_list")
+            self.shared.synchronize()
+        }))
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
         self.present(actionSheetController, animated: true, completion: nil)
     }
