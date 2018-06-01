@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBAction func on_previson_click(_ sender: Any) {
 
-        let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous configuration", message: "Please select the configuration", preferredStyle: .actionSheet)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the configuration", preferredStyle: .actionSheet)
         config_list.forEach { (key,value) in
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
                 self.server_name.text=key

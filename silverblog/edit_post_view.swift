@@ -107,7 +107,7 @@ class edit_post_view: UIViewController {
                         self.Content_input.text = json["content"].string
                     }
                 case false:
-                    let alert = UIAlertController(title: "Failure", message: response.result.error as? String, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
