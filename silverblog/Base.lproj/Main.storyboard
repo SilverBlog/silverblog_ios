@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-Na-Lcb">
-                                <rect key="frame" x="16" y="150" width="343" height="130"/>
+                                <rect key="frame" x="16" y="150" width="343" height="180"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="site address(https://demo.silverblog.org)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -40,10 +40,19 @@
                                             <action selector="on_enter_click:" destination="BYZ-38-t0r" eventType="touchDown" id="tkk-Gz-iD3"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrF-uB-iCi">
+                                        <rect key="frame" x="0.0" y="150" width="343" height="30"/>
+                                        <state key="normal" title="Use the previous config"/>
+                                        <connections>
+                                            <action selector="on_previson_click:" destination="BYZ-38-t0r" eventType="touchDown" id="Sp1-YF-fgB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="qrF-uB-iCi" firstAttribute="leading" secondItem="nWb-Na-Lcb" secondAttribute="leading" id="5Xk-9g-kj9"/>
                                     <constraint firstItem="hCX-6W-3EA" firstAttribute="leading" secondItem="nWb-Na-Lcb" secondAttribute="leading" id="GV3-3a-TlZ"/>
                                     <constraint firstAttribute="trailing" secondItem="PM0-yz-4cA" secondAttribute="trailing" id="K0T-Ok-5If"/>
+                                    <constraint firstAttribute="trailing" secondItem="qrF-uB-iCi" secondAttribute="trailing" id="U6e-0d-snE"/>
                                     <constraint firstAttribute="trailing" secondItem="hCX-6W-3EA" secondAttribute="trailing" id="XAv-rz-wil"/>
                                     <constraint firstAttribute="trailing" secondItem="SKp-88-Zjc" secondAttribute="trailing" id="i51-od-ZUU"/>
                                     <constraint firstItem="PM0-yz-4cA" firstAttribute="leading" secondItem="nWb-Na-Lcb" secondAttribute="leading" id="nOp-zD-3DZ"/>
@@ -85,6 +94,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cot-76-NMd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-Eh-CJS">
+                                        <rect key="frame" x="166" y="323" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <viewLayoutGuide key="safeArea" id="ncW-7O-aUj"/>
                             </view>
