@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBAction func on_previson_click(_ sender: Any) {
 
-        let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the configuration", preferredStyle: .actionSheet)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the config", preferredStyle: .actionSheet)
         config_list.forEach { (key,value) in
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
                 let self_server_url = key
