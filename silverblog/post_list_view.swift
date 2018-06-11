@@ -15,7 +15,42 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     var array_json = JSON()
     let refreshControl = UIRefreshControl()
     let net = NetworkReachabilityManager()
-
+    @IBOutlet weak var publish_button: UIBarButtonItem!
+    @IBAction func publish_click(_ sender: Any) {
+        if net?.isReachable == false {
+            let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        doneController.view.addSubview(loadingIndicator)
+        self.present(doneController, animated: true, completion: nil)
+        Alamofire.request("https://" + global_value.server_url + "/control/git_page_publish", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            doneController.dismiss(animated: true) {
+                switch response.result {
+                case .success(let json):
+                    let dict = json as! Dictionary<String, AnyObject>
+                    let status = dict["status"] as! Bool
+                    var message = "Publish failed."
+                    if (status) {
+                        message = "Publish success."
+                    }
+                    let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                case .failure(let error):
+                    let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -24,10 +59,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
 
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.tabBarController!.navigationItem.setRightBarButton(publish_button, animated: true)
         if (global_value.reflush || array_json == JSON()) {
             global_value.reflush = false
             if net?.isReachable == false {
@@ -61,14 +98,14 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
         }
-        Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            self.refreshControl.endRefreshing()
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:
                     if let value = response.result.value {
                         self.array_json = JSON(value)
                         self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
@@ -110,7 +147,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qgr-eA-hyn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qgr-eA-hyn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-Na-Lcb">
                                 <rect key="frame" x="16" y="150" width="343" height="180"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="site address(https://demo.silverblog.org)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server domain (e.g.,demo.silverblog.org)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -250,8 +249,15 @@
                         <viewLayoutGuide key="safeArea" id="fup-wT-oQw"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" image="newspaper-7" id="GDy-SN-CNg"/>
-                    <navigationItem key="navigationItem" title="Post" id="cdB-uw-5PZ"/>
+                    <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="always" id="cdB-uw-5PZ">
+                        <barButtonItem key="rightBarButtonItem" title="Publish" id="hyM-9g-JYW">
+                            <connections>
+                                <action selector="publish_click:" destination="IjO-O4-Wio" id="Bbv-sj-K07"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="publish_button" destination="hyM-9g-JYW" id="cqV-Hw-oeB"/>
                         <outlet property="tableView" destination="e8n-t9-k0A" id="OFF-SL-SRc"/>
                     </connections>
                 </viewController>

@@ -89,7 +89,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         let url = json["url"].string
         let password = json["password"].string
         if(url != nil || password != nil){
-            global_value.server_url = url!
+            global_value.server_url = url!.replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
             global_value.password = password!
             global_value.isscan=true
         }

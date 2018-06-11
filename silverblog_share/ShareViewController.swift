@@ -13,7 +13,7 @@ import Alamofire
 class ShareViewController: SLComposeServiceViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     var post_title = "No Title"
-    var sulg = ""
+    var slug = ""
 
     override func isContentValid() -> Bool {
         if (contentText.isEmpty || shared.string(forKey: "server") == nil) {
@@ -84,10 +84,10 @@ class ShareViewController: SLComposeServiceViewController {
             "title": post_title,
             "sign": sign,
             "content": content,
-            "name": sulg
+            "name": slug
         ]
         var result_message = ""
-        Alamofire.request(server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -148,13 +148,13 @@ class ShareViewController: SLComposeServiceViewController {
             alert.addTextField(configurationHandler: { (textField) in
                 textField.placeholder = "Sulg"
                 textField.keyboardType = .default
-                textField.text = self.sulg
+                textField.text = self.slug
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             let confirm = UIAlertAction(title: "Ok", style: .default) { (action) in
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value = textField.text
-                self.sulg = textField.text!
+                self.slug = textField.text!
             }
             alert.addAction(cancel)
             alert.addAction(confirm)

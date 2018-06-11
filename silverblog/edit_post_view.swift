@@ -41,7 +41,7 @@ class edit_post_view: UIViewController {
             "content": Content_input.text! as String,
             "name": Slug_input.text! as String
         ]
-        Alamofire.request(global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -96,7 +96,7 @@ class edit_post_view: UIViewController {
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
 
-        Alamofire.request(global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:
@@ -107,7 +107,7 @@ class edit_post_view: UIViewController {
                         self.Content_input.text = json["content"].string
                     }
                 case false:
-                    let alert = UIAlertController(title: "Failure", message: response.result.error as? String, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
