@@ -14,7 +14,7 @@ class ShareViewController: SLComposeServiceViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     var post_title = "No Title"
     var slug = ""
-
+    var config_list: [String: Any] = [:]
     override func isContentValid() -> Bool {
         if (contentText.isEmpty || shared.string(forKey: "server") == nil) {
             return false
@@ -24,7 +24,9 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if (shared.dictionary(forKey: "config_list") != nil) {
+            config_list = shared.dictionary(forKey: "config_list")!
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +37,7 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func didSelectPost() {
+
         let content = contentText
         let split = content!.components(separatedBy: "\n")
         if (split[0].hasPrefix("# ")) {
@@ -64,12 +67,12 @@ class ShareViewController: SLComposeServiceViewController {
                 post_title = split[0].replacingOccurrences(of: "# ", with: "")
             }
         }
-        return [title_item, sulg_item]
+        return [title_item, sulg_item, site_table_Item]
     }
 
     func send_post(content: String) {
-        let password = shared.string(forKey: "password")!
-        let server = shared.string(forKey: "server")!
+        let password: String = shared.string(forKey: "password")!
+        let server: String = shared.string(forKey: "server")!
         let sign = md5(post_title + password)
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -116,6 +119,39 @@ class ShareViewController: SLComposeServiceViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+    private lazy var site_table_Item: SLComposeSheetConfigurationItem = {
+        let item = SLComposeSheetConfigurationItem()!
+        item.title = "Sites"
+        item.value = shared.string(forKey: "server")!
+        item.tapHandler = {
+            let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the config", preferredStyle: .actionSheet)
+            self.config_list.forEach { (key, value) in
+                actionSheetController.addAction(UIAlertAction(title: key, style: .default, handler: { (action: UIAlertAction!) -> () in
+                    let self_server_url = key
+                    let self_password = value as! String
+                    item.value = self_server_url
+                    self.save_info(server: self_server_url, password: self_password)
+                }))
+            }
+            actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive, handler: { (action: UIAlertAction!) -> () in
+                self.config_list = [:]
+                self.shared.set(self.config_list, forKey: "config_list")
+                self.shared.synchronize()
+            }))
+            actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(actionSheetController, animated: true, completion: nil)
+        }
+        return item
+    }()
+
+    func save_info(server: String, password: String) {
+        shared.set(server, forKey: "server")
+        shared.set(password, forKey: "password")
+
+        config_list[server] = password
+        shared.set(config_list, forKey: "config_list")
+        shared.synchronize()
+    }
     lazy var title_item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!
         item.title = "Title"
