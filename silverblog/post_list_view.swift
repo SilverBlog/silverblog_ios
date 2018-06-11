@@ -37,7 +37,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     let dict = json as! Dictionary<String, AnyObject>
                     let status = dict["status"] as! Bool
                     var message = "Publish failed."
-                    if (!status) {
+                    if (status) {
                         message = "Publish success."
                     }
                     let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
