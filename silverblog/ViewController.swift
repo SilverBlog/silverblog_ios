@@ -13,12 +13,13 @@ class ViewController: UIViewController {
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
+    
     @IBAction func on_previson_click(_ sender: Any) {
 
         let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the configuration", preferredStyle: .actionSheet)
         config_list.forEach { (key,value) in
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
-                let self_server_url = key.replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
+                let self_server_url = key
                 let self_password = value as! String
                 self.save_info(server: self_server_url,password: self_password)
                 self.push_view()

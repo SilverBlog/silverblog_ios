@@ -67,6 +67,7 @@ class edit_post_view: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.tabBarController!.navigationItem.setRightBarButton(nil, animated: true)
         if (menu == true) {
             function = "menu"
         }
