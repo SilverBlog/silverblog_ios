@@ -18,9 +18,10 @@ class ViewController: UIViewController {
         let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the configuration", preferredStyle: .actionSheet)
         config_list.forEach { (key,value) in
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
-                self.server_name.text=key
-                self.password.text = value as? String
-                self.save_info()
+                let self_server_url = key.replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
+                let self_password = value as! String
+                self.save_info(server: self_server_url,password: self_password)
+                self.push_view()
             }))
         }
         actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive,handler: {(action: UIAlertAction!) -> () in
@@ -32,21 +33,18 @@ class ViewController: UIViewController {
         self.present(actionSheetController, animated: true, completion: nil)
     }
     @IBAction func on_enter_click(_ sender: Any) {
-        
-        if(password.text != global_value.password || server_name.text != global_value.server_url){
-            global_value.password=public_func.md5(password.text!)
-            global_value.server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        }
-        save_info()
         self.view.endEditing(true)
-        if (global_value.server_url == "" || global_value.password == "") {
+        let self_password=public_func.md5(password.text!)
+        let self_server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
+        if (self_password == "" || self_server_url == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default) { (ACTION) in
-                return
-            }
+            let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default)
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
+            return
         }
+
+        save_info(server: self_server_url,password: self_password)
         push_view()
 
 
@@ -56,31 +54,27 @@ class ViewController: UIViewController {
         let vc = sb.instantiateViewController(withIdentifier: "post_list") as! UITabBarController
         self.navigationController!.pushViewController(vc, animated:true)
     }
-    func save_info(){
-            shared.set(global_value.server_url, forKey: "server")
-            shared.set(global_value.password, forKey: "password")
-            config_list[global_value.server_url] = global_value.password
+    func save_info(server: String,password: String){
+            shared.set(server, forKey: "server")
+            shared.set(password, forKey: "password")
+            config_list[server] = password
             shared.set(config_list,forKey: "config_list")
             shared.synchronize()
+            global_value.server_url=server
+            global_value.password=password
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (global_value.isscan){
             global_value.isscan=false
-            save_info()
+            save_info(server: global_value.server_url,password: global_value.password)
             push_view()
         }
-        server_name.text = global_value.server_url
-        password.text = global_value.password
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         if (shared.dictionary(forKey: "config_list") != nil){
             config_list = shared.dictionary(forKey: "config_list")!
-        }
-        if (shared.string(forKey: "server") != nil) {
-            global_value.server_url = shared.string(forKey: "server")!
-            global_value.password = shared.string(forKey: "password")!
         }
     }
 }

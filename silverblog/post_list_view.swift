@@ -61,14 +61,14 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
         }
-        Alamofire.request(global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            self.refreshControl.endRefreshing()
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:
                     if let value = response.result.value {
                         self.array_json = JSON(value)
                         self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
@@ -110,7 +110,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request(global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):

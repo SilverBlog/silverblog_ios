@@ -41,7 +41,7 @@ class edit_post_view: UIViewController {
             "content": Content_input.text! as String,
             "name": Slug_input.text! as String
         ]
-        Alamofire.request(global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -96,7 +96,7 @@ class edit_post_view: UIViewController {
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
 
-        Alamofire.request(global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:

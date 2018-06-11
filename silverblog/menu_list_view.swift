@@ -54,15 +54,14 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
 
-        Alamofire.request(global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://"+global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            self.refreshControl.endRefreshing()
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:
                     if let value = response.result.value {
-
                         self.array_json = JSON(value)
                         self.tableView.reloadData()
-                        self.refreshControl.endRefreshing()
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
