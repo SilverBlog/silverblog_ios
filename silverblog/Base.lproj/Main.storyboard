@@ -93,21 +93,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cot-76-NMd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-Eh-CJS">
-                                        <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="5hX-Eh-CJS" firstAttribute="top" secondItem="ncW-7O-aUj" secondAttribute="top" constant="207" id="Igg-Es-3bB"/>
-                                    <constraint firstItem="5hX-Eh-CJS" firstAttribute="leading" secondItem="ncW-7O-aUj" secondAttribute="leading" constant="166" id="VtA-4s-1u0"/>
-                                    <constraint firstItem="ncW-7O-aUj" firstAttribute="bottom" secondItem="5hX-Eh-CJS" secondAttribute="bottom" constant="323" id="af3-k2-3c9"/>
-                                    <constraint firstItem="ncW-7O-aUj" firstAttribute="trailing" secondItem="5hX-Eh-CJS" secondAttribute="trailing" constant="167" id="y0g-Jb-KyG"/>
-                                </constraints>
                                 <viewLayoutGuide key="safeArea" id="ncW-7O-aUj"/>
                             </view>
                         </subviews>

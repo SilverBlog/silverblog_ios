@@ -12,12 +12,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         scanview.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
-        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return }
+        
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+            failed();
+            return }
         let videoInput: AVCaptureDeviceInput
         
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
         } catch {
+            failed()
             return
         }
         
@@ -39,7 +43,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             failed()
             return
         }
-        
+        print(4)
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = scanview.bounds
         previewLayer.videoGravity = .resizeAspectFill
@@ -48,9 +52,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         captureSession.startRunning()
     }
     
+    
+    
     func failed() {
         let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "OK", style: .default,handler: { action in
+            self.navigationController!.popViewController(animated: true)
+        }))
         present(ac, animated: true)
         captureSession = nil
     }
