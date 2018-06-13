@@ -16,6 +16,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     let refreshControl = UIRefreshControl()
     let net = NetworkReachabilityManager()
     @IBOutlet weak var publish_button: UIBarButtonItem!
+
     @IBAction func publish_click(_ sender: Any) {
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
@@ -51,6 +52,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
@@ -89,8 +91,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func load_data(first_load: Bool) {
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         if (first_load) {
-            let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             loadingIndicator.hidesWhenStopped = true
             loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -100,19 +102,23 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         Alamofire.request("https://" + global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             self.refreshControl.endRefreshing()
-            self.dismiss(animated: true) {
-                switch response.result.isSuccess {
-                case true:
-                    if let value = response.result.value {
-                        self.array_json = JSON(value)
-                        self.tableView.reloadData()
-                    }
-                case false:
-                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+            if (first_load) {
+                alertController.dismiss(animated: true) {
                 }
             }
+            switch response.result.isSuccess {
+            case true:
+
+                if let value = response.result.value {
+                    self.array_json = JSON(value)
+                    self.tableView.reloadData()
+                }
+            case false:
+                let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+
         }
 
     }
