@@ -35,6 +35,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                self.refreshControl.endRefreshing()
                 return
             }
             self.load_data(first_load: true)
@@ -55,7 +56,6 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
         Alamofire.request("https://" + global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
-            self.refreshControl.endRefreshing()
             if (first_load) {
                 alertController.dismiss(animated: true) {
                 }
@@ -71,6 +71,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            self.refreshControl.endRefreshing()
         }
     }
 

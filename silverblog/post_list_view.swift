@@ -101,14 +101,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
         Alamofire.request("https://" + global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
-            self.refreshControl.endRefreshing()
             if (first_load) {
                 alertController.dismiss(animated: true) {
                 }
             }
             switch response.result.isSuccess {
             case true:
-
                 if let value = response.result.value {
                     self.array_json = JSON(value)
                     self.tableView.reloadData()
@@ -118,7 +116,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-
+            self.refreshControl.endRefreshing()
         }
 
     }
