@@ -7,12 +7,12 @@
 		<key>silverblog-debug.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>0</integer>
 		</dict>
 		<key>silverblog-release.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>1</integer>
 		</dict>
 		<key>silverblog_share.xcscheme</key>
 		<dict>

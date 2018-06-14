@@ -35,6 +35,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                self.refreshControl.endRefreshing()
                 return
             }
             self.load_data(first_load: true)
@@ -44,8 +45,8 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func load_data(first_load: Bool) {
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         if (first_load) {
-            let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             loadingIndicator.hidesWhenStopped = true
             loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
@@ -54,21 +55,26 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
 
-        Alamofire.request("https://"+global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
-            self.refreshControl.endRefreshing()
-            self.dismiss(animated: true) {
-                switch response.result.isSuccess {
-                case true:
-                    if let value = response.result.value {
-                        self.array_json = JSON(value)
-                        self.tableView.reloadData()
-                    }
-                case false:
-                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+        Alamofire.request("https://" + global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+            if (first_load) {
+                alertController.dismiss(animated: true) {
                 }
             }
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    let jsonobj = JSON(value)
+                    if (self.array_json != jsonobj) {
+                        self.array_json = jsonobj
+                        self.tableView.reloadData()
+                    }
+                }
+            case false:
+                let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.refreshControl.endRefreshing()
         }
     }
 

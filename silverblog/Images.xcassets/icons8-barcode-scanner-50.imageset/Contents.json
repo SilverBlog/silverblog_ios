@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icons8-menu-30.png",
+      "filename" : "icons8-qr-code-30.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icons8-menu-60.png",
       "scale" : "2x"
     },
     {

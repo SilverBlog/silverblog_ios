@@ -68,7 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="always" id="66F-Wu-TyU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="lfV-Ig-usq">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-barcode-scanner-50" id="lfV-Ig-usq">
                             <connections>
                                 <segue destination="Uhl-Y9-ekG" kind="show" id="AIq-m0-V84"/>
                             </connections>
@@ -93,15 +93,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cot-76-NMd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hX-Eh-CJS">
-                                        <rect key="frame" x="166" y="323" width="42" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <viewLayoutGuide key="safeArea" id="ncW-7O-aUj"/>
                             </view>
@@ -304,6 +295,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-barcode-scanner-50" width="30" height="30"/>
         <image name="list-simple-7" width="30" height="30"/>
         <image name="newspaper-7" width="30" height="30"/>
     </resources>
