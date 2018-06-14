@@ -63,8 +63,11 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             switch response.result.isSuccess {
             case true:
                 if let value = response.result.value {
-                    self.array_json = JSON(value)
-                    self.tableView.reloadData()
+                    let jsonobj = JSON(value)
+                    if (self.array_json != jsonobj) {
+                        self.array_json = jsonobj
+                        self.tableView.reloadData()
+                    }
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
