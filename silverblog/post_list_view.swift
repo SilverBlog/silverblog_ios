@@ -65,7 +65,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     @objc func becomeActive(){
         let shared = UserDefaults(suiteName: "group.silverblog.client")!
-        print(0)
         if (shared.bool(forKey: "refresh")){
             shared.set(false, forKey: "refresh")
             shared.synchronize()
