@@ -4,4 +4,5 @@ release_github:
   only:
   - master
   script:
+  - git config --global http.https://github.com.proxy socks5://192.168.3.8:1086
   - git push -u --set-upstream https://${github_key}@github.com/SilverBlogTeam/silverblog_ios.git HEAD:master
