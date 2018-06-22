@@ -63,9 +63,19 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     }
-
+    @objc func becomeActive(){
+        let shared = UserDefaults(suiteName: "group.silverblog.client")!
+        print(0)
+        if (shared.bool(forKey: "refresh")){
+            shared.set(false, forKey: "refresh")
+            shared.synchronize()
+            self.load_data(first_load: true)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         self.tabBarController!.navigationItem.setRightBarButton(publish_button, animated: true)
         if (global_value.reflush || array_json == JSON()) {
             global_value.reflush = false

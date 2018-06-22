@@ -99,6 +99,8 @@ class ShareViewController: SLComposeServiceViewController {
                     result_message = "Article publication failed."
                     if (status) {
                         result_message = "The article has been successfully published."
+                        self.shared.set(true, forKey: "refresh")
+                        self.shared.synchronize()
                     }
                 case .failure(_):
                     result_message = "Article publication failed.Please check the network."
