@@ -55,6 +55,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController!.navigationItem.setRightBarButton(publish_button, animated: true)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -75,7 +76,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        self.tabBarController!.navigationItem.setRightBarButton(publish_button, animated: true)
         if (global_value.reflush || array_json == JSON()) {
             global_value.reflush = false
             if net?.isReachable == false {
