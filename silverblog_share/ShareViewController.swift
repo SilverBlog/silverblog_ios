@@ -48,7 +48,11 @@ class ShareViewController: SLComposeServiceViewController {
             })
             let okAction = UIAlertAction(title: "OK", style: .default, handler: {
                 action in
-                self.send_post(content: content!.replacingOccurrences(of: split[0] + "\n", with: ""))
+                var nl = "\n"
+                if(split[1] == ""){
+                    nl = "\n\n"
+                }
+                self.send_post(content: content!.replacingOccurrences(of: split[0] + nl, with: ""))
             })
             alertQuestController.addAction(cancelAction)
             alertQuestController.addAction(okAction)

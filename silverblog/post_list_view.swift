@@ -78,7 +78,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
         if (global_value.reflush || array_json == JSON()) {
             global_value.reflush = false
-            if net?.isReachable == false {
+            if (net?.isReachable == false) {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -90,7 +90,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     @objc func refresh(refreshControl: UIRefreshControl) {
-        if net?.isReachable == false {
+        if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -134,7 +134,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if net?.isReachable == false {
+        if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
