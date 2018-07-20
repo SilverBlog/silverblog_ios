@@ -14,6 +14,7 @@ class edit_post_view: UIViewController {
     var row = 1
     var menu = false
     var function = "post"
+    var load = false
     let net = NetworkReachabilityManager()
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
@@ -79,15 +80,16 @@ class edit_post_view: UIViewController {
             return
 
         }
-        self.load_post()
-
+        if (!load){
+            self.load_post()
+        }
     }
 
     func load_post() {
         let parameters: Parameters = [
             "post_id": row
         ]
-
+        
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -105,6 +107,7 @@ class edit_post_view: UIViewController {
                         self.Title_input.text = json["title"].string
                         self.Slug_input.text = json["name"].string
                         self.Content_input.text = json["content"].string
+                        self.load=true
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)

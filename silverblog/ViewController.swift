@@ -44,7 +44,8 @@ class ViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-
+        password.text = ""
+        server_name.text = ""
         save_info(server: self_server_url,password: self_password)
         push_view()
 
