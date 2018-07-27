@@ -68,7 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="always" id="66F-Wu-TyU">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-barcode-scanner-50" id="lfV-Ig-usq">
+                        <barButtonItem key="rightBarButtonItem" title="Qrcode" image="icons8-barcode-scanner-50" id="lfV-Ig-usq">
                             <connections>
                                 <segue destination="Uhl-Y9-ekG" kind="show" id="AIq-m0-V84"/>
                             </connections>
