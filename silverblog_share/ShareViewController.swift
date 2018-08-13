@@ -48,7 +48,11 @@ class ShareViewController: SLComposeServiceViewController {
             })
             let okAction = UIAlertAction(title: "OK", style: .default, handler: {
                 action in
-                self.send_post(content: content!.replacingOccurrences(of: split[0] + "\n", with: ""))
+                var nl = "\n"
+                if(split[1] == ""){
+                    nl = "\n\n"
+                }
+                self.send_post(content: content!.replacingOccurrences(of: split[0] + nl, with: ""))
             })
             alertQuestController.addAction(cancelAction)
             alertQuestController.addAction(okAction)
@@ -166,7 +170,7 @@ class ShareViewController: SLComposeServiceViewController {
                 textField.text = self.post_title
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            let confirm = UIAlertAction(title: "Ok", style: .default) { (action) in
+            let confirm = UIAlertAction(title: "OK", style: .default) { (action) in
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value = textField.text
                 self.post_title = textField.text!
@@ -182,14 +186,14 @@ class ShareViewController: SLComposeServiceViewController {
         item.title = "Slug"
         item.value = ""
         item.tapHandler = {
-            let alert = UIAlertController(title: "Please enter a sulg:", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Please enter a slug:", message: "", preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (textField) in
-                textField.placeholder = "Sulg"
+                textField.placeholder = "Slug"
                 textField.keyboardType = .default
                 textField.text = self.slug
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-            let confirm = UIAlertAction(title: "Ok", style: .default) { (action) in
+            let confirm = UIAlertAction(title: "OK", style: .default) { (action) in
                 let textField = alert.textFields![0] // Force unwrapping because we know it exists.
                 item.value = textField.text
                 self.slug = textField.text!

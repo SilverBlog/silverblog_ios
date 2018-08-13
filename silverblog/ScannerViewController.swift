@@ -43,7 +43,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             failed()
             return
         }
-        print(4)
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = scanview.bounds
         previewLayer.videoGravity = .resizeAspectFill
