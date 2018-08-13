@@ -106,7 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6LO-va-jw2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Scan" id="thy-NL-tIo"/>
+                    <navigationItem key="navigationItem" title="Scan" largeTitleDisplayMode="never" id="thy-NL-tIo"/>
                     <connections>
                         <outlet property="scanview" destination="CTk-Q7-hYG" id="e41-NF-91n"/>
                     </connections>
