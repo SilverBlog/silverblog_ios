@@ -79,7 +79,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (shared.dictionary(forKey: "config_list") != nil){
-            print(1)
             config_list = shared.dictionary(forKey: "config_list")!
         }
     }
