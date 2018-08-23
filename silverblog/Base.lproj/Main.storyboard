@@ -68,7 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="always" id="66F-Wu-TyU">
-                        <barButtonItem key="rightBarButtonItem" title="Qrcode" image="icons8-barcode-scanner-50" id="lfV-Ig-usq">
+                        <barButtonItem key="rightBarButtonItem" title="Qrcode" image="scan" id="lfV-Ig-usq">
                             <connections>
                                 <segue destination="Uhl-Y9-ekG" kind="show" id="AIq-m0-V84"/>
                             </connections>
@@ -295,8 +295,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-barcode-scanner-50" width="30" height="30"/>
         <image name="list-simple-7" width="30" height="30"/>
         <image name="newspaper-7" width="30" height="30"/>
+        <image name="scan" width="25" height="25"/>
     </resources>
 </document>

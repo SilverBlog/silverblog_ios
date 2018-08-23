@@ -30,6 +30,9 @@ class ViewController: UIViewController {
             self.shared.set(self.config_list,forKey: "config_list")
             self.shared.synchronize()
         }))
+        actionSheetController.popoverPresentationController?.sourceView = self.view
+        let screenSize = UIScreen.main.bounds
+        actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: screenSize.size.width / 2, y: screenSize.size.height, width: 0, height: 0)
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
         self.present(actionSheetController, animated: true, completion: nil)
     }
@@ -76,6 +79,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (shared.dictionary(forKey: "config_list") != nil){
+            print(1)
             config_list = shared.dictionary(forKey: "config_list")!
         }
     }
