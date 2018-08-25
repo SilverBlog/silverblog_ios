@@ -47,17 +47,28 @@ class ViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        let NetworkManager = NetworkReachabilityManager(host: self_server_url)
-        if NetworkManager?.isReachable == false {
-            let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            return
+        let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        doneController.view.addSubview(loadingIndicator)
+        self.present(doneController, animated: true, completion: nil)
+        Alamofire.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
+            doneController.dismiss(animated: true) {
+                switch response.result {
+                case .success:
+                    self.password.text = ""
+                    self.server_name.text = ""
+                    self.save_info(server: self_server_url, password: self_password)
+                    self.push_view()
+                case .failure(let error):
+                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
         }
-        password.text = ""
-        server_name.text = ""
-        save_info(server: self_server_url,password: self_password)
-        push_view()
 
 
     }
