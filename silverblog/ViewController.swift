@@ -62,7 +62,7 @@ class ViewController: UIViewController {
                     self.server_name.text = ""
                     self.save_info(server: self_server_url, password: self_password)
                     self.push_view()
-                case .failure(let error):
+                case .failure(let _):
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
