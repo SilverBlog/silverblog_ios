@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import Alamofire
 class ViewController: UIViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+
+    @IBOutlet weak var previson_button: UIButton!
     @IBAction func on_previson_click(_ sender: Any) {
 
         let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the config", preferredStyle: .actionSheet)
@@ -30,6 +31,8 @@ class ViewController: UIViewController {
             self.shared.set(self.config_list,forKey: "config_list")
             self.shared.synchronize()
         }))
+        actionSheetController.popoverPresentationController?.sourceView = self.previson_button
+        actionSheetController.popoverPresentationController?.sourceRect = self.previson_button.bounds
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
         self.present(actionSheetController, animated: true, completion: nil)
     }
@@ -44,10 +47,28 @@ class ViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
             return
         }
-        password.text = ""
-        server_name.text = ""
-        save_info(server: self_server_url,password: self_password)
-        push_view()
+        let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        doneController.view.addSubview(loadingIndicator)
+        self.present(doneController, animated: true, completion: nil)
+        Alamofire.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
+            doneController.dismiss(animated: true) {
+                switch response.result {
+                case .success:
+                    self.password.text = ""
+                    self.server_name.text = ""
+                    self.save_info(server: self_server_url, password: self_password)
+                    self.push_view()
+                case .failure(let _):
+                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
 
 
     }
