@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import Alamofire
 class ViewController: UIViewController {
     let shared = UserDefaults(suiteName: "group.silverblog.client")!
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+
+    @IBOutlet weak var previson_button: UIButton!
     @IBAction func on_previson_click(_ sender: Any) {
 
         let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the config", preferredStyle: .actionSheet)
@@ -30,9 +31,8 @@ class ViewController: UIViewController {
             self.shared.set(self.config_list,forKey: "config_list")
             self.shared.synchronize()
         }))
-        actionSheetController.popoverPresentationController?.sourceView = self.view
-        let screenSize = UIScreen.main.bounds
-        actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: screenSize.size.width / 2, y: screenSize.size.height, width: 0, height: 0)
+        actionSheetController.popoverPresentationController?.sourceView = self.previson_button
+        actionSheetController.popoverPresentationController?.sourceRect = self.previson_button.bounds
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
         self.present(actionSheetController, animated: true, completion: nil)
     }
@@ -45,6 +45,13 @@ class ViewController: UIViewController {
             let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default)
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        let NetworkManager = NetworkReachabilityManager(host: self_server_url)
+        if NetworkManager?.isReachable == false {
+            let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         password.text = ""

@@ -76,6 +76,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="password" destination="hCX-6W-3EA" id="bdf-Xv-GVM"/>
+                        <outlet property="previson_button" destination="qrF-uB-iCi" id="E3n-d2-7W3"/>
                         <outlet property="server_name" destination="SKp-88-Zjc" id="2Xf-9G-ctk"/>
                     </connections>
                 </viewController>
