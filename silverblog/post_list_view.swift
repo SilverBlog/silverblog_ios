@@ -125,15 +125,16 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
-                    self.navigationController!.popViewController(animated: true)
-                }))
                 if (first_load) {
                     alertController.dismiss(animated: true) {
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+                            self.navigationController!.popViewController(animated: true)
+                        }))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
                 if (!first_load) {
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
 
