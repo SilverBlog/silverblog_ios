@@ -110,12 +110,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
         Alamofire.request("https://" + global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
-            if (first_load) {
-                alertController.dismiss(animated: true) {
-                }
-            }
             switch response.result.isSuccess {
             case true:
+                if (first_load) {
+                    alertController.dismiss(animated: true) {
+                    }
+                }
                 if let value = response.result.value {
                     let jsonobj = JSON(value)
                     if (self.array_json != jsonobj) {
@@ -125,8 +125,19 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                if (first_load) {
+                    alertController.dismiss(animated: true) {
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+                            self.navigationController!.popViewController(animated: true)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+                if (!first_load) {
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+
             }
             self.refreshControl.endRefreshing()
         }
@@ -142,7 +153,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertControllerStyle.alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (ACTION) in
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { (ACTION) in
             let parameters: Parameters = [
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
