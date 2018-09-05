@@ -8,5 +8,3 @@ release_github:
   - chmod 0600 deploy.key
   - ssh-add deploy.key
   - git push --set-upstream git@github.com:SilverBlogTeam/silverblog_ios.git HEAD:$CI_COMMIT_REF_NAME
-  - git push --set-upstream git@code.aliyun.com:silverblogteam/silverblog_ios.git HEAD:$CI_COMMIT_REF_NAME
-
