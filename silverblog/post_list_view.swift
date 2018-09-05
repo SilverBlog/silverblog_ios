@@ -153,7 +153,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertControllerStyle.alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (ACTION) in
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { (ACTION) in
             let parameters: Parameters = [
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
