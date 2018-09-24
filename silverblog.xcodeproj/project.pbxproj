@@ -318,7 +318,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -331,7 +331,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6FB0604041CA4F7EA4FC87E4 /* [CP] Check Pods Manifest.lock */ = {
