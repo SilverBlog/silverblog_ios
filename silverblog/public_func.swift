@@ -6,6 +6,7 @@
 //  Copyright © 2018年 qwe7002. All rights reserved.
 //
 
+import Foundation
 class public_func{
    static func md5(_ string: String) -> String {
         
@@ -21,5 +22,24 @@ class public_func{
         }
         
         return hexString
+    }
+
+    func sha256_data(_ data: Data) -> Data? {
+        guard let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH)) else {
+            return nil
+        }
+        CC_SHA256((data as NSData).bytes, CC_LONG(data.count), res.mutableBytes.assumingMemoryBound(to: UInt8.self))
+        return res as Data
+    }
+
+    func sha256(_ str: String) -> String? {
+        guard
+                let data = str.data(using: String.Encoding.utf8),
+                let shaData = sha256_data(data)
+                else {
+            return nil
+        }
+        let rc = shaData.base64EncodedString(options: [])
+        return rc
     }
 }
