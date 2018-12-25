@@ -93,6 +93,7 @@ class ViewController: UIViewController {
             save_info(server: global_value.server_url,password: global_value.password)
             push_view()
         }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

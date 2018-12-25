@@ -72,4 +72,10 @@ class public_func{
         }
         return hexString
     }
+    
+    static func get_timestamp()-> CLongLong{
+        let timeInterval: TimeInterval = Date().timeIntervalSince1970
+        let millisecond = CLongLong(round(timeInterval*1000))
+        return millisecond
+    }
 }
