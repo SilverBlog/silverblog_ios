@@ -33,7 +33,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             global_value.reflush = false
             if net?.isReachable == false {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 self.refreshControl.endRefreshing()
                 return
@@ -49,7 +49,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         if (first_load) {
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.style = UIActivityIndicatorView.Style.gray
             loadingIndicator.startAnimating();
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
@@ -71,7 +71,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             self.refreshControl.endRefreshing()
@@ -81,7 +81,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc func refresh(refreshControl: UIRefreshControl) {
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -93,7 +93,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.deselectRow(at: indexPath, animated: true)
         if array_json[indexPath.row]["absolute"].string != nil {
             let url = URL(string: array_json[indexPath.row]["absolute"].string!)
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
             return
         }
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -113,4 +113,9 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = self.array_json[indexPath.row]["title"].string
         return cell
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

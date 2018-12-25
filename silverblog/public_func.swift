@@ -16,30 +16,60 @@ class public_func{
         CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
         CC_MD5_Final(&digest, context)
         context.deallocate()
+    
+        return byte2hex(digest)
+    }
+
+    static func byte2hex(_ digest :Array<UInt8>)-> String{
         var hexString = ""
         for byte in digest {
             hexString += String(format:"%02x", byte)
         }
-        
         return hexString
     }
-
-    func sha256_data(_ data: Data) -> Data? {
-        guard let res = NSMutableData(length: Int(CC_SHA256_DIGEST_LENGTH)) else {
-            return nil
-        }
-        CC_SHA256((data as NSData).bytes, CC_LONG(data.count), res.mutableBytes.assumingMemoryBound(to: UInt8.self))
-        return res as Data
+    
+    static func sha512(string: String) -> String {
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
+        let data = string.data(using: String.Encoding.utf8 , allowLossyConversion: true)
+        let value =  data! as NSData
+        CC_SHA512(value.bytes, CC_LONG(value.length), &digest)
+        
+        return byte2hex(digest)
     }
-
-    func sha256(_ str: String) -> String? {
-        guard
-                let data = str.data(using: String.Encoding.utf8),
-                let shaData = sha256_data(data)
-                else {
-            return nil
+    static func sha256(string: String) -> String {
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
+        let data = string.data(using: String.Encoding.utf8 , allowLossyConversion: true)
+        let value =  data! as NSData
+        CC_SHA256(value.bytes, CC_LONG(value.length), &digest)
+        
+        return byte2hex(digest)
+    }
+    static func hmac(hashName:String, message:Data, key:Data) -> Data? {
+        let algos = ["SHA256": (kCCHmacAlgSHA256, CC_SHA256_DIGEST_LENGTH),
+                     "SHA512": (kCCHmacAlgSHA512, CC_SHA512_DIGEST_LENGTH)]
+        guard let (hashAlgorithm, length) = algos[hashName]  else { return nil }
+        var macData = Data(count: Int(length))
+        
+        macData.withUnsafeMutableBytes {macBytes in
+            message.withUnsafeBytes {messageBytes in
+                key.withUnsafeBytes {keyBytes in
+                    CCHmac(CCHmacAlgorithm(hashAlgorithm),
+                           keyBytes,     key.count,
+                           messageBytes, message.count,
+                           macBytes)
+                }
+            }
         }
-        let rc = shaData.base64EncodedString(options: [])
-        return rc
+        return macData
+    }
+    static func hmac_hax(hashName:String, message:String, key:String) -> String {
+        let messageData = message.data(using:.utf8)!
+        let keyData = key.data(using:.utf8)!
+        let digest = hmac(hashName:hashName, message:messageData, key:keyData)
+        var hexString = ""
+        for byte in digest! {
+            hexString += String(format:"%02x", byte)
+        }
+        return hexString
     }
 }

@@ -20,14 +20,14 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func publish_click(_ sender: Any) {
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
         let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
@@ -42,11 +42,11 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                         message = "Publish success."
                     }
                     let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 case .failure(let error):
                     let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -75,12 +75,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         if (global_value.reflush || array_json == JSON()) {
             global_value.reflush = false
             if (net?.isReachable == false) {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
@@ -92,7 +92,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc func refresh(refreshControl: UIRefreshControl) {
         if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -104,7 +104,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         if (first_load) {
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.style = UIActivityIndicatorView.Style.gray
             loadingIndicator.startAnimating();
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
@@ -127,14 +127,14 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
                 if (first_load) {
                     alertController.dismiss(animated: true) {
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (alert: UIAlertAction!) in
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert: UIAlertAction!) in
                             self.navigationController!.popViewController(animated: true)
                         }))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
                 if (!first_load) {
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
 
@@ -144,16 +144,16 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
-        let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertControllerStyle.alert)
-        let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default)
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive) { (ACTION) in
+        let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertController.Style.alert)
+        let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default)
+        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { (ACTION) in
             let parameters: Parameters = [
                 "post_id": indexPath.row,
                 "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
@@ -170,7 +170,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
@@ -182,7 +182,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     let status = dict["status"] as! Bool
                     if (!status) {
                         let alert = UIAlertController(title: "Failure", message: "Delete failed.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                     if (status) {
@@ -190,7 +190,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     }
                 case .failure(let error):
                     let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }

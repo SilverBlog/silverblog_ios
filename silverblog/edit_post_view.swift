@@ -29,7 +29,7 @@ class edit_post_view: UIViewController {
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
@@ -54,12 +54,12 @@ class edit_post_view: UIViewController {
                     }
                     if (!status) {
                         let alert = UIAlertController(title: "Failure", message: "Article publication failed.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                 case .failure(_):
                     let alert = UIAlertController(title: "Failure", message: "Article publication failed.Please check the network.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -73,7 +73,7 @@ class edit_post_view: UIViewController {
         }
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                 self.navigationController!.popViewController(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
@@ -93,7 +93,7 @@ class edit_post_view: UIViewController {
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
@@ -111,7 +111,7 @@ class edit_post_view: UIViewController {
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
