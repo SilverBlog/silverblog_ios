@@ -109,7 +109,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
         }
-        Alamofire.request("https://" + global_value.server_url + "/control/get_list/post", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/get/list/post", method: .get, encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
                 if (first_load) {
@@ -154,9 +154,10 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertController.Style.alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default)
         let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { (ACTION) in
+            let sign = public_func.hmac_hax(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!, key: global_value.password)
             let parameters: Parameters = [
-                "post_id": indexPath.row,
-                "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
+                "post_uuid": self.array_json[indexPath.row]["uuid"].string!,
+                "sign": sign
             ]
             self.delete_post(parameters: parameters)
         }
@@ -174,7 +175,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request("https://" + global_value.server_url + "/control/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):

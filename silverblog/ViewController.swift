@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         }
         actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive,handler: {(action: UIAlertAction!) -> () in
             self.config_list = [:]
-            self.shared.set(self.config_list,forKey: "config_list")
+            self.shared.set(self.config_list,forKey: "config_list2")
             self.shared.synchronize()
         }))
         actionSheetController.popoverPresentationController?.sourceView = self.previson_button
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
-        let self_password=public_func.md5(password.text!)
+        let self_password=public_func.hmac_hax(hashName: "SHA256", message: public_func.md5(password.text!), key: "SiLvErBlOg")
         let self_server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
         if (self_password == "" || self_server_url == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertController.Style.alert)
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             shared.set(server, forKey: "server")
             shared.set(password, forKey: "password")
             config_list[server] = password
-            shared.set(config_list,forKey: "config_list")
+            shared.set(config_list,forKey: "config_list2")
             shared.synchronize()
             global_value.server_url=server
             global_value.password=password
@@ -96,8 +96,17 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (shared.dictionary(forKey: "config_list") != nil){
-            config_list = shared.dictionary(forKey: "config_list")!
+        if (shared.dictionary(forKey: "config_list2") != nil){
+            config_list = shared.dictionary(forKey: "config_list2")!
+        }
+        if(shared.dictionary(forKey: "config_list") != nil){
+            let old_list = shared.dictionary(forKey: "config_list")!
+            var new_list: [String: Any] = [:]
+            old_list.forEach { (arg) in
+                let (key, value) = arg
+                new_list[key]=public_func.hmac_hax(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
+            }
+            self.shared.set(new_list,forKey: "config_list2")
         }
     }
 }
