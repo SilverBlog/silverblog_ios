@@ -55,7 +55,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
 
-        Alamofire.request("https://" + global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/get_list/menu", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
             if (first_load) {
                 alertController.dismiss(animated: true) {
                 }

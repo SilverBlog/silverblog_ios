@@ -322,7 +322,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh",
+				"${SRCROOT}/silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -335,7 +335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6FB0604041CA4F7EA4FC87E4 /* [CP] Check Pods Manifest.lock */ = {
@@ -542,10 +542,7 @@
 				DEVELOPMENT_TEAM = 68SG83U3QK;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -568,10 +565,7 @@
 				DEVELOPMENT_TEAM = 68SG83U3QK;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client;
@@ -591,11 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68SG83U3QK;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverblog.client.silverblog-share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -615,11 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68SG83U3QK;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.silverblog.client.silverblog-share";
 				PRODUCT_NAME = "$(TARGET_NAME)";

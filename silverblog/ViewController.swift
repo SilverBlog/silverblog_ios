@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
+        AF.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success:

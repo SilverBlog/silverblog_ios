@@ -34,7 +34,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let send_time = public_func.get_timestamp()
         let sign = public_func.hmac_hex(hashName: "SHA512", message: "git_page_publish", key: global_value.password+String(send_time))
         let para: [String: Any] = ["sign":sign,"send_time":send_time]
-        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: para, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: para, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -112,7 +112,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
         }
-        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/get/list/post", method: .get, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/get/list/post", method: .get, encoding: JSONEncoding.default).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
                 if (first_load) {
@@ -180,7 +180,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):

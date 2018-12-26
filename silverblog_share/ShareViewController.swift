@@ -104,7 +104,7 @@ class ShareViewController: SLComposeServiceViewController {
             "name": slug
         ]
         var result_message = ""
-        Alamofire.request("https://" + server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
