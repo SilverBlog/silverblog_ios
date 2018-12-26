@@ -62,7 +62,7 @@ class public_func{
         }
         return macData
     }
-    static func hmac_hax(hashName:String, message:String, key:String) -> String {
+    static func hmac_hex(hashName:String, message:String, key:String) -> String {
         let messageData = message.data(using:.utf8)!
         let keyData = key.data(using:.utf8)!
         let digest = hmac(hashName:hashName, message:messageData, key:keyData)

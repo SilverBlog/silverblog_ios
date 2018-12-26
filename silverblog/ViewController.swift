@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     }
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
-        let self_password=public_func.hmac_hax(hashName: "SHA256", message: public_func.md5(password.text!), key: "SiLvErBlOg")
+        let self_password=public_func.hmac_hex(hashName: "SHA256", message: public_func.md5(password.text!), key: "SiLvErBlOg")
         let self_server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
         if (self_password == "" || self_server_url == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertController.Style.alert)
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
             var new_list: [String: Any] = [:]
             old_list.forEach { (arg) in
                 let (key, value) = arg
-                new_list[key]=public_func.hmac_hax(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
+                new_list[key]=public_func.hmac_hex(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
             }
             self.shared.set(new_list,forKey: "config_list2")
             self.shared.removeObject(forKey: "config_list")

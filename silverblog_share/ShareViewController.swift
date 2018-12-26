@@ -29,7 +29,7 @@ class ShareViewController: SLComposeServiceViewController {
             var new_list: [String: Any] = [:]
             old_list.forEach { (arg) in
                 let (key, value) = arg
-                new_list[key]=public_func.hmac_hax(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
+                new_list[key]=public_func.hmac_hex(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
             }
             self.shared.set(new_list,forKey: "config_list2")
             self.shared.removeObject(forKey: "config_list")
@@ -87,7 +87,7 @@ class ShareViewController: SLComposeServiceViewController {
         let server: String = shared.string(forKey: "server")!
         //let sign = md5(post_title + password)
         let send_time = public_func.get_timestamp()
-        let sign = public_func.hmac_hax(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
+        let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true

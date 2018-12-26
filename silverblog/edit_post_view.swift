@@ -39,7 +39,7 @@ class edit_post_view: UIViewController {
         let title:String = Title_input.text!
         let content:String = Content_input.text!
         let name:String = Slug_input.text!
-        let sign = public_func.hmac_hax(hashName: "SHA512", message: self.uuid+title+name+public_func.sha512(string: content), key: global_value.password+String(send_time))
+        let sign = public_func.hmac_hex(hashName: "SHA512", message: self.uuid+title+name+public_func.sha512(string: content), key: global_value.password+String(send_time))
         let parameters: Parameters = [
             "post_uuid": self.uuid,
             "title": title,
