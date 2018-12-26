@@ -97,9 +97,6 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (shared.dictionary(forKey: "config_list2") != nil){
-            config_list = shared.dictionary(forKey: "config_list2")!
-        }
         if(shared.dictionary(forKey: "config_list") != nil){
             let old_list = shared.dictionary(forKey: "config_list")!
             var new_list: [String: Any] = [:]
@@ -108,6 +105,11 @@ class ViewController: UIViewController {
                 new_list[key]=public_func.hmac_hax(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
             }
             self.shared.set(new_list,forKey: "config_list2")
+            self.shared.removeObject(forKey: "config_list")
+            self.shared.synchronize()
+        }
+        if (shared.dictionary(forKey: "config_list2") != nil){
+            config_list = shared.dictionary(forKey: "config_list2")!
         }
     }
 }

@@ -31,7 +31,10 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request("https://" + global_value.server_url + "/control/git_page_publish", method: .post, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        let send_time = public_func.get_timestamp()
+        let sign = public_func.hmac_hax(hashName: "SHA512", message: "git_page_publish", key: global_value.password+String(send_time))
+        let para: [String: Any] = ["sign":sign,"send_time":send_time]
+        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: para, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -154,10 +157,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertController.Style.alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default)
         let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { (ACTION) in
-            let sign = public_func.hmac_hax(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!, key: global_value.password)
+            let send_time = public_func.get_timestamp()
+            let sign = public_func.hmac_hax(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!, key: global_value.password+String(send_time))
             let parameters: Parameters = [
                 "post_uuid": self.array_json[indexPath.row]["uuid"].string!,
-                "sign": sign
+                "sign": sign,
+                "send_time":send_time
             ]
             self.delete_post(parameters: parameters)
         }
@@ -202,7 +207,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.deselectRow(at: indexPath, animated: true)
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
-        edit_post.row = indexPath.row
+        edit_post.uuid = self.array_json[indexPath.row]["uuid"].string!
         edit_post.menu = false
         self.navigationController!.pushViewController(edit_post, animated: true)
     }

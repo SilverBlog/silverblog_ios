@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class edit_post_view: UIViewController {
-    var row = 1
+    var uuid = ""
     var menu = false
     var function = "post"
     var load = false
@@ -34,15 +34,21 @@ class edit_post_view: UIViewController {
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
 
-        let sign = public_func.md5(Title_input.text! as String + global_value.password)
+        //let sign = public_func.md5(Title_input.text! as String + global_value.password)
+        let send_time = public_func.get_timestamp()
+        let title:String = Title_input.text!
+        let content:String = Content_input.text!
+        let name:String = Slug_input.text!
+        let sign = public_func.hmac_hax(hashName: "SHA512", message: self.uuid+title+name+public_func.sha512(string: content), key: global_value.password+String(send_time))
         let parameters: Parameters = [
-            "post_id": self.row,
-            "title": Title_input.text! as String,
+            "post_uuid": self.uuid,
+            "title": title,
             "sign": sign,
-            "content": Content_input.text! as String,
-            "name": Slug_input.text! as String
+            "content": content,
+            "name": name,
+            "send_time":send_time
         ]
-        Alamofire.request("https://" + global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control"+global_value.version+"/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -87,9 +93,8 @@ class edit_post_view: UIViewController {
 
     func load_post() {
         let parameters: Parameters = [
-            "post_id": row
+            "post_uuid": self.uuid
         ]
-        
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -98,7 +103,7 @@ class edit_post_view: UIViewController {
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
 
-        Alamofire.request("https://" + global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:

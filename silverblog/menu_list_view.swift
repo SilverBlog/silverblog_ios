@@ -98,7 +98,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
-        vc.row = indexPath.row
+        vc.uuid = self.array_json[indexPath.row]["uuid"].string!
         vc.menu = true
         self.navigationController!.pushViewController(vc, animated: true)
 
