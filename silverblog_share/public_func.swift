@@ -8,7 +8,7 @@
 
 import Foundation
 class public_func{
-   static func md5(_ string: String) -> String {
+    static func md5(_ string: String) -> String {
         
         let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
         var digest = Array<UInt8>(repeating:0, count:Int(CC_MD5_DIGEST_LENGTH))
@@ -16,10 +16,10 @@ class public_func{
         CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
         CC_MD5_Final(&digest, context)
         context.deallocate()
-    
+        
         return byte2hex(digest)
     }
-
+    
     private static func byte2hex(_ digest :Array<UInt8>)-> String{
         var hexString = ""
         for byte in digest {
