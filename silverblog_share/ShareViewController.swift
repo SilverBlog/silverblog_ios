@@ -85,7 +85,6 @@ class ShareViewController: SLComposeServiceViewController {
     func send_post(content: String) {
         let password: String = shared.string(forKey: "password")!
         let server: String = shared.string(forKey: "server")!
-        //let sign = md5(post_title + password)
         let send_time = public_func.get_timestamp()
         let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
@@ -101,10 +100,11 @@ class ShareViewController: SLComposeServiceViewController {
             "title": post_title,
             "sign": sign,
             "content": content,
-            "name": slug
+            "name": slug,
+            "send_time":send_time
         ]
         var result_message = ""
-        AF.request("https://" + server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + server + "/control/v2/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
