@@ -36,14 +36,6 @@ class public_func{
         
         return byte2hex(digest)
     }
-    static func sha256(string: String) -> String {
-        var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
-        let data = string.data(using: String.Encoding.utf8 , allowLossyConversion: true)
-        let value =  data! as NSData
-        CC_SHA256(value.bytes, CC_LONG(value.length), &digest)
-        
-        return byte2hex(digest)
-    }
     private static func hmac(hashName:String, message:Data, key:Data) -> Data? {
         let algos = ["SHA256": (kCCHmacAlgSHA256, CC_SHA256_DIGEST_LENGTH),
                      "SHA512": (kCCHmacAlgSHA512, CC_SHA512_DIGEST_LENGTH)]
