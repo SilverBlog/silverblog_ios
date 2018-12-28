@@ -158,7 +158,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default)
         let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { (ACTION) in
             let send_time = public_func.get_timestamp()
-            let sign = public_func.hmac_hex(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!, key: global_value.password+String(send_time))
+            let sign = public_func.hmac_hex(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!+self.array_json[indexPath.row]["title"].string!+self.array_json[indexPath.row]["name"].string!, key: global_value.password+String(send_time))
             let parameters: Parameters = [
                 "post_uuid": self.array_json[indexPath.row]["uuid"].string!,
                 "sign": sign,
