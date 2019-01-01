@@ -8,6 +8,26 @@
 
 import Foundation
 class public_func{
+    static func get_error_message(error:Int) -> String {
+        var result = ""
+        switch error {
+        case 400:
+            result = "Unable to process the request."
+            break
+        case 403:
+            result = "The request was rejected."
+            break
+        case 408:
+            result = "Request timed out or current system time is incorrect."
+            break
+        case 500:
+            result = "Server program error."
+            break
+        default:
+            result = "unknown error."
+        }
+        return result
+    }
    static func md5(_ string: String) -> String {
         
         let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
