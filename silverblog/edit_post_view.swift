@@ -33,8 +33,6 @@ class edit_post_view: UIViewController {
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-
-        //let sign = public_func.md5(Title_input.text! as String + global_value.password)
         let send_time = public_func.get_timestamp()
         let title:String = Title_input.text!
         let content:String = Content_input.text!
@@ -64,7 +62,7 @@ class edit_post_view: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
                 case .failure(_):
-                    let alert = UIAlertController(title: "Failure", message: "Article publication failed.Please check the network.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -115,7 +113,7 @@ class edit_post_view: UIViewController {
                         self.load=true
                     }
                 case false:
-                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }

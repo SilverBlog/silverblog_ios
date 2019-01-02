@@ -48,7 +48,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 case .failure(let error):
-                    let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -127,7 +127,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     }
                 }
             case false:
-                let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                 if (first_load) {
                     alertController.dismiss(animated: true) {
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert: UIAlertAction!) in
@@ -195,7 +195,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                         self.load_data(first_load: true)
                     }
                 case .failure(let error):
-                    let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
