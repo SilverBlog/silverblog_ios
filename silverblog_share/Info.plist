@@ -26,10 +26,10 @@
 		<dict>
 			<key>NSExtensionActivationRule</key>
 			<dict>
-				<key>NSExtensionActivationSupportsText</key>
-				<true/>
 				<key>NSExtensionActivationDictionaryVersion</key>
 				<integer>2</integer>
+				<key>NSExtensionActivationSupportsText</key>
+				<true/>
 			</dict>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>

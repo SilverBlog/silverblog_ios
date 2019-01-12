@@ -57,14 +57,14 @@
 		4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E7033432074D46C004B52C6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E7033452074D64E004B52C6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5E764ACE21E9E952006EB638 /* silverblog_share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = silverblog_share.entitlements; sourceTree = "<group>"; };
+		5E764ACF21E9E95B006EB638 /* silverblog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = silverblog.entitlements; sourceTree = "<group>"; };
 		5E7DD6C520831A4900DDF14D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		5E80421D2054A52D008FE7EF /* silverblog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = silverblog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8042202054A52D008FE7EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8042222054A52D008FE7EF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5E8042252054A52D008FE7EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E80422C2054A52D008FE7EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5E85BC79205BB13A00D0DEF3 /* silverblog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = silverblog.entitlements; sourceTree = "<group>"; };
-		5E85BC7A205BB16D00D0DEF3 /* silverblog_share.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = silverblog_share.entitlements; sourceTree = "<group>"; };
 		5EA269E7205ACD1E00888C61 /* silverblog_share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = silverblog_share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EA269E9205ACD1E00888C61 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		5EA269EE205ACD1E00888C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,8 +140,8 @@
 		5E80421F2054A52D008FE7EF /* silverblog */ = {
 			isa = PBXGroup;
 			children = (
+				5E764ACF21E9E95B006EB638 /* silverblog.entitlements */,
 				5E7033452074D64E004B52C6 /* Images.xcassets */,
-				5E85BC79205BB13A00D0DEF3 /* silverblog.entitlements */,
 				5E8042202054A52D008FE7EF /* AppDelegate.swift */,
 				5E8042222054A52D008FE7EF /* ViewController.swift */,
 				5E8042242054A52D008FE7EF /* Main.storyboard */,
@@ -162,8 +162,8 @@
 		5EA269E8205ACD1E00888C61 /* silverblog_share */ = {
 			isa = PBXGroup;
 			children = (
+				5E764ACE21E9E952006EB638 /* silverblog_share.entitlements */,
 				5E7DD6C420831A4900DDF14D /* MainInterface.storyboard */,
-				5E85BC7A205BB16D00D0DEF3 /* silverblog_share.entitlements */,
 				5EE43ECB21D366D800431E72 /* public_func.swift */,
 				5EA269E9205ACD1E00888C61 /* ShareViewController.swift */,
 				5EA269EE205ACD1E00888C61 /* Info.plist */,
@@ -539,7 +539,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 68SG83U3QK;
+				DEVELOPMENT_TEAM = 2PBQWDGS56;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -547,7 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -565,7 +565,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 68SG83U3QK;
+				DEVELOPMENT_TEAM = 2PBQWDGS56;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -574,7 +574,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
@@ -589,7 +589,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 68SG83U3QK;
+				DEVELOPMENT_TEAM = 2PBQWDGS56;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -597,7 +597,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.silverblog.client.silverblog-share";
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
@@ -613,7 +613,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 68SG83U3QK;
+				DEVELOPMENT_TEAM = 2PBQWDGS56;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -621,7 +621,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.silverblog.client.silverblog-share";
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";

@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 class ViewController: UIViewController {
-    let shared = UserDefaults(suiteName: "group.silverblog.client")!
+    let shared = UserDefaults(suiteName: "group.silverblog.test")!
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
