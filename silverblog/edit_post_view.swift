@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import public_func
 class edit_post_view: UIViewController {
     var uuid = ""
     var menu = false

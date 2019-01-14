@@ -9,9 +9,10 @@
 import UIKit
 import Social
 import Alamofire
+import public_func
 
 class ShareViewController: SLComposeServiceViewController {
-    let shared = UserDefaults(suiteName: "group.silverblog.test")!
+    let shared = UserDefaults(suiteName: public_func.group_suite)!
     var post_title = "No Title"
     var slug = ""
     var config_list: [String: Any] = [:]

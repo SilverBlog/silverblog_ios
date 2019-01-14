@@ -7,8 +7,29 @@
 //
 
 import Foundation
-class public_func{
-    static func md5(_ string: String) -> String {
+public class public_func{
+    public static var group_suite = "group.silverblog.test"
+    public static func get_error_message(error:Int) -> String {
+        var result = ""
+        switch error {
+        case 400:
+            result = "Unable to process the request."
+            break
+        case 403:
+            result = "The request was rejected."
+            break
+        case 408:
+            result = "Request timed out or current system time is incorrect."
+            break
+        case 500:
+            result = "Server program error."
+            break
+        default:
+            result = "unknown error."
+        }
+        return result
+    }
+   public static func md5(_ string: String) -> String {
         
         let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
         var digest = Array<UInt8>(repeating:0, count:Int(CC_MD5_DIGEST_LENGTH))
@@ -16,10 +37,10 @@ class public_func{
         CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
         CC_MD5_Final(&digest, context)
         context.deallocate()
-        
+    
         return byte2hex(digest)
     }
-    
+
     private static func byte2hex(_ digest :Array<UInt8>)-> String{
         var hexString = ""
         for byte in digest {
@@ -28,7 +49,7 @@ class public_func{
         return hexString
     }
     
-    static func sha512(string: String) -> String {
+    public static func sha512(string: String) -> String {
         var digest = [UInt8](repeating: 0, count: Int(CC_SHA512_DIGEST_LENGTH))
         let data = string.data(using: String.Encoding.utf8 , allowLossyConversion: true)
         let value =  data! as NSData
@@ -54,7 +75,7 @@ class public_func{
         }
         return macData
     }
-    static func hmac_hex(hashName:String, message:String, key:String) -> String {
+    public static func hmac_hex(hashName:String, message:String, key:String) -> String {
         let messageData = message.data(using:.utf8)!
         let keyData = key.data(using:.utf8)!
         let digest = hmac(hashName:hashName, message:messageData, key:keyData)
@@ -65,7 +86,7 @@ class public_func{
         return hexString
     }
     
-    static func get_timestamp()-> CLongLong{
+    public static func get_timestamp()-> CLongLong{
         let timeInterval: TimeInterval = Date().timeIntervalSince1970
         let millisecond = CLongLong(round(timeInterval*1000))
         return millisecond

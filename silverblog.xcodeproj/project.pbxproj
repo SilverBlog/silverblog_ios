@@ -18,10 +18,12 @@
 		5EA269EA205ACD1E00888C61 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA269E9205ACD1E00888C61 /* ShareViewController.swift */; };
 		5EA6A085206B962F002BA695 /* menu_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6A084206B962F002BA695 /* menu_list_view.swift */; };
 		5EA6A087206CF412002BA695 /* edit_post_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6A086206CF412002BA695 /* edit_post_view.swift */; };
+		5EB5FFAD21EC8F3F007D0139 /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
+		5EB5FFAE21EC8F3F007D0139 /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EB5FFB321EC8F4F007D0139 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34DA32055219C0023A9F7 /* public_func.swift */; };
+		5EB5FFB521EC9074007D0139 /* public_func.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB5FFA821EC8F3F007D0139 /* public_func.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0941A206AAB2B006E27EF /* post_list_view.swift */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
-		5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34DA32055219C0023A9F7 /* public_func.swift */; };
-		5EE43ECC21D366D800431E72 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE43ECB21D366D800431E72 /* public_func.swift */; };
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
 		877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; };
 		D2A8440FF06BD5A401AB216D /* Pods_silverblog_share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */; };
@@ -35,6 +37,20 @@
 			remoteGlobalIDString = 5EA269E6205ACD1E00888C61;
 			remoteInfo = silverblog_share;
 		};
+		5EB5FFAB21EC8F3F007D0139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EB5FFA521EC8F3F007D0139;
+			remoteInfo = public_func;
+		};
+		5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EB5FFA521EC8F3F007D0139;
+			remoteInfo = public_func;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +63,17 @@
 				5E155CFC206E95B200035A4B /* silverblog_share.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EB5FFB221EC8F3F007D0139 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5EB5FFAE21EC8F3F007D0139 /* public_func.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -70,14 +97,15 @@
 		5EA269EE205ACD1E00888C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EA6A084206B962F002BA695 /* menu_list_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menu_list_view.swift; sourceTree = "<group>"; };
 		5EA6A086206CF412002BA695 /* edit_post_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = edit_post_view.swift; sourceTree = "<group>"; };
+		5EB5FFA621EC8F3F007D0139 /* public_func.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = public_func.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EB5FFA821EC8F3F007D0139 /* public_func.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = public_func.h; sourceTree = "<group>"; };
+		5EB5FFA921EC8F3F007D0139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EC0941A206AAB2B006E27EF /* post_list_view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = post_list_view.swift; sourceTree = "<group>"; };
 		5EC34D9D205518590023A9F7 /* global_value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global_value.swift; sourceTree = "<group>"; };
-		5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "silverblog-Bridging-Header.h"; sourceTree = "<group>"; };
 		5EC34DA32055219C0023A9F7 /* public_func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = public_func.swift; sourceTree = "<group>"; };
 		5EC85519205598F000228E6E /* SwiftyJSON */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SwiftyJSON; path = silverblog/Pods/SwiftyJSON; sourceTree = "<group>"; };
 		5EC8551B205598FC00228E6E /* Alamofire */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Alamofire; path = silverblog/Pods/Alamofire; sourceTree = "<group>"; };
 		5ED2712D206B93A100A50F9B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EE43ECB21D366D800431E72 /* public_func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = public_func.swift; sourceTree = "<group>"; };
 		5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		7D6C16E3FEC5C36D604C6BE9 /* Pods-silverblog_share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog_share.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog_share/Pods-silverblog_share.debug.xcconfig"; sourceTree = "<group>"; };
 		870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "silverblog/Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */,
+				5EB5FFAD21EC8F3F007D0139 /* public_func.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +128,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2A8440FF06BD5A401AB216D /* Pods_silverblog_share.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EB5FFA321EC8F3F007D0139 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +158,7 @@
 			children = (
 				5E80421F2054A52D008FE7EF /* silverblog */,
 				5EA269E8205ACD1E00888C61 /* silverblog_share */,
+				5EB5FFA721EC8F3F007D0139 /* public_func */,
 				5E80421E2054A52D008FE7EF /* Products */,
 				4D0616ADB7FAC08B310FB2E2 /* Frameworks */,
 				74BE49F1E8FEC8F0D7940F50 /* Pods */,
@@ -133,6 +170,7 @@
 			children = (
 				5E80421D2054A52D008FE7EF /* silverblog.app */,
 				5EA269E7205ACD1E00888C61 /* silverblog_share.appex */,
+				5EB5FFA621EC8F3F007D0139 /* public_func.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,8 +186,6 @@
 				5EA6A084206B962F002BA695 /* menu_list_view.swift */,
 				5E80422C2054A52D008FE7EF /* Info.plist */,
 				5EC34D9D205518590023A9F7 /* global_value.swift */,
-				5EC34DA020551FAC0023A9F7 /* silverblog-Bridging-Header.h */,
-				5EC34DA32055219C0023A9F7 /* public_func.swift */,
 				2A59DA7642260DB007D67CD9 /* Podfile */,
 				5EC0941A206AAB2B006E27EF /* post_list_view.swift */,
 				5EA6A086206CF412002BA695 /* edit_post_view.swift */,
@@ -164,11 +200,20 @@
 			children = (
 				5E764ACE21E9E952006EB638 /* silverblog_share.entitlements */,
 				5E7DD6C420831A4900DDF14D /* MainInterface.storyboard */,
-				5EE43ECB21D366D800431E72 /* public_func.swift */,
 				5EA269E9205ACD1E00888C61 /* ShareViewController.swift */,
 				5EA269EE205ACD1E00888C61 /* Info.plist */,
 			);
 			path = silverblog_share;
+			sourceTree = "<group>";
+		};
+		5EB5FFA721EC8F3F007D0139 /* public_func */ = {
+			isa = PBXGroup;
+			children = (
+				5EC34DA32055219C0023A9F7 /* public_func.swift */,
+				5EB5FFA821EC8F3F007D0139 /* public_func.h */,
+				5EB5FFA921EC8F3F007D0139 /* Info.plist */,
+			);
+			path = public_func;
 			sourceTree = "<group>";
 		};
 		74BE49F1E8FEC8F0D7940F50 /* Pods */ = {
@@ -184,6 +229,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		5EB5FFA121EC8F3F007D0139 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EB5FFB521EC9074007D0139 /* public_func.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		5E80421C2054A52D008FE7EF /* silverblog */ = {
 			isa = PBXNativeTarget;
@@ -195,11 +251,13 @@
 				5E80421B2054A52D008FE7EF /* Resources */,
 				0FC1A470EBB44492D2B6A9D7 /* [CP] Embed Pods Frameworks */,
 				5E155CFF206E95B200035A4B /* Embed App Extensions */,
+				5EB5FFB221EC8F3F007D0139 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				5E155CFE206E95B200035A4B /* PBXTargetDependency */,
+				5EB5FFAC21EC8F3F007D0139 /* PBXTargetDependency */,
 			);
 			name = silverblog;
 			productName = silverblog;
@@ -218,11 +276,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				5EB5FFB721EC9098007D0139 /* PBXTargetDependency */,
 			);
 			name = silverblog_share;
 			productName = silverblog_share;
 			productReference = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		5EB5FFA521EC8F3F007D0139 /* public_func */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EB5FFB121EC8F3F007D0139 /* Build configuration list for PBXNativeTarget "public_func" */;
+			buildPhases = (
+				5EB5FFA121EC8F3F007D0139 /* Headers */,
+				5EB5FFA221EC8F3F007D0139 /* Sources */,
+				5EB5FFA321EC8F3F007D0139 /* Frameworks */,
+				5EB5FFA421EC8F3F007D0139 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = public_func;
+			productName = public_func;
+			productReference = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -254,6 +331,9 @@
 							};
 						};
 					};
+					5EB5FFA521EC8F3F007D0139 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = 5E8042182054A52D008FE7EF /* Build configuration list for PBXProject "silverblog" */;
@@ -271,6 +351,7 @@
 			targets = (
 				5E80421C2054A52D008FE7EF /* silverblog */,
 				5EA269E6205ACD1E00888C61 /* silverblog_share */,
+				5EB5FFA521EC8F3F007D0139 /* public_func */,
 			);
 		};
 /* End PBXProject section */
@@ -292,6 +373,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E7DD6C620831A4900DDF14D /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EB5FFA421EC8F3F007D0139 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +457,6 @@
 				5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */,
 				5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */,
 				5E8042232054A52D008FE7EF /* ViewController.swift in Sources */,
-				5EC34DA42055219C0023A9F7 /* public_func.swift in Sources */,
 				5E8042212054A52D008FE7EF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,8 +465,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EE43ECC21D366D800431E72 /* public_func.swift in Sources */,
 				5EA269EA205ACD1E00888C61 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EB5FFA221EC8F3F007D0139 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5EB5FFB321EC8F4F007D0139 /* public_func.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +484,16 @@
 			isa = PBXTargetDependency;
 			target = 5EA269E6205ACD1E00888C61 /* silverblog_share */;
 			targetProxy = 5E155CFD206E95B200035A4B /* PBXContainerItemProxy */;
+		};
+		5EB5FFAC21EC8F3F007D0139 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
+			targetProxy = 5EB5FFAB21EC8F3F007D0139 /* PBXContainerItemProxy */;
+		};
+		5EB5FFB721EC9098007D0139 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
+			targetProxy = 5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -549,7 +653,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -576,7 +680,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -600,7 +704,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -624,9 +728,73 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "silverblog/silverblog-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5EB5FFAF21EC8F3F007D0139 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = public_func/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "silverblog.public-func";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5EB5FFB021EC8F3F007D0139 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = public_func/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "silverblog.public-func";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -656,6 +824,15 @@
 			buildConfigurations = (
 				5EA269F3205ACD1E00888C61 /* Debug */,
 				5EA269F4205ACD1E00888C61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EB5FFB121EC8F3F007D0139 /* Build configuration list for PBXNativeTarget "public_func" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5EB5FFAF21EC8F3F007D0139 /* Debug */,
+				5EB5FFB021EC8F3F007D0139 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
