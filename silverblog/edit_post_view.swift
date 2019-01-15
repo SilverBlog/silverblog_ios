@@ -46,7 +46,7 @@ class edit_post_view: UIViewController {
             "name": name,
             "send_time":send_time
         ]
-        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -101,7 +101,7 @@ class edit_post_view: UIViewController {
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
 
-        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
                 case true:

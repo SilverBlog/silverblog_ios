@@ -11,6 +11,5 @@ struct global_value {
     static var password = ""
     static var reflush = true
     static var isscan = false
-    static var version = "v2"
 }
 

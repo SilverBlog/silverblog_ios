@@ -55,7 +55,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
 
-        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/get/list/menu", method: .get).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/list/menu", method: .get).validate().responseJSON { response in
             if (first_load) {
                 alertController.dismiss(animated: true) {
                 }
