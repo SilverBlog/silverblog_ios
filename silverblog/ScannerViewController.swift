@@ -85,25 +85,19 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            found(code: stringValue)
+            let json = JSON.init(parseJSON: stringValue)
+            let url = json["H"].string
+            let password = json["P"].string
+            if(url != nil || password != nil){
+                global_value.server_url = url!
+                global_value.password = password!
+                global_value.isscan=true
+            }
         }
 
         self.navigationController!.popToRootViewController(animated: true)
     }
     
-    func found(code: String) {
-        let json = JSON.init(parseJSON: code)
-        let url = json["H"].string
-        let password = json["P"].string
-        if(url != nil || password != nil){
-            global_value.server_url = url!
-            global_value.password = password!
-            global_value.isscan=true
-        }
-        
-
-    }
-
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
