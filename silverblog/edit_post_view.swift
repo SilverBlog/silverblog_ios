@@ -102,7 +102,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         if (!load && !new_mode){
             self.load_post()
             self.title="Edit"
-            
         }
     }
     

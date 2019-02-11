@@ -228,6 +228,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
         edit_post.uuid = self.array_json[indexPath.row]["uuid"].string!
         edit_post.menu = false
+        edit_post.title="Edit"
         self.navigationController!.pushViewController(edit_post, animated: true)
     }
 
