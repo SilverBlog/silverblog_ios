@@ -95,9 +95,10 @@ class edit_post_view: UIViewController,UITextViewDelegate {
 
         }
         Content_input.textColor = textview_shadow_color
+        Content_input.delegate=self
         if (new_mode){
             self.title="New"
-            Content_input.delegate=self
+
         }
         if (!load && !new_mode){
             self.load_post()
