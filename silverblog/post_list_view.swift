@@ -15,9 +15,29 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     var array_json = JSON()
     let refreshControl = UIRefreshControl()
     let net = NetworkReachabilityManager()
-    @IBOutlet weak var publish_button: UIBarButtonItem!
 
-    @IBAction func publish_click(_ sender: Any) {
+    @IBOutlet weak var tab_bar: UINavigationItem!
+    @IBOutlet weak var more_button: UIBarButtonItem!
+    @IBAction func more_button(_ sender: Any) {
+        let actionSheetController: UIAlertController = UIAlertController(title: "More", message: "Please select an action", preferredStyle: .actionSheet)
+        actionSheetController.addAction(UIAlertAction(title: "New", style: .default,handler:{ (action: UIAlertAction!) -> ()
+            in
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+            edit_post.new_mode=true
+            self.navigationController!.pushViewController(edit_post, animated: true)
+        }));
+        actionSheetController.addAction(UIAlertAction(title: "Publish", style: .default,handler:{ (action: UIAlertAction!) -> ()
+            in
+            self.build_page();
+        }))
+        actionSheetController.popoverPresentationController?.sourceView =  view
+        actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        actionSheetController.popoverPresentationController?.permittedArrowDirections = []
+        actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    func build_page(){
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -47,7 +67,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                case .failure(let error):
+                case .failure( _):
                     let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
@@ -55,10 +75,9 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController!.navigationItem.setRightBarButton(publish_button, animated: true)
+        self.tabBarController!.navigationItem.setRightBarButton(more_button, animated: true)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -194,7 +213,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     if (status) {
                         self.load_data(first_load: true)
                     }
-                case .failure(let error):
+                case .failure( _):
                     let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)

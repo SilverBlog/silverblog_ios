@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qgr-eA-hyn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qgr-eA-hyn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,7 +116,7 @@
             </objects>
             <point key="canvasLocation" x="-889" y="801"/>
         </scene>
-        <!--Edit-->
+        <!--New-->
         <scene sceneID="2cd-Sl-GbX">
             <objects>
                 <viewController storyboardIdentifier="edit_post_view" hidesBottomBarWhenPushed="YES" id="4C3-JF-VWR" customClass="edit_post_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,9 +140,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-jO-CFD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Context" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-jO-CFD">
                                 <rect key="frame" x="16" y="120" width="343" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -162,7 +163,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EJJ-OZ-dqy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit" largeTitleDisplayMode="never" id="b3i-Ib-IcO">
+                    <navigationItem key="navigationItem" title="New" largeTitleDisplayMode="never" id="b3i-Ib-IcO">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Ssq-Ff-tqM">
                             <connections>
                                 <action selector="Save_Button:" destination="4C3-JF-VWR" id="grd-CT-H57"/>
@@ -242,14 +243,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" image="newspaper-7" id="GDy-SN-CNg"/>
                     <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="always" id="cdB-uw-5PZ">
-                        <barButtonItem key="rightBarButtonItem" title="Publish" id="hyM-9g-JYW">
+                        <barButtonItem key="rightBarButtonItem" title="More" id="hyM-9g-JYW" userLabel="more button">
                             <connections>
-                                <action selector="publish_click:" destination="IjO-O4-Wio" id="Bbv-sj-K07"/>
+                                <action selector="more_button:" destination="IjO-O4-Wio" id="ixc-CR-imc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="publish_button" destination="hyM-9g-JYW" id="cqV-Hw-oeB"/>
+                        <outlet property="more_button" destination="hyM-9g-JYW" id="Y23-eR-6YL"/>
+                        <outlet property="tab_bar" destination="cdB-uw-5PZ" id="yna-Rv-FGU"/>
                         <outlet property="tableView" destination="e8n-t9-k0A" id="OFF-SL-SRc"/>
                     </connections>
                 </viewController>
@@ -296,8 +298,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list-simple-7" width="30" height="30"/>
-        <image name="newspaper-7" width="30" height="30"/>
-        <image name="scan" width="25" height="25"/>
+        <image name="list-simple-7" width="45" height="45"/>
+        <image name="newspaper-7" width="45" height="45"/>
+        <image name="scan" width="50" height="50"/>
     </resources>
 </document>

@@ -10,11 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import public_func
-class edit_post_view: UIViewController {
+class edit_post_view: UIViewController,UITextViewDelegate {
     var uuid = ""
     var menu = false
     var function = "post"
     var load = false
+    var new_mode = false
     let net = NetworkReachabilityManager()
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
@@ -37,16 +38,25 @@ class edit_post_view: UIViewController {
         let title:String = Title_input.text!
         let content:String = Content_input.text!
         let name:String = Slug_input.text!
-        let sign = public_func.hmac_hex(hashName: "SHA512", message: self.uuid+title+name+public_func.sha512(string: content), key: global_value.password+String(send_time))
+        let content_hash = public_func.sha512(string: content)
+        var sign_message = title+name+content_hash
+        var submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/new"
+        if(!new_mode){
+            sign_message = self.uuid+title+name+content_hash
+            submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/edit/" + self.function
+            
+        }
+        let sign = public_func.hmac_hex(hashName: "SHA512", message: sign_message, key: global_value.password+String(send_time))
         let parameters: Parameters = [
             "post_uuid": self.uuid,
             "title": title,
-            "sign": sign,
+            "sign": sign,
             "content": content,
             "name": name,
             "send_time":send_time
         ]
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        
+        AF.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -84,11 +94,26 @@ class edit_post_view: UIViewController {
             return
 
         }
-        if (!load){
+        if (new_mode){
+            self.title="New"
+            Content_input.textColor=UIColor.lightGray
+            Content_input.text="Content"
+            Content_input.delegate=self
+        }
+        if (!load && !new_mode){
             self.load_post()
+            self.title="Edit"
+            
         }
     }
-
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if (textView.textColor == UIColor.lightGray) {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
     func load_post() {
         let parameters: Parameters = [
             "post_uuid": self.uuid
@@ -100,7 +125,6 @@ class edit_post_view: UIViewController {
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-
         AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result.isSuccess {
@@ -111,6 +135,7 @@ class edit_post_view: UIViewController {
                         self.Slug_input.text = json["name"].string
                         self.Content_input.text = json["content"].string
                         self.load=true
+                        self.Content_input.textColor = UIColor.black
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
