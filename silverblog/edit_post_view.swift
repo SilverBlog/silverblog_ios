@@ -17,11 +17,11 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     var load = false
     var new_mode = false
     let net = NetworkReachabilityManager()
+    let textview_shadow_color = UIColor(red:212/255.0,green:212/255.0,blue:212/255.0,alpha:1)
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
 
     @IBOutlet weak var Slug_input: UITextField!
-
     @IBAction func Back_Button(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -94,10 +94,9 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             return
 
         }
+        Content_input.textColor = textview_shadow_color
         if (new_mode){
             self.title="New"
-            Content_input.textColor=UIColor.lightGray
-            Content_input.text="Content"
             Content_input.delegate=self
         }
         if (!load && !new_mode){
@@ -108,12 +107,17 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if (textView.textColor == UIColor.lightGray) {
+        if (textView.textColor == textview_shadow_color) {
             textView.text = nil
             textView.textColor = UIColor.black
         }
     }
-    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Article content"
+            textView.textColor = textview_shadow_color
+        }
+    }
     func load_post() {
         let parameters: Parameters = [
             "post_uuid": self.uuid
