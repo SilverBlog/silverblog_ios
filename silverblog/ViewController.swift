@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         self.view.endEditing(true)
         let self_password=public_func.hmac_hex(hashName: "SHA256", message: public_func.md5(password.text!), key: "SiLvErBlOg")
         let self_server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
-        if (self_password == "" || self_server_url == "") {
+        if (password.text == "" || self_server_url == "") {
             let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertController.Style.alert)
             let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default)
             alertController.addAction(okAction);
