@@ -60,6 +60,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 alertController.dismiss(animated: true) {
                 }
             }
+            
             switch response.result.isSuccess {
             case true:
                 if let value = response.result.value {

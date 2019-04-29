@@ -127,6 +127,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         self.present(alertController, animated: true, completion: nil)
         AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
+                
                 switch response.result.isSuccess {
                 case true:
                     if let value = response.result.value {

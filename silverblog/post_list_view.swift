@@ -132,6 +132,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alertController, animated: true, completion: nil)
         }
         AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/list/post", method: .get, encoding: JSONEncoding.default).validate().responseJSON { response in
+            
             switch response.result.isSuccess {
             case true:
                 if (first_load) {
