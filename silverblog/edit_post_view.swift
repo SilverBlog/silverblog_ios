@@ -114,7 +114,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Article content"
+            textView.text = "Content"
             textView.textColor = textview_shadow_color
         }
     }
