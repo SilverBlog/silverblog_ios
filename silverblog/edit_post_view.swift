@@ -9,18 +9,19 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
-class edit_post_view: UIViewController {
-    var row = 1
+import public_func
+class edit_post_view: UIViewController,UITextViewDelegate {
+    var uuid = ""
     var menu = false
     var function = "post"
     var load = false
+    var new_mode = false
     let net = NetworkReachabilityManager()
+    let textview_shadow_color = UIColor(red:201/255.0,green:201/255.0,blue:206/255.0,alpha:1)
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
 
     @IBOutlet weak var Slug_input: UITextField!
-
     @IBAction func Back_Button(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -29,20 +30,33 @@ class edit_post_view: UIViewController {
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-
-        let sign = public_func.md5(Title_input.text! as String + global_value.password)
+        let send_time = public_func.get_timestamp()
+        let title:String = Title_input.text!
+        let content:String = Content_input.text!
+        let name:String = Slug_input.text!
+        let content_hash = public_func.sha512(string: content)
+        var sign_message = title+name+content_hash
+        var submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/new"
+        if(!new_mode){
+            sign_message = self.uuid+title+name+content_hash
+            submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/edit/" + self.function
+            
+        }
+        let sign = public_func.hmac_hex(hashName: "SHA512", message: sign_message, key: global_value.password+String(send_time))
         let parameters: Parameters = [
-            "post_id": self.row,
-            "title": Title_input.text! as String,
-            "sign": sign,
-            "content": Content_input.text! as String,
-            "name": Slug_input.text! as String
+            "post_uuid": self.uuid,
+            "title": title,
+            "sign": sign,
+            "content": content,
+            "name": name,
+            "send_time":send_time
         ]
-        Alamofire.request("https://" + global_value.server_url + "/control/edit/" + self.function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        
+        AF.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -54,12 +68,12 @@ class edit_post_view: UIViewController {
                     }
                     if (!status) {
                         let alert = UIAlertController(title: "Failure", message: "Article publication failed.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
                 case .failure(_):
-                    let alert = UIAlertController(title: "Failure", message: "Article publication failed.Please check the network.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -73,33 +87,53 @@ class edit_post_view: UIViewController {
         }
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                 self.navigationController!.popViewController(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
             return
 
         }
-        if (!load){
+        if(Content_input.text == "Content"){
+            Content_input.textColor = textview_shadow_color
+        }
+        Content_input.delegate=self
+        if (new_mode){
+            self.title="New"
+
+        }
+        if (!load && !new_mode){
             self.load_post()
+            self.title="Edit"
         }
     }
-
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if (textView.textColor == textview_shadow_color && textView.text == "Content") {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Content"
+            textView.textColor = textview_shadow_color
+        }
+    }
     func load_post() {
         let parameters: Parameters = [
-            "post_id": row
+            "post_uuid": self.uuid
         ]
-        
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-
-        Alamofire.request("https://" + global_value.server_url + "/control/get_content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
+                
                 switch response.result.isSuccess {
                 case true:
                     if let value = response.result.value {
@@ -108,10 +142,11 @@ class edit_post_view: UIViewController {
                         self.Slug_input.text = json["name"].string
                         self.Content_input.text = json["content"].string
                         self.load=true
+                        self.Content_input.textColor = UIColor.black
                     }
                 case false:
-                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qgr-eA-hyn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qgr-eA-hyn">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-Na-Lcb">
                                 <rect key="frame" x="16" y="150" width="343" height="180"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server domain (e.g.,demo.silverblog.org)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -116,7 +116,7 @@
             </objects>
             <point key="canvasLocation" x="-889" y="801"/>
         </scene>
-        <!--Edit-->
+        <!--New-->
         <scene sceneID="2cd-Sl-GbX">
             <objects>
                 <viewController storyboardIdentifier="edit_post_view" hidesBottomBarWhenPushed="YES" id="4C3-JF-VWR" customClass="edit_post_view" customModule="silverblog" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,9 +140,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-jO-CFD">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8qi-jO-CFD">
                                 <rect key="frame" x="16" y="120" width="343" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -162,7 +163,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EJJ-OZ-dqy"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit" largeTitleDisplayMode="never" id="b3i-Ib-IcO">
+                    <navigationItem key="navigationItem" title="New" largeTitleDisplayMode="never" id="b3i-Ib-IcO">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Ssq-Ff-tqM">
                             <connections>
                                 <action selector="Save_Button:" destination="4C3-JF-VWR" id="grd-CT-H57"/>
@@ -242,14 +243,15 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" image="newspaper-7" id="GDy-SN-CNg"/>
                     <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="always" id="cdB-uw-5PZ">
-                        <barButtonItem key="rightBarButtonItem" title="Publish" id="hyM-9g-JYW">
+                        <barButtonItem key="rightBarButtonItem" title="More" id="hyM-9g-JYW" userLabel="more button">
                             <connections>
-                                <action selector="publish_click:" destination="IjO-O4-Wio" id="Bbv-sj-K07"/>
+                                <action selector="more_button:" destination="IjO-O4-Wio" id="ixc-CR-imc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="publish_button" destination="hyM-9g-JYW" id="cqV-Hw-oeB"/>
+                        <outlet property="more_button" destination="hyM-9g-JYW" id="Y23-eR-6YL"/>
+                        <outlet property="tab_bar" destination="cdB-uw-5PZ" id="yna-Rv-FGU"/>
                         <outlet property="tableView" destination="e8n-t9-k0A" id="OFF-SL-SRc"/>
                     </connections>
                 </viewController>

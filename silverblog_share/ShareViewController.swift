@@ -9,9 +9,10 @@
 import UIKit
 import Social
 import Alamofire
+import public_func
 
 class ShareViewController: SLComposeServiceViewController {
-    let shared = UserDefaults(suiteName: "group.silverblog.client")!
+    let shared = UserDefaults(suiteName: public_func.group_suite)!
     var post_title = "No Title"
     var slug = ""
     var config_list: [String: Any] = [:]
@@ -24,8 +25,19 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (shared.dictionary(forKey: "config_list") != nil) {
-            config_list = shared.dictionary(forKey: "config_list")!
+        if(shared.dictionary(forKey: "config_list") != nil){
+            let old_list = shared.dictionary(forKey: "config_list")!
+            var new_list: [String: Any] = [:]
+            old_list.forEach { (arg) in
+                let (key, value) = arg
+                new_list[key]=public_func.hmac_hex(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
+            }
+            self.shared.set(new_list,forKey: "config_list2")
+            self.shared.removeObject(forKey: "config_list")
+            self.shared.synchronize()
+        }
+        if (shared.dictionary(forKey: "config_list2") != nil) {
+            config_list = shared.dictionary(forKey: "config_list2")!
         }
     }
 
@@ -37,7 +49,6 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func didSelectPost() {
-
         let content = contentText
         let split = content!.components(separatedBy: "\n")
         if (split[0].hasPrefix("# ")) {
@@ -57,11 +68,9 @@ class ShareViewController: SLComposeServiceViewController {
             alertQuestController.addAction(cancelAction)
             alertQuestController.addAction(okAction)
             self.present(alertQuestController, animated: true, completion: nil)
-
         } else {
             self.send_post(content: content!)
         }
-
     }
 
     override func configurationItems() -> [Any]! {
@@ -77,11 +86,12 @@ class ShareViewController: SLComposeServiceViewController {
     func send_post(content: String) {
         let password: String = shared.string(forKey: "password")!
         let server: String = shared.string(forKey: "server")!
-        let sign = md5(post_title + password)
+        let send_time = public_func.get_timestamp()
+        let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
@@ -91,10 +101,11 @@ class ShareViewController: SLComposeServiceViewController {
             "title": post_title,
             "sign": sign,
             "content": content,
-            "name": slug
+            "name": slug,
+            "send_time":send_time
         ]
         var result_message = ""
-        Alamofire.request("https://" + server + "/control/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + server + "/control/"+public_func.version+"/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -118,7 +129,7 @@ class ShareViewController: SLComposeServiceViewController {
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) -> () in
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) -> () in
             self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
         }))
 
@@ -153,9 +164,6 @@ class ShareViewController: SLComposeServiceViewController {
     func save_info(server: String, password: String) {
         shared.set(server, forKey: "server")
         shared.set(password, forKey: "password")
-
-        config_list[server] = password
-        shared.set(config_list, forKey: "config_list")
         shared.synchronize()
     }
     lazy var title_item: SLComposeSheetConfigurationItem = {
@@ -205,19 +213,4 @@ class ShareViewController: SLComposeServiceViewController {
         return item
     }()
 
-    func md5(_ string: String) -> String {
-
-        let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
-        var digest = Array<UInt8>(repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-        CC_MD5_Init(context)
-        CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
-        CC_MD5_Final(&digest, context)
-        context.deallocate()
-        var hexString = ""
-        for byte in digest {
-            hexString += String(format: "%02x", byte)
-        }
-
-        return hexString
-    }
 }
