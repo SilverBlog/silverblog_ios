@@ -17,7 +17,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     var load = false
     var new_mode = false
     let net = NetworkReachabilityManager()
-    let textview_shadow_color = UIColor(red:212/255.0,green:212/255.0,blue:212/255.0,alpha:1)
+    let textview_shadow_color = UIColor(red:201/255.0,green:201/255.0,blue:206/255.0,alpha:1)
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
 
