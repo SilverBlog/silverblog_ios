@@ -111,3 +111,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
+silverblog/exportOptions.plist
+silverblog.xcodeproj/xcshareddata/xcschemes/public_func.xcscheme
+silverblog.xcodeproj/xcshareddata/xcschemes/silverblog_share.xcscheme
