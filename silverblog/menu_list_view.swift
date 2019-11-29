@@ -33,7 +33,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             global_value.reflush = false
             if net?.isReachable == false {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 self.refreshControl.endRefreshing()
                 return
@@ -49,13 +49,13 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         if (first_load) {
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            loadingIndicator.style = UIActivityIndicatorView.Style.gray
             loadingIndicator.startAnimating();
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
         }
 
-        Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/menu", method: .get, parameters: [:], encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/menu", method: .get, encoding: JSONEncoding.default).validate().responseJSON { response in
             if (first_load) {
                 alertController.dismiss(animated: true) {
                 }
@@ -71,7 +71,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
             self.refreshControl.endRefreshing()
@@ -81,7 +81,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     @objc func refresh(refreshControl: UIRefreshControl) {
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -98,7 +98,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
-        vc.row = indexPath.row
+        vc.uuid = array_json[indexPath.row]["uuid"].string!
         vc.menu = true
         self.navigationController!.pushViewController(vc, animated: true)
 

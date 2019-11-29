@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2A59D01130311F92BCA27F6C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A59DA7642260DB007D67CD9 /* Podfile */; };
+		5E023F412390730C009205BF /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; };
+		5E023F422390730C009205BF /* Pods_silverblog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5E023F4323907316009205BF /* Pods_silverblog_share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */; };
+		5E023F4423907316009205BF /* Pods_silverblog_share.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5E155CFC206E95B200035A4B /* silverblog_share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5E7033442074D46C004B52C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7033432074D46C004B52C6 /* LaunchScreen.storyboard */; };
 		5E7033462074D64E004B52C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E7033452074D64E004B52C6 /* Images.xcassets */; };
@@ -18,15 +22,15 @@
 		5EA269EA205ACD1E00888C61 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA269E9205ACD1E00888C61 /* ShareViewController.swift */; };
 		5EA6A085206B962F002BA695 /* menu_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6A084206B962F002BA695 /* menu_list_view.swift */; };
 		5EA6A087206CF412002BA695 /* edit_post_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA6A086206CF412002BA695 /* edit_post_view.swift */; };
-		5EB5FFAD21EC8F3F007D0139 /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
-		5EB5FFAE21EC8F3F007D0139 /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5EB5FFB321EC8F4F007D0139 /* public_func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34DA32055219C0023A9F7 /* public_func.swift */; };
 		5EB5FFB521EC9074007D0139 /* public_func.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EB5FFA821EC8F3F007D0139 /* public_func.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0941A206AAB2B006E27EF /* post_list_view.swift */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
-		877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; };
-		D2A8440FF06BD5A401AB216D /* Pods_silverblog_share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */; };
+		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
+		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EF644732390743A00021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
+		5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,14 +41,21 @@
 			remoteGlobalIDString = 5EA269E6205ACD1E00888C61;
 			remoteInfo = silverblog_share;
 		};
-		5EB5FFAB21EC8F3F007D0139 /* PBXContainerItemProxy */ = {
+		5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5EB5FFA521EC8F3F007D0139;
 			remoteInfo = public_func;
 		};
-		5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */ = {
+		5EF644712390743100021F2E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5EB5FFA521EC8F3F007D0139;
+			remoteInfo = public_func;
+		};
+		5EF644752390743A00021F2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
 			proxyType = 1;
@@ -54,6 +65,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5E023F4523907316009205BF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5E023F4423907316009205BF /* Pods_silverblog_share.framework in Embed Frameworks */,
+				5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5E155CFF206E95B200035A4B /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,7 +94,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5EB5FFAE21EC8F3F007D0139 /* public_func.framework in Embed Frameworks */,
+				5E023F422390730C009205BF /* Pods_silverblog.framework in Embed Frameworks */,
+				5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,8 +142,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				877AA0346F81429184C56733 /* Pods_silverblog.framework in Frameworks */,
-				5EB5FFAD21EC8F3F007D0139 /* public_func.framework in Frameworks */,
+				5E023F412390730C009205BF /* Pods_silverblog.framework in Frameworks */,
+				5EF6446F2390743100021F2E /* public_func.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +151,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2A8440FF06BD5A401AB216D /* Pods_silverblog_share.framework in Frameworks */,
+				5E023F4323907316009205BF /* Pods_silverblog_share.framework in Frameworks */,
+				5EF644732390743A00021F2E /* public_func.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +282,7 @@
 			);
 			dependencies = (
 				5E155CFE206E95B200035A4B /* PBXTargetDependency */,
-				5EB5FFAC21EC8F3F007D0139 /* PBXTargetDependency */,
+				5EF644722390743100021F2E /* PBXTargetDependency */,
 			);
 			name = silverblog;
 			productName = silverblog;
@@ -272,11 +297,13 @@
 				5EA269E3205ACD1E00888C61 /* Sources */,
 				5EA269E4205ACD1E00888C61 /* Frameworks */,
 				5EA269E5205ACD1E00888C61 /* Resources */,
+				5E023F4523907316009205BF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				5EB5FFB721EC9098007D0139 /* PBXTargetDependency */,
+				5EF644762390743A00021F2E /* PBXTargetDependency */,
 			);
 			name = silverblog_share;
 			productName = silverblog_share;
@@ -313,7 +340,7 @@
 				TargetAttributes = {
 					5E80421C2054A52D008FE7EF = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -323,7 +350,7 @@
 					};
 					5EA269E6205ACD1E00888C61 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1120;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -333,11 +360,12 @@
 					};
 					5EB5FFA521EC8F3F007D0139 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
 			buildConfigurationList = 5E8042182054A52D008FE7EF /* Build configuration list for PBXProject "silverblog" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -480,15 +508,20 @@
 			target = 5EA269E6205ACD1E00888C61 /* silverblog_share */;
 			targetProxy = 5E155CFD206E95B200035A4B /* PBXContainerItemProxy */;
 		};
-		5EB5FFAC21EC8F3F007D0139 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
-			targetProxy = 5EB5FFAB21EC8F3F007D0139 /* PBXContainerItemProxy */;
-		};
 		5EB5FFB721EC9098007D0139 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */;
+		};
+		5EF644722390743100021F2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
+			targetProxy = 5EF644712390743100021F2E /* PBXContainerItemProxy */;
+		};
+		5EF644762390743A00021F2E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
+			targetProxy = 5EF644752390743A00021F2E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -638,7 +671,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -646,11 +679,11 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -664,7 +697,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -673,10 +706,10 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -685,22 +718,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7D6C16E3FEC5C36D604C6BE9 /* Pods-silverblog_share.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test.share;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -709,22 +742,22 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EB788647ABA352821A4A34B3 /* Pods-silverblog_share.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.test.share;
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -737,14 +770,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DEVELOPMENT_TEAM = F2578Q8C77;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = public_func/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -752,10 +785,11 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "silverblog.public-func";
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.public;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -770,23 +804,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 2PBQWDGS56;
+				DEVELOPMENT_TEAM = F2578Q8C77;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = public_func/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "silverblog.public-func";
+				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.public;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

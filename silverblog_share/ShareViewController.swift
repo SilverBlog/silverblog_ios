@@ -105,7 +105,7 @@ class ShareViewController: SLComposeServiceViewController {
             "send_time":send_time
         ]
         var result_message = ""
-        AF.request("https://" + server + "/control/"+public_func.version+"/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + server + "/control/"+public_func.version+"/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):

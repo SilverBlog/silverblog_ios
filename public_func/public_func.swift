@@ -9,7 +9,7 @@
 import Foundation
 public class public_func{
     public static var version = "v2"
-    public static var group_suite = "group.silverblog.test"
+    public static var group_suite = "group.silverblog"
     public static func get_error_message(error:Int) -> String {
         var result = ""
         switch error {

@@ -56,7 +56,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             "send_time":send_time
         ]
         
-        AF.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -131,7 +131,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        Alamofire.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 
                 switch response.result.isSuccess {

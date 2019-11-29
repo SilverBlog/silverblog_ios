@@ -8,8 +8,10 @@
 
 import UIKit
 import Alamofire
+import public_func
+
 class ViewController: UIViewController {
-    let shared = UserDefaults(suiteName: "group.silverblog.client")!
+    let shared = UserDefaults(suiteName: public_func.group_suite)!
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -38,11 +40,11 @@ class ViewController: UIViewController {
     }
     @IBAction func on_enter_click(_ sender: Any) {
         self.view.endEditing(true)
-        let self_password=public_func.hmac(hashName: "SHA256", message: public_func.md5(password.text!), key: "SiLvErBlOg")
+        let self_password=public_func.hmac_hex(hashName: "SHA256", message: public_func.md5(password.text!), key: "SiLvErBlOg")
         let self_server_url=server_name.text!.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "http://", with: "").replacingOccurrences(of: "https://", with: "")
         if (self_password == "" || self_server_url == "") {
-            let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "ok", style: UIAlertActionStyle.default)
+            let alertController = UIAlertController(title: "Error", message: "site address or password cannot be blank.", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default)
             alertController.addAction(okAction);
             self.present(alertController, animated: true, completion: nil)
             return
@@ -50,7 +52,7 @@ class ViewController: UIViewController {
         let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
@@ -64,7 +66,7 @@ class ViewController: UIViewController {
                     self.push_view()
                 case .failure( _):
                     let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
