@@ -68,9 +68,9 @@ public class public_func{
             message.withUnsafeBytes {messageBytes in
                 key.withUnsafeBytes {keyBytes in
                     CCHmac(CCHmacAlgorithm(hashAlgorithm),
-                           keyBytes,     key.count,
-                           messageBytes, message.count,
-                           macBytes)
+                           keyBytes.baseAddress,     key.count,
+                           messageBytes.baseAddress, message.count,
+                           macBytes.baseAddress)
                 }
             }
         }

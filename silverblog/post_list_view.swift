@@ -16,7 +16,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     var array_json = JSON()
     let refreshControl = UIRefreshControl()
     let net = NetworkReachabilityManager()
-    
+    let shared = UserDefaults(suiteName: public_func.group_suite)!
     
     @IBOutlet weak var more_button_outlet: UIBarButtonItem!
     
@@ -34,6 +34,9 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.publish_click()
         }))
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
+        actionSheetController.popoverPresentationController?.sourceView = self.view
+        actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        actionSheetController.popoverPresentationController?.permittedArrowDirections = []
         self.present(actionSheetController, animated: true, completion: nil)
     }
     
@@ -90,7 +93,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     @objc func becomeActive(){
-        let shared = UserDefaults(suiteName: public_func.group_suite)!
         if (shared.bool(forKey: "refresh")){
             shared.set(false, forKey: "refresh")
             shared.synchronize()
