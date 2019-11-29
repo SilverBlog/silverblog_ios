@@ -33,8 +33,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         actionSheetController.addAction(UIAlertAction(title: "Publish", style: .default,handler: {(action: UIAlertAction!) -> () in
             self.publish_click()
         }))
-        //actionSheetController.popoverPresentationController?.sourceView = self.more_button_outlet
-        //actionSheetController.popoverPresentationController?.sourceRect = self.more_button_outlet.bounds
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
         self.present(actionSheetController, animated: true, completion: nil)
     }
@@ -181,9 +179,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let alertController = UIAlertController(title: "Warning！", message: "Are you sure you want to delete this article?", preferredStyle: UIAlertController.Style.alert)
         let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default)
         let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive) { (ACTION) in
+            let send_time = public_func.get_timestamp()
             let parameters: Parameters = [
-                "post_id": indexPath.row,
-                "sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
+                "post_uuid": self.array_json[indexPath.row]["uuid"].string!,
+                "sign": public_func.hmac_hex(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!+self.array_json[indexPath.row]["title"].string!+self.array_json[indexPath.row]["name"].string!, key: global_value.password+String(send_time)),
+                "send_time": send_time
+                //"sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
             ]
             self.delete_post(parameters: parameters)
         }

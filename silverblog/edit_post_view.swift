@@ -44,7 +44,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         if(!new_mode){
             sign_message = self.uuid+title+name+content_hash
             submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/edit/" + self.function
-            
         }
         let sign = public_func.hmac_hex(hashName: "SHA512", message: sign_message, key: global_value.password+String(send_time))
         let parameters: Parameters = [
