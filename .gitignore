@@ -11,10 +11,10 @@ gen
 silverblog.xcodeproj/project.xcworkspace/xcuserdata/qwe7002.xcuserdatad/xcschemes/
 silverblog.xcodeproj/xcuserdata/qwe7002.xcuserdatad/xcdebugger/
 silverblog.xcodeproj/xcuserdata/qwe7002.xcuserdatad/xcschemes/silverblog.xcscheme
-silverblog/.idea/
-silverblog/Podfile.lock
-silverblog/Pods/
-silverblog/silverblog.xcworkspace/
+
+Podfile.lock
+Pods/
+silverblog.xcworkspace/
 ### Example user template template
 ### Example user template
 gen### Xcode template
