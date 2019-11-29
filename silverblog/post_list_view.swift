@@ -22,6 +22,21 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     @IBAction func on_more_button_click(_ sender: Any) {
+        let actionSheetController: UIAlertController = UIAlertController(title: "Action", message: "Please select action", preferredStyle: .actionSheet)
+        actionSheetController.addAction(UIAlertAction(title: "New", style: .default,handler: { (action: UIAlertAction!) -> () in
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+            edit_post.new_mode = true
+            edit_post.menu = false
+            self.navigationController!.pushViewController(edit_post, animated: true)
+        }))
+        actionSheetController.addAction(UIAlertAction(title: "Publish", style: .default,handler: {(action: UIAlertAction!) -> () in
+            self.publish_click()
+        }))
+        //actionSheetController.popoverPresentationController?.sourceView = self.more_button_outlet
+        //actionSheetController.popoverPresentationController?.sourceRect = self.more_button_outlet.bounds
+        actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
+        self.present(actionSheetController, animated: true, completion: nil)
     }
     
 
@@ -41,7 +56,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.present(doneController, animated: true, completion: nil)
         let timestamp = public_func.get_timestamp()
         let sign = public_func.hmac_hex(hashName: "SHA512", message: "git_page_publish", key: global_value.password+String(timestamp))
-        
+
         let param = ["sign" : sign,"send_time" : timestamp] as [String : Any]
         Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
@@ -67,7 +82,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tabBarController!.navigationItem.setRightBarButton(publish_button, animated: true)
+        self.tabBarController!.navigationItem.setRightBarButton(more_button_outlet, animated: true)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -219,11 +234,11 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Delete"
+        "Delete"
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.array_json.count
+        self.array_json.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

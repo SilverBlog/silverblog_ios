@@ -18,7 +18,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var previson_button: UIButton!
     @IBAction func on_previson_click(_ sender: Any) {
-
         let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the config", preferredStyle: .actionSheet)
         config_list.forEach { (key,value) in
             actionSheetController.addAction(UIAlertAction(title: key, style: .default,handler: { (action: UIAlertAction!) -> () in
