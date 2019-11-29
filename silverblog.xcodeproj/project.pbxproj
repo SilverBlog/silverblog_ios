@@ -27,10 +27,10 @@
 		5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0941A206AAB2B006E27EF /* post_list_view.swift */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
-		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
-		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5EF644732390743A00021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
-		5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; };
+		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EF644732390743A00021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; };
+		5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,16 +510,19 @@
 		};
 		5EB5FFB721EC9098007D0139 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */;
 		};
 		5EF644722390743100021F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EF644712390743100021F2E /* PBXContainerItemProxy */;
 		};
 		5EF644762390743A00021F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EF644752390743A00021F2E /* PBXContainerItemProxy */;
 		};
@@ -552,7 +555,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -582,7 +585,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = fast;
@@ -602,7 +605,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Debug;
 		};
@@ -613,7 +616,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -643,7 +646,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -658,7 +661,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = arm64;
+				VALID_ARCHS = "arm64 x86_64";
 			};
 			name = Release;
 		};
@@ -671,6 +674,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -678,9 +682,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -697,6 +703,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -704,10 +711,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -720,6 +729,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -732,6 +742,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -744,6 +755,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = F2578Q8C77;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -756,6 +768,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
