@@ -27,10 +27,10 @@
 		5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0941A206AAB2B006E27EF /* post_list_view.swift */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
-		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; };
-		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5EF644732390743A00021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; };
-		5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
+		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EF644732390743A00021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
+		5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -510,13 +510,11 @@
 		};
 		5EB5FFB721EC9098007D0139 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */;
 		};
 		5EF644722390743100021F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EF644712390743100021F2E /* PBXContainerItemProxy */;
 		};
