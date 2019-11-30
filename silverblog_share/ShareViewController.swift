@@ -32,12 +32,12 @@ class ShareViewController: SLComposeServiceViewController {
                 let (key, value) = arg
                 new_list[key]=public_func.hmac_hex(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
             }
-            self.shared.set(new_list,forKey: "config_list2")
+            self.shared.set(new_list,forKey: "config_list_v2")
             self.shared.removeObject(forKey: "config_list")
             self.shared.synchronize()
         }
-        if (shared.dictionary(forKey: "config_list2") != nil) {
-            config_list = shared.dictionary(forKey: "config_list2")!
+        if (shared.dictionary(forKey: "config_list_v2") != nil) {
+            config_list = shared.dictionary(forKey: "config_list_v2")!
         }
     }
 
@@ -141,7 +141,7 @@ class ShareViewController: SLComposeServiceViewController {
         item.title = "Sites"
         item.value = shared.string(forKey: "server")!
         item.tapHandler = {
-            let actionSheetController: UIAlertController = UIAlertController(title: "Use the previous config", message: "Please select the config", preferredStyle: .actionSheet)
+            let actionSheetController: UIAlertController = UIAlertController(title: "Config list", message: "Please select the config", preferredStyle: .actionSheet)
             self.config_list.forEach { (key, value) in
                 actionSheetController.addAction(UIAlertAction(title: key, style: .default, handler: { (action: UIAlertAction!) -> () in
                     let self_server_url = key
@@ -150,11 +150,6 @@ class ShareViewController: SLComposeServiceViewController {
                     self.save_info(server: self_server_url, password: self_password)
                 }))
             }
-            actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive, handler: { (action: UIAlertAction!) -> () in
-                self.config_list = [:]
-                self.shared.set(self.config_list, forKey: "config_list")
-                self.shared.synchronize()
-            }))
             actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             self.present(actionSheetController, animated: true, completion: nil)
         }

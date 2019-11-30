@@ -16,15 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-Mb-OMJ">
-                                <rect key="frame" x="76" y="219" width="222" height="222"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="AmA-Mb-OMJ">
+                                <rect key="frame" x="76" y="219" width="222" height="238"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AmA-Mb-OMJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-25" id="2T7-Sm-KzP"/>
-                            <constraint firstItem="AmA-Mb-OMJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FtD-fM-Y2i"/>
-                            <constraint firstItem="AmA-Mb-OMJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="IBb-EX-Lvh"/>
+                            <constraint firstItem="AmA-Mb-OMJ" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="76" id="A0e-by-uPX"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="AmA-Mb-OMJ" secondAttribute="bottom" constant="210" id="QPN-Pu-s8w"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="AmA-Mb-OMJ" secondAttribute="trailing" constant="77" id="ff3-5B-XaK"/>
+                            <constraint firstItem="AmA-Mb-OMJ" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="219" id="fkm-KQ-Cjh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
@@ -35,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch" width="512" height="512"/>
+        <image name="launch" width="384" height="384"/>
     </resources>
 </document>
