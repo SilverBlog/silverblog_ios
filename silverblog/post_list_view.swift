@@ -87,8 +87,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
+        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
 
     }
@@ -96,7 +96,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         if (shared.bool(forKey: "refresh")){
             shared.set(false, forKey: "refresh")
             shared.synchronize()
-            self.load_data(first_load: true)
+            self.load_data(refreshControl: nil)
         }
     }
     
@@ -111,7 +111,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            self.load_data(first_load: true)
+            self.load_data(refreshControl: nil)
         }
         self.tabBarController!.title = "Post"
     }
@@ -123,12 +123,12 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        self.load_data(first_load: false)
+        self.load_data(refreshControl: refreshControl)
     }
 
-    func load_data(first_load: Bool) {
+    func load_data(refreshControl: UIRefreshControl?) {
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        if (first_load) {
+        if (refreshControl == nil) {
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             loadingIndicator.hidesWhenStopped = true
             loadingIndicator.style = UIActivityIndicatorView.Style.gray
@@ -139,9 +139,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
-                if (first_load) {
-                    alertController.dismiss(animated: true) {
-                    }
+                if (refreshControl == nil) {
+                    alertController.dismiss(animated: true){}
                 }
                 if let value = response.result.value {
                     let jsonobj = JSON(value)
@@ -152,7 +151,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                if (first_load) {
+                if (refreshControl == nil) {
                     alertController.dismiss(animated: true) {
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert: UIAlertAction!) in
                             self.navigationController!.popViewController(animated: true)
@@ -160,13 +159,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
-                if (!first_load) {
+                if (refreshControl != nil) {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
 
             }
-            self.refreshControl.endRefreshing()
+            refreshControl?.endRefreshing()
         }
 
     }
@@ -216,7 +215,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                         self.present(alert, animated: true, completion: nil)
                     }
                     if (status) {
-                        self.load_data(first_load: true)
+                        self.load_data(refreshControl: nil)
                     }
                 case .failure(let error):
                     let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)

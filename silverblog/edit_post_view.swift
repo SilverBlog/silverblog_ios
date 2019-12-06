@@ -22,9 +22,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     @IBOutlet var Content_input: UITextView!
 
     @IBOutlet weak var Slug_input: UITextField!
-    @IBAction func Back_Button(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 
     @IBAction func Save_Button(_ sender: Any) {
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)

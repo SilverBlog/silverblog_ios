@@ -196,12 +196,11 @@
                             <constraint firstItem="Z4p-1G-7F8" firstAttribute="leading" secondItem="R2S-cM-agm" secondAttribute="leading" id="cZI-yB-TRO"/>
                             <constraint firstItem="Z4p-1G-7F8" firstAttribute="trailing" secondItem="R2S-cM-agm" secondAttribute="trailing" id="l6U-j5-7c5"/>
                             <constraint firstItem="Z4p-1G-7F8" firstAttribute="bottom" secondItem="R2S-cM-agm" secondAttribute="bottom" id="s7r-R8-lWD"/>
-                            <constraint firstItem="Z4p-1G-7F8" firstAttribute="bottom" secondItem="R2S-cM-agm" secondAttribute="bottom" id="ybO-9A-a0k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R2S-cM-agm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Menu" image="list-simple-7" id="gcj-BZ-ex4"/>
-                    <navigationItem key="navigationItem" title="Menu" largeTitleDisplayMode="always" id="Vth-wi-cDe"/>
+                    <navigationItem key="navigationItem" title="Menu" id="Vth-wi-cDe"/>
                     <connections>
                         <outlet property="tableView" destination="Z4p-1G-7F8" id="PEU-Xo-rpJ"/>
                     </connections>
@@ -227,10 +226,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="e8n-t9-k0A" firstAttribute="top" secondItem="XUG-dd-T8q" secondAttribute="top" id="0MQ-z6-sse"/>
+                            <constraint firstItem="e8n-t9-k0A" firstAttribute="top" secondItem="NEs-Gx-bT3" secondAttribute="top" id="0MQ-z6-sse"/>
                             <constraint firstItem="e8n-t9-k0A" firstAttribute="trailing" secondItem="NEs-Gx-bT3" secondAttribute="trailing" id="Hth-88-kH9"/>
                             <constraint firstItem="e8n-t9-k0A" firstAttribute="bottom" secondItem="NEs-Gx-bT3" secondAttribute="bottom" id="KG6-Ll-P86"/>
-                            <constraint firstItem="e8n-t9-k0A" firstAttribute="bottom" secondItem="NEs-Gx-bT3" secondAttribute="bottom" id="VUe-1i-kYH"/>
                             <constraint firstItem="e8n-t9-k0A" firstAttribute="leading" secondItem="NEs-Gx-bT3" secondAttribute="leading" id="fle-rM-WnX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NEs-Gx-bT3"/>

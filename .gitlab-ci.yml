@@ -4,7 +4,5 @@ release_github:
   - master
   script:
   - eval $(ssh-agent -s)
-  - curl https://keystore.reallserver.cn/gitlab-sshkey/id_ecdsa -o deploy.key -u gitlab:${key_store_passwd}
-  - chmod 0600 deploy.key
-  - ssh-add deploy.key
+  - ssh-add - <<< $(curl https://keystore.reallserver.cn/gitlab-sshkey/id_ecdsa -o deploy.key -u gitlab:${key_store_passwd})
   - git push --set-upstream git@github.com:SilverBlog/silverblog_ios.git HEAD:$CI_COMMIT_REF_NAME
