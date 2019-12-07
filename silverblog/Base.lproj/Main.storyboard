@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-Na-Lcb">
-                                <rect key="frame" x="16" y="150" width="343" height="188"/>
+                                <rect key="frame" x="16" y="60" width="343" height="188"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -59,12 +59,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8ey-9J-sQU" firstAttribute="trailing" secondItem="nWb-Na-Lcb" secondAttribute="trailing" constant="16" id="5MJ-s1-DCX"/>
-                            <constraint firstItem="nWb-Na-Lcb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="150" id="8WT-xx-Zcb"/>
+                            <constraint firstItem="nWb-Na-Lcb" firstAttribute="top" secondItem="8ey-9J-sQU" secondAttribute="top" constant="16" id="8WT-xx-Zcb"/>
                             <constraint firstItem="nWb-Na-Lcb" firstAttribute="leading" secondItem="8ey-9J-sQU" secondAttribute="leading" constant="16" id="uAH-mF-Qqf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8ey-9J-sQU"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="always" id="66F-Wu-TyU">
+                    <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="never" id="66F-Wu-TyU">
                         <barButtonItem key="rightBarButtonItem" title="Qrcode" image="scan" id="lfV-Ig-usq">
                             <connections>
                                 <segue destination="Uhl-Y9-ekG" kind="show" id="AIq-m0-V84"/>
@@ -200,7 +200,7 @@
                         <viewLayoutGuide key="safeArea" id="R2S-cM-agm"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Menu" image="list-simple-7" id="gcj-BZ-ex4"/>
-                    <navigationItem key="navigationItem" title="Menu" id="Vth-wi-cDe"/>
+                    <navigationItem key="navigationItem" title="Menu" largeTitleDisplayMode="never" id="Vth-wi-cDe"/>
                     <connections>
                         <outlet property="tableView" destination="Z4p-1G-7F8" id="PEU-Xo-rpJ"/>
                     </connections>
@@ -234,7 +234,7 @@
                         <viewLayoutGuide key="safeArea" id="NEs-Gx-bT3"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Post" image="newspaper-7" id="GDy-SN-CNg"/>
-                    <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="always" id="cdB-uw-5PZ">
+                    <navigationItem key="navigationItem" title="Post" largeTitleDisplayMode="never" id="cdB-uw-5PZ">
                         <barButtonItem key="rightBarButtonItem" title="More" id="hyM-9g-JYW" userLabel="more button">
                             <connections>
                                 <action selector="on_more_button_click:" destination="IjO-O4-Wio" id="jag-QZ-3n8"/>

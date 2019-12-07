@@ -87,8 +87,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.refreshControl.addTarget(self, action: #selector(post_list_view.refresh), for: .valueChanged)
         self.tableView.refreshControl = refreshControl
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
 
 
     }
@@ -136,6 +136,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             alertController.view.addSubview(loadingIndicator)
             self.present(alertController, animated: true, completion: nil)
         }
+        refreshControl?.beginRefreshing()
         Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
