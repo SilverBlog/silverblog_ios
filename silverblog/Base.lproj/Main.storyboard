@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-Na-Lcb">
-                                <rect key="frame" x="16" y="60" width="343" height="188"/>
+                                <rect key="frame" x="16" y="112" width="343" height="188"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SKp-88-Zjc">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
@@ -64,7 +64,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8ey-9J-sQU"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="never" id="66F-Wu-TyU">
+                    <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="always" id="66F-Wu-TyU">
                         <barButtonItem key="rightBarButtonItem" title="Qrcode" image="scan" id="lfV-Ig-usq">
                             <connections>
                                 <segue destination="Uhl-Y9-ekG" kind="show" id="AIq-m0-V84"/>

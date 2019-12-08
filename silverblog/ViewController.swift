@@ -27,11 +27,13 @@ class ViewController: UIViewController {
                 self.push_view()
             }))
         }
-        actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive,handler: {(action: UIAlertAction!) -> () in
-            self.config_list = [:]
-            self.shared.set(self.config_list,forKey: "config_list_v2")
-            self.shared.synchronize()
-        }))
+        if(config_list.count != 0){
+            actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive,handler: {(action: UIAlertAction!) -> () in
+                self.config_list = [:]
+                self.shared.set(self.config_list,forKey: "config_list_v2")
+                self.shared.synchronize()
+            }))
+        }
         actionSheetController.popoverPresentationController?.sourceView = self.previson_button
         actionSheetController.popoverPresentationController?.sourceRect = self.previson_button.bounds
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))

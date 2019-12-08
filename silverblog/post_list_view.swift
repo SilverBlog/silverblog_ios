@@ -83,11 +83,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController!.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
         self.tabBarController!.navigationItem.setRightBarButton(more_button_outlet, animated: true)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.refreshControl.addTarget(self, action: #selector(post_list_view.refresh), for: .valueChanged)
+        
         self.tableView.refreshControl = refreshControl
 
 
@@ -96,7 +98,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         if (shared.bool(forKey: "refresh")){
             shared.set(false, forKey: "refresh")
             shared.synchronize()
-            self.load_data(refreshControl: nil)
+            refresh_pull()
         }
     }
     
@@ -111,11 +113,17 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            self.load_data(refreshControl: nil)
+            refresh_pull()
         }
         self.tabBarController!.title = "Post"
     }
+    func refresh_pull(){
+        self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y - (self.refreshControl.frame.size.height)), animated: true)
 
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+            self.refreshControl.sendActions(for: .valueChanged)
+        })
+    }
     @objc func refresh(refreshControl: UIRefreshControl) {
         if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
@@ -123,26 +131,10 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        self.load_data(refreshControl: refreshControl)
-    }
-
-    func load_data(refreshControl: UIRefreshControl?) {
-        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        if (refreshControl == nil) {
-            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-            loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.style = UIActivityIndicatorView.Style.gray
-            loadingIndicator.startAnimating();
-            alertController.view.addSubview(loadingIndicator)
-            self.present(alertController, animated: true, completion: nil)
-        }
-        refreshControl?.beginRefreshing()
+        self.refreshControl.beginRefreshing()
         Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
-                if (refreshControl == nil) {
-                    alertController.dismiss(animated: true){}
-                }
                 if let value = response.result.value {
                     let jsonobj = JSON(value)
                     if (self.array_json != jsonobj) {
@@ -152,24 +144,13 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                if (refreshControl == nil) {
-                    alertController.dismiss(animated: true) {
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert: UIAlertAction!) in
-                            self.navigationController!.popViewController(animated: true)
-                        }))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-                if (refreshControl != nil) {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                }
-
             }
-            refreshControl?.endRefreshing()
+            self.refreshControl.endRefreshing()
         }
-
     }
+
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (net?.isReachable == false) {
@@ -216,7 +197,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                         self.present(alert, animated: true, completion: nil)
                     }
                     if (status) {
-                        self.load_data(refreshControl: nil)
+                        self.refresh_pull()
                     }
                 case .failure(let error):
                     let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)

@@ -94,6 +94,10 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             Content_input.textColor = textview_shadow_color
         }
         Content_input.delegate=self
+
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
         if (new_mode){
             self.title="New"
 
@@ -103,7 +107,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             self.title="Edit"
         }
     }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if (textView.textColor == textview_shadow_color && textView.text == "Content") {
             textView.text = nil
