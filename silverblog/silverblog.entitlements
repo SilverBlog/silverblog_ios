@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.silverblog</string>
+		<string>group.org.silverblog.public</string>
 	</array>
 	<key>com.apple.security.device.camera</key>
 	<true/>
