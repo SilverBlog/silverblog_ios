@@ -118,7 +118,7 @@ class ShareViewController: SLComposeServiceViewController {
                         self.shared.synchronize()
                     }
                 case .failure(_):
-                    result_message = "Article publication failed.Please check the network."
+                    result_message = public_func.get_error_message(error: (response.response?.statusCode)!)
                 }
                 self.displayUIAlertController(title: "Notice", message: result_message)
             }
