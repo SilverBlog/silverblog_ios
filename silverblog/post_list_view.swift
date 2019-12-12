@@ -125,29 +125,28 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         })
     }
     @objc func refresh(refreshControl: UIRefreshControl) {
+        refreshControl.beginRefreshing()
         if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{ action in refreshControl.endRefreshing()} ))
             self.present(alert, animated: true, completion: nil)
             return
         }
-        self.refreshControl.beginRefreshing()
         Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
             switch response.result.isSuccess {
             case true:
                 if let value = response.result.value {
                     let jsonobj = JSON(value)
-                    if (self.array_json != jsonobj) {
-                        self.array_json = jsonobj
-                        self.tableView.reloadData()
-                    }
+                    self.array_json = jsonobj
+                    self.tableView.reloadData()
+                    refreshControl.endRefreshing()
                 }
             case false:
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in refreshControl.endRefreshing()}))
                     self.present(alert, animated: true, completion: nil)
             }
-            self.refreshControl.endRefreshing()
+            
         }
     }
 

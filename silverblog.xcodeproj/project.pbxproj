@@ -29,8 +29,6 @@
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
 		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
 		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5EF644732390743A00021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
-		5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,13 +38,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5EA269E6205ACD1E00888C61;
 			remoteInfo = silverblog_share;
-		};
-		5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5EB5FFA521EC8F3F007D0139;
-			remoteInfo = public_func;
 		};
 		5EF644712390743100021F2E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -72,7 +63,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5E023F4423907316009205BF /* Pods_silverblog_share.framework in Embed Frameworks */,
-				5EF644742390743A00021F2E /* public_func.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,7 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E023F4323907316009205BF /* Pods_silverblog_share.framework in Frameworks */,
-				5EF644732390743A00021F2E /* public_func.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +291,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5EB5FFB721EC9098007D0139 /* PBXTargetDependency */,
 				5EF644762390743A00021F2E /* PBXTargetDependency */,
 			);
 			name = silverblog_share;
@@ -508,11 +496,6 @@
 			target = 5EA269E6205ACD1E00888C61 /* silverblog_share */;
 			targetProxy = 5E155CFD206E95B200035A4B /* PBXContainerItemProxy */;
 		};
-		5EB5FFB721EC9098007D0139 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
-			targetProxy = 5EB5FFB621EC9098007D0139 /* PBXContainerItemProxy */;
-		};
 		5EF644722390743100021F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
@@ -675,7 +658,7 @@
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = F2578Q8C77;
+				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -684,7 +667,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -704,7 +687,7 @@
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = F2578Q8C77;
+				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -714,7 +697,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -730,7 +713,7 @@
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = F2578Q8C77;
+				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -739,7 +722,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.share;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -756,7 +739,7 @@
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_TEAM = F2578Q8C77;
+				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -765,7 +748,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.share;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
@@ -783,7 +766,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = F2578Q8C77;
+				DEVELOPMENT_TEAM = 3PJP564QCS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -798,7 +781,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.public;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.public;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -817,7 +800,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = F2578Q8C77;
+				DEVELOPMENT_TEAM = 3PJP564QCS;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -830,7 +813,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.silverblog.client.test.public;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.public;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;

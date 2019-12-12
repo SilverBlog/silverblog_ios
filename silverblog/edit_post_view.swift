@@ -132,22 +132,21 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         self.present(alertController, animated: true, completion: nil)
         Alamofire.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
-                
-                switch response.result.isSuccess {
-                case true:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        self.Title_input.text = json["title"].string
-                        self.Slug_input.text = json["name"].string
-                        self.Content_input.text = json["content"].string
-                        self.load=true
-                        self.Content_input.textColor = UIColor.black
-                    }
-                case false:
-                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+            }
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    self.Title_input.text = json["title"].string
+                    self.Slug_input.text = json["name"].string
+                    self.Content_input.text = json["content"].string
+                    self.load=true
+                    self.Content_input.textColor = UIColor.black
                 }
+            case false:
+                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
