@@ -34,9 +34,11 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.publish_click()
         }))
         actionSheetController.addAction(UIAlertAction(title: "Cancel", style: .cancel,handler: nil))
-        actionSheetController.popoverPresentationController?.sourceView = self.view
-        actionSheetController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
-        actionSheetController.popoverPresentationController?.permittedArrowDirections = []
+        if let popover = actionSheetController.popoverPresentationController {
+            popover.barButtonItem  = self.tabBarController?.navigationItem.rightBarButtonItem
+             popover.permittedArrowDirections = .up
+        }
+
         self.present(actionSheetController, animated: true, completion: nil)
     }
     
