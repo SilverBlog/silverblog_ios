@@ -44,7 +44,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     
 
     func publish_click() {
-        if net?.isReachable == false {
+        if (net?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
