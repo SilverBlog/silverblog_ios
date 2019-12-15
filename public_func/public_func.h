@@ -1,11 +1,3 @@
-//
-//  public_func.h
-//  public_func
-//
-//  Created by qwe7002 on 2019/1/14.
-//  Copyright © 2019 qwe7002. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonCrypto.h>
 #import <CommonCrypto/CommonHMAC.h>

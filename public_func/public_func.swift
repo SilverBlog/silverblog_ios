@@ -1,11 +1,3 @@
-//
-//  public_func.swift
-//  silverblog
-//
-//  Created by qwe7002 on 2018/3/11.
-//  Copyright © 2018年 qwe7002. All rights reserved.
-//
-
 import Foundation
 public class public_func{
     public static var version = "v2"

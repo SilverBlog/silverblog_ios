@@ -1,11 +1,3 @@
-//
-//  post_list_view.swift
-//  silverblog
-//
-//  Created by 黄江华 on 2018/3/28.
-//  Copyright © 2018年 qwe7002. All rights reserved.
-//
-
 import UIKit
 import Alamofire
 import SwiftyJSON
