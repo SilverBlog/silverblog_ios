@@ -179,24 +179,23 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
         Alamofire.request("https://" + global_value.server_url + "/control/v2/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            doneController.dismiss(animated: true) {
-                switch response.result {
-                case .success(let json):
-                    let dict = json as! Dictionary<String, AnyObject>
-                    let status = dict["status"] as! Bool
-                    if (!status) {
-                        let alert = UIAlertController(title: "Failure", message: "Delete failed.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    if (status) {
-                        self.refresh_pull()
-                    }
-                case .failure(let error):
-                    let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+            doneController.dismiss(animated: true)
+            switch response.result {
+            case .success(let json):
+                let dict = json as! Dictionary<String, AnyObject>
+                let status = dict["status"] as! Bool
+                if (!status) {
+                    let alert = UIAlertController(title: "Failure", message: "Delete failed.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
+                if (status) {
+                    self.refresh_pull()
+                }
+            case .failure(let error):
+                let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -223,5 +222,4 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.textLabel?.text = self.array_json[indexPath.row]["title"].string
         return cell
     }
-
 }

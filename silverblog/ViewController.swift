@@ -58,19 +58,19 @@ class ViewController: UIViewController {
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
         Alamofire.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
-            doneController.dismiss(animated: true) {
-                switch response.result {
-                case .success:
-                    self.password.text = ""
-                    self.server_name.text = ""
-                    self.save_info(server: self_server_url, password: self_password)
-                    self.push_view()
-                case .failure( _):
-                    let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
+            doneController.dismiss(animated: true)
+            switch response.result {
+            case .success:
+                self.password.text = ""
+                self.server_name.text = ""
+                self.save_info(server: self_server_url, password: self_password)
+                self.push_view()
+            case .failure( _):
+                let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
+            
         }
 
 

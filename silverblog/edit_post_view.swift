@@ -45,25 +45,24 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         ]
         
         Alamofire.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            alertController.dismiss(animated: true) {
-                switch response.result {
-                case .success(let json):
-                    let dict = json as! Dictionary<String, AnyObject>
-                    let status = dict["status"] as! Bool
-                    if (status) {
-                        global_value.reflush = true
-                        self.navigationController!.popViewController(animated: true)
-                    }
-                    if (!status) {
-                        let alert = UIAlertController(title: "Failure", message: "Article publication failed.", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                case .failure(_):
-                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+            alertController.dismiss(animated: true)
+            switch response.result {
+            case .success(let json):
+                let dict = json as! Dictionary<String, AnyObject>
+                let status = dict["status"] as! Bool
+                if (status) {
+                    global_value.reflush = true
+                    self.navigationController!.popViewController(animated: true)
+                }
+                if (!status) {
+                    let alert = UIAlertController(title: "Failure", message: "Article publication failed.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
+            case .failure(_):
+                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -123,23 +122,23 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
         Alamofire.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            self.dismiss(animated: true) {
-            }
-            switch response.result.isSuccess {
-            case true:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    self.Title_input.text = json["title"].string
-                    self.Slug_input.text = json["name"].string
-                    self.Content_input.text = json["content"].string
-                    self.load=true
-                    self.Content_input.textColor = UIColor.black
+            alertController.dismiss(animated: true)
+                switch response.result.isSuccess {
+                case true:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        self.Title_input.text = json["title"].string
+                        self.Slug_input.text = json["name"].string
+                        self.Content_input.text = json["content"].string
+                        self.load=true
+                        self.Content_input.textColor = UIColor.black
+                    }
+                case false:
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
-            case false:
-                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+            
         }
     }
 }

@@ -27,8 +27,8 @@
 		5EC0941B206AAB2B006E27EF /* post_list_view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0941A206AAB2B006E27EF /* post_list_view.swift */; };
 		5EC34D9E205518590023A9F7 /* global_value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC34D9D205518590023A9F7 /* global_value.swift */; };
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
-		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
-		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; };
+		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -498,6 +498,7 @@
 		};
 		5EF644722390743100021F2E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EF644712390743100021F2E /* PBXContainerItemProxy */;
 		};
@@ -657,6 +658,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -668,7 +670,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -685,6 +687,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = silverblog/silverblog.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -697,7 +700,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -710,6 +713,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -722,7 +726,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -735,6 +739,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 3PJP564QCS;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -747,7 +752,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

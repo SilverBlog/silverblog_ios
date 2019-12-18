@@ -1,7 +1,7 @@
 import Foundation
 public class public_func{
-    public static var version = "v2"
-    public static var group_suite = "group.org.silverblog.public"
+    public static let version = "v2"
+    public static let group_suite = "group.org.silverblog.public"
     public static func get_error_message(error:Int) -> String {
         var result = ""
         switch error {
@@ -18,7 +18,7 @@ public class public_func{
             result = "Server program error."
             break
         default:
-            result = "unknown error."
+            result = "Unknown error."
         }
         return result
     }
