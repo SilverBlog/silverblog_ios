@@ -16,6 +16,12 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     @IBOutlet weak var Slug_input: UITextField!
 
     @IBAction func Save_Button(_ sender: Any) {
+        if(Content_input.text=="Content" || Content_input.text == ""){
+            return;
+        }
+        if(Title_input.text==""){
+            return;
+        }
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
