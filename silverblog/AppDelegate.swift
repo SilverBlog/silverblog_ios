@@ -11,7 +11,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = false
         IQKeyboardManager.shared.enableAutoToolbar = true
-        self.window?.backgroundColor = UIColor.white
+        if #available(iOS 13.0, *) {
+            self.window?.backgroundColor = UIColor.systemBackground
+        } else {
+            // Fallback on earlier versions
+            self.window?.backgroundColor = UIColor.white
+        }
         return true
     }
 

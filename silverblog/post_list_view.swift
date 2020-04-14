@@ -46,6 +46,9 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        if(self.traitCollection.userInterfaceStyle == .dark){
+            loadingIndicator.style = UIActivityIndicatorView.Style.white
+        }
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)

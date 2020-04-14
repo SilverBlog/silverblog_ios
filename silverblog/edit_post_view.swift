@@ -26,6 +26,9 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        if(self.traitCollection.userInterfaceStyle == .dark){
+            loadingIndicator.style = UIActivityIndicatorView.Style.white
+        }
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
@@ -88,7 +91,11 @@ class edit_post_view: UIViewController,UITextViewDelegate {
 
         }
         if(Content_input.text == "Content"){
-            Content_input.textColor = textview_shadow_color
+            if #available(iOS 13.0, *) {
+                Content_input.textColor = UIColor.placeholderText
+            } else {
+                Content_input.textColor = textview_shadow_color
+            }
         }
         Content_input.delegate=self
 
@@ -105,15 +112,29 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if (textView.textColor == textview_shadow_color && textView.text == "Content") {
-            textView.text = nil
-            textView.textColor = UIColor.black
+        if #available(iOS 13.0, *) {
+            if (textView.textColor == UIColor.placeholderText && textView.text == "Content") {
+                textView.text = nil
+                textView.textColor = UIColor.black
+                if(self.traitCollection.userInterfaceStyle == .dark){
+                    textView.textColor = UIColor.white
+                }
+            }
+        } else {
+            if (textView.textColor == textview_shadow_color && textView.text == "Content") {
+                textView.text = nil
+                textView.textColor = UIColor.black
+            }
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Content"
-            textView.textColor = textview_shadow_color
+            if #available(iOS 13.0, *) {
+                textView.textColor = UIColor.placeholderText
+            } else {
+                textView.textColor = textview_shadow_color
+            }
         }
     }
     func load_post() {
@@ -124,6 +145,9 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        if(self.traitCollection.userInterfaceStyle == .dark){
+            loadingIndicator.style = UIActivityIndicatorView.Style.white
+        }
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
@@ -138,6 +162,9 @@ class edit_post_view: UIViewController,UITextViewDelegate {
                         self.Content_input.text = json["content"].string
                         self.load=true
                         self.Content_input.textColor = UIColor.black
+                        if(self.traitCollection.userInterfaceStyle == .dark){
+                            self.Content_input.textColor = UIColor.white
+                        }
                     }
                 case false:
                     let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
