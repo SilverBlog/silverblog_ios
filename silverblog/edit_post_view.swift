@@ -9,6 +9,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     var load = false
     var new_mode = false
     let net = NetworkReachabilityManager()
+    //低于ios13版本
     let textview_shadow_color = UIColor(red:201/255.0,green:201/255.0,blue:206/255.0,alpha:1)
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
@@ -17,9 +18,15 @@ class edit_post_view: UIViewController,UITextViewDelegate {
 
     @IBAction func Save_Button(_ sender: Any) {
         if(Content_input.text=="Content" || Content_input.text == ""){
+            let alert = UIAlertController(title: "Could not submit request", message: "You must fill in the Content field", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return;
         }
         if(Title_input.text==""){
+            let alert = UIAlertController(title: "Could not submit request", message: "You must fill in the Title field", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return;
         }
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
