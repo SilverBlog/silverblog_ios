@@ -69,8 +69,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     let alert = UIAlertController(title: "Message", message: message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
-                case .failure(let error):
-                    let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+                case .failure:
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }

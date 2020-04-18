@@ -12,7 +12,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         scanview.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
-        
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
             failed();
             return }
