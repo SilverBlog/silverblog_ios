@@ -97,7 +97,7 @@ class ShareViewController: SLComposeServiceViewController {
             "send_time":send_time
         ]
         var result_message = ""
-        Alamofire.request("https://" + server + "/control/"+public_func.version+"/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + server + "/control/"+public_func.version+"/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -109,7 +109,8 @@ class ShareViewController: SLComposeServiceViewController {
                         self.shared.set(true, forKey: "refresh")
                         self.shared.synchronize()
                     }
-                case .failure(_):
+                case .failure(let error):
+                    print(error)
                     result_message = public_func.get_error_message(error: (response.response?.statusCode)!)
                 }
                 self.displayUIAlertController(title: "Notice", message: result_message)

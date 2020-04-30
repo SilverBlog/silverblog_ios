@@ -53,11 +53,11 @@ class ViewController: UIViewController {
         let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
+        AF.request("https://" + self_server_url + "/control", method: .options).validate(statusCode: 204...204).responseJSON { response in
             doneController.dismiss(animated: true)
             switch response.result {
             case .success:
@@ -65,7 +65,8 @@ class ViewController: UIViewController {
                 self.server_name.text = ""
                 self.save_info(server: self_server_url, password: self_password)
                 self.push_view()
-            case .failure( _):
+            case .failure(let error):
+                print(error)
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -93,6 +94,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         if (global_value.isscan){
             global_value.isscan=false
+            //scan_result
             save_info(server: global_value.server_url,password: global_value.password)
             push_view()
         }

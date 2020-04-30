@@ -55,7 +55,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             "send_time":send_time
         ]
         
-        Alamofire.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true)
             switch response.result {
             case .success(let json):
@@ -70,7 +70,8 @@ class edit_post_view: UIViewController,UITextViewDelegate {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
-            case .failure:
+            case .failure(let error):
+                print(error)s
                 let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -135,11 +136,11 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-        Alamofire.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            alertController.dismiss(animated: true)
-                switch response.result.isSuccess {
-                case true:
-                    if let value = response.result.value {
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            alertController.dismiss(animated: true){
+                switch response.result {
+                case .success:
+                    if let value = response.value {
                         let json = JSON(value)
                         self.Title_input.text = json["title"].string
                         self.Slug_input.text = json["name"].string
@@ -150,12 +151,13 @@ class edit_post_view: UIViewController,UITextViewDelegate {
                             self.Content_input.textColor = UIColor.white
                         }
                     }
-                case false:
+                case .failure(let error):
+                    print(error)
                     let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
-            
+            }
         }
     }
 }

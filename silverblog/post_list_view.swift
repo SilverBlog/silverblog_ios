@@ -45,10 +45,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
-        if(self.traitCollection.userInterfaceStyle == .dark){
-            loadingIndicator.style = UIActivityIndicatorView.Style.white
-        }
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
@@ -56,7 +53,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let sign = public_func.hmac_hex(hashName: "SHA512", message: "git_page_publish", key: global_value.password+String(timestamp))
 
         let param = ["sign" : sign,"send_time" : timestamp] as [String : Any]
-        Alamofire.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -129,16 +126,17 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        Alamofire.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
-            switch response.result.isSuccess {
-            case true:
-                if let value = response.result.value {
+        AF.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success:
+                if let value = response.value {
                     let jsonobj = JSON(value)
                     self.array_json = jsonobj
                     self.tableView.reloadData()
                     refreshControl.endRefreshing()
                 }
-            case false:
+            case .failure(let error):
+                print(error)
                 let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in refreshControl.endRefreshing()}))
                     self.present(alert, animated: true, completion: nil)
@@ -177,11 +175,11 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let doneController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        Alamofire.request("https://" + global_value.server_url + "/control/v2/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/v2/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true)
             switch response.result {
             case .success(let json):
@@ -196,7 +194,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.refresh_pull()
                 }
             case .failure(let error):
-                let alert = UIAlertController(title: "Failure", message: error as? String, preferredStyle: .alert)
+                print(error)
+                let alert = UIAlertController(title: "Failure", message: "error", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
