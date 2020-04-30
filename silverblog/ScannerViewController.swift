@@ -90,7 +90,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             if(url != nil || password != nil){
                 global_value.server_url = url!
                 global_value.password = password!
-                global_value.isscan=true
+                global_value.is_scan=true
             }
         }
 

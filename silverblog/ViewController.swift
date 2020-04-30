@@ -92,8 +92,8 @@ class ViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (global_value.isscan){
-            global_value.isscan=false
+        if (global_value.is_scan){
+            global_value.is_scan=false
             //scan_result
             save_info(server: global_value.server_url,password: global_value.password)
             push_view()

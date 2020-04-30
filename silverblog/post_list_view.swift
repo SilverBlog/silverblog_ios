@@ -53,7 +53,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let sign = public_func.hmac_hex(hashName: "SHA512", message: "git_page_publish", key: global_value.password+String(timestamp))
 
         let param = ["sign" : sign,"send_time" : timestamp] as [String : Any]
-        AF.request("https://" + global_value.server_url + "/control/"+global_value.version+"/git_page_publish", method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/git_page_publish", method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -99,8 +99,8 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
-        if (global_value.reflush || array_json == JSON()) {
-            global_value.reflush = false
+        if (global_value.refresh || array_json == JSON()) {
+            global_value.refresh = false
             if (net?.isReachable == false) {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

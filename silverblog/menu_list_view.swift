@@ -20,8 +20,8 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (global_value.reflush || array_json == JSON()) {
-            global_value.reflush = false
+        if (global_value.refresh || array_json == JSON()) {
+            global_value.refresh = false
             if net?.isReachable == false {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

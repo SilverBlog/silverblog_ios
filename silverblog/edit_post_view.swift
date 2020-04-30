@@ -62,7 +62,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
                 let dict = json as! Dictionary<String, AnyObject>
                 let status = dict["status"] as! Bool
                 if (status) {
-                    global_value.reflush = true
+                    global_value.refresh = true
                     self.navigationController!.popViewController(animated: true)
                 }
                 if (!status) {
@@ -71,7 +71,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
                     self.present(alert, animated: true, completion: nil)
                 }
             case .failure(let error):
-                print(error)s
+                print(error)
                 let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
