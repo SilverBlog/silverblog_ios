@@ -82,6 +82,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
         vc.uuid = array_json[indexPath.row]["uuid"].string!
         vc.menu = true
+        vc.function = "menu"
         self.navigationController!.pushViewController(vc, animated: true)
 
     }
