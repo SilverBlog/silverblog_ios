@@ -10,7 +10,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
     let net = NetworkReachabilityManager()
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
-
     @IBOutlet weak var Slug_input: UITextField!
 
     @IBAction func Save_Button(_ sender: Any) {
@@ -20,7 +19,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             self.present(alert, animated: true, completion: nil)
             return;
         }
-        if((Title_input.text?.isEmpty) != nil){
+        if(Title_input.text!.isEmpty){
             let alert = UIAlertController(title: "Could not submit request", message: "You must fill in the Title field", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
