@@ -169,6 +169,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5E5C3D54246562FC00357739 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				FE7180841CDD410669A9D313 /* Pods_silverblog.framework */,
+				4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		5E8042142054A52D008FE7EF = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +188,7 @@
 				5E80421E2054A52D008FE7EF /* Products */,
 				4D0616ADB7FAC08B310FB2E2 /* Frameworks */,
 				74BE49F1E8FEC8F0D7940F50 /* Pods */,
+				5E5C3D54246562FC00357739 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};

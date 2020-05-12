@@ -4,10 +4,9 @@ import SwiftyJSON
 import public_func
 class edit_post_view: UIViewController,UITextViewDelegate {
     var uuid = ""
-    var menu = false
     var function = "post"
-    var load = false
     var new_mode = false
+    var json = JSON("{}")
     let net = NetworkReachabilityManager()
     @IBOutlet var Title_input: UITextField!
     @IBOutlet var Content_input: UITextView!
@@ -81,9 +80,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (menu == true) {
-            function = "menu"
-        }
         if net?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
@@ -103,11 +99,16 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         super.viewDidLoad()
         if (new_mode){
             self.title="New"
-
-        }
-        if (!load && !new_mode){
-            self.load_post()
+        }else{
             self.title="Edit"
+            self.Title_input.text = json["title"].string
+            self.Slug_input.text = json["name"].string
+            self.Content_input.text = json["content"].string
+        
+            self.Content_input.textColor = UIColor.black
+            if(self.traitCollection.userInterfaceStyle == .dark){
+                self.Content_input.textColor = UIColor.white
+            }
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -123,41 +124,6 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "Content"
             textView.textColor = UIColor.placeholderText
-        }
-    }
-    func load_post() {
-        let parameters: Parameters = [
-            "post_uuid": self.uuid
-        ]
-        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.medium
-        loadingIndicator.startAnimating();
-        alertController.view.addSubview(loadingIndicator)
-        self.present(alertController, animated: true, completion: nil)
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/" + function, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
-            alertController.dismiss(animated: true){
-                switch response.result {
-                case .success:
-                    if let value = response.value {
-                        let json = JSON(value)
-                        self.Title_input.text = json["title"].string
-                        self.Slug_input.text = json["name"].string
-                        self.Content_input.text = json["content"].string
-                        self.load=true
-                        self.Content_input.textColor = UIColor.black
-                        if(self.traitCollection.userInterfaceStyle == .dark){
-                            self.Content_input.textColor = UIColor.white
-                        }
-                    }
-                case .failure(let error):
-                    print(error)
-                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
         }
     }
 }

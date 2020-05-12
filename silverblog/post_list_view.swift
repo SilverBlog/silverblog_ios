@@ -19,7 +19,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
             edit_post.new_mode = true
-            edit_post.menu = false
             self.navigationController!.pushViewController(edit_post, animated: true)
         }))
         actionSheetController.addAction(UIAlertAction(title: "Publish", style: .default,handler: {(action: UIAlertAction!) -> () in
@@ -204,11 +203,38 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let edit_post = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
-        edit_post.uuid = array_json[indexPath.row]["uuid"].string!
-        edit_post.menu = false
-        self.navigationController!.pushViewController(edit_post, animated: true)
+        let story_board = UIStoryboard(name: "Main", bundle: nil)
+        
+        let edit_post_view_control = story_board.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+        
+        let parameters: Parameters = [
+            "post_uuid": array_json[indexPath.row]["uuid"].string!
+        ]
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alertController.view.addSubview(loadingIndicator)
+        self.present(alertController, animated: true, completion: nil)
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/post", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            alertController.dismiss(animated: true){
+                switch response.result {
+                case .success:
+                    if let value = response.value {
+                        edit_post_view_control.json = JSON(value)
+                        edit_post_view_control.uuid = self.array_json[indexPath.row]["uuid"].string!
+                        self.navigationController!.pushViewController(edit_post_view_control, animated: true)
+                    }
+                case .failure(let error):
+                    print(error)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+        
     }
 
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {

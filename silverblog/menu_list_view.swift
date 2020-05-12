@@ -1,6 +1,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import public_func
 
 class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -79,11 +80,36 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
-        vc.uuid = array_json[indexPath.row]["uuid"].string!
-        vc.menu = true
-        vc.function = "menu"
-        self.navigationController!.pushViewController(vc, animated: true)
+        let edit_post_view_control = sb.instantiateViewController(withIdentifier: "edit_post_view") as! edit_post_view
+        //load
+        let parameters: Parameters = [
+            "post_uuid": array_json[indexPath.row]["uuid"].string!
+        ]
+        let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        alertController.view.addSubview(loadingIndicator)
+        self.present(alertController, animated: true, completion: nil)
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/menu", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+            alertController.dismiss(animated: true){
+                switch response.result {
+                case .success:
+                    if let value = response.value {
+                        edit_post_view_control.json = JSON(value)
+                        edit_post_view_control.uuid = self.array_json[indexPath.row]["uuid"].string!
+                        edit_post_view_control.function = "menu"
+                        self.navigationController!.pushViewController(edit_post_view_control, animated: true)
+                    }
+                case .failure(let error):
+                    print(error)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
 
     }
 
