@@ -12,7 +12,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var more_button_outlet: UIBarButtonItem!
     
-    
     @IBAction func on_more_button_click(_ sender: Any) {
         let actionSheetController: UIAlertController = UIAlertController(title: "Action", message: "Please select action", preferredStyle: .actionSheet)
         actionSheetController.addAction(UIAlertAction(title: "New", style: .default,handler: { (action: UIAlertAction!) -> () in
@@ -125,7 +124,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        AF.request("https://" + global_value.server_url + "/control/v2/get/list/post", method: .get).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/list/post", method: .get).validate().responseJSON { response in
             switch response.result {
             case .success:
                 if let value = response.value {
@@ -136,7 +135,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case .failure(let error):
                 print(error)
-                let alert = UIAlertController(title: "Failure", message: "This site cannot be connected.", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: error.responseCode ?? -1), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in refreshControl.endRefreshing()}))
                     self.present(alert, animated: true, completion: nil)
             }
@@ -160,7 +159,6 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 "post_uuid": self.array_json[indexPath.row]["uuid"].string!,
                 "sign": public_func.hmac_hex(hashName: "SHA512", message: self.array_json[indexPath.row]["uuid"].string!+self.array_json[indexPath.row]["title"].string!+self.array_json[indexPath.row]["name"].string!, key: global_value.password+String(send_time)),
                 "send_time": send_time
-                //"sign": public_func.md5(String(indexPath.row) + self.array_json[indexPath.row]["title"].string! + global_value.password)
             ]
             self.delete_post(parameters: parameters)
         }
@@ -178,7 +176,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        AF.request("https://" + global_value.server_url + "/control/v2/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true)
             switch response.result {
             case .success(let json):
@@ -194,7 +192,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                 }
             case .failure(let error):
                 print(error)
-                let alert = UIAlertController(title: "Failure", message: "error", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: error.responseCode ?? -1), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -228,7 +226,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
                     }
                 case .failure(let error):
                     print(error)
-                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: error.responseCode ?? -1), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }

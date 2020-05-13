@@ -5,6 +5,8 @@ public class public_func{
     public static func get_error_message(error:Int) -> String {
         var result = ""
         switch error {
+        case -1:
+            result = "No network."
         case 400:
             result = "Unable to process the request."
             break

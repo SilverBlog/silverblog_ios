@@ -38,10 +38,10 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         let name:String = Slug_input.text!
         let content_hash = public_func.sha512(string: content)
         var sign_message = title+name+content_hash
-        var submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/new"
+        var submit_url = "https://" + global_value.server_url + "/control/" + public_func.version + "/new"
         if(!new_mode){
-            sign_message = self.uuid+title+name+content_hash
-            submit_url = "https://" + global_value.server_url + "/control/"+public_func.version+"/edit/" + self.function
+            sign_message = self.uuid + title + name + content_hash
+            submit_url = "https://" + global_value.server_url + "/control/" + public_func.version + "/edit/" + self.function
         }
         let sign = public_func.hmac_hex(hashName: "SHA512", message: sign_message, key: global_value.password+String(send_time))
         let parameters: Parameters = [
@@ -70,7 +70,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
                 }
             case .failure(let error):
                 print(error)
-                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error: (response.response?.statusCode)!), preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failure", message: public_func.get_error_message(error:error.responseCode ?? -1), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
