@@ -38,12 +38,13 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         let name:String = Slug_input.text!
         let content_hash = public_func.sha512(string: content)
         var sign_message = title+name+content_hash
-        var submit_url = "https://" + global_value.server_url + "/control/" + public_func.version + "/new"
+        var submit_url = get_url.new_post(server_url:global_value.server_url)
         if(!new_mode){
-            sign_message = self.uuid + title + name + content_hash
-            submit_url = "https://" + global_value.server_url + "/control/" + public_func.version + "/edit/" + self.function
+            sign_message = self.uuid + sign_message
+            submit_url = get_url.edit_post(server_url:global_value.server_url,list_name:self.function)
         }
-        let sign = public_func.hmac_hex(hashName: "SHA512", message: sign_message, key: global_value.password+String(send_time))
+        //let sign = public_func.hmac_hex(hashName: "SHA512", message: sign_message, key: global_value.password+String(send_time))
+        let sign = public_func.sign_message(sign_message:sign_message,password:global_value.password,send_time:send_time)
         let parameters: Parameters = [
             "post_uuid": self.uuid,
             "title": title,

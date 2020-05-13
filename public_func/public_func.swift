@@ -86,4 +86,7 @@ public class public_func{
         let millisecond = CLongLong(round(timeInterval*1000))
         return millisecond
     }
+    public static func sign_message(sign_message:String,password:String,send_time:CLongLong) -> String{
+        return hmac_hex(hashName: "SHA512", message: sign_message, key: password+String(send_time))
+    }
 }

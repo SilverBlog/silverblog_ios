@@ -51,7 +51,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         let sign = public_func.hmac_hex(hashName: "SHA512", message: "git_page_publish", key: global_value.password+String(timestamp))
 
         let param = ["sign" : sign,"send_time" : timestamp] as [String : Any]
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/git_page_publish", method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request(get_url.Publish(server_url: global_value.server_url), method: .post, parameters: param, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
@@ -124,7 +124,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             self.present(alert, animated: true, completion: nil)
             return
         }
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/list/post", method: .get).validate().responseJSON { response in
+        AF.request(get_url.get_list(server_url:global_value.server_url, list_name:"post"), method: .get).validate().responseJSON { response in
             switch response.result {
             case .success:
                 if let value = response.value {
@@ -176,7 +176,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         doneController.view.addSubview(loadingIndicator)
         self.present(doneController, animated: true, completion: nil)
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/delete", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request(get_url.delete(server_url:global_value.server_url), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             doneController.dismiss(animated: true)
             switch response.result {
             case .success(let json):
@@ -215,7 +215,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
-        AF.request("https://" + global_value.server_url + "/control/"+public_func.version+"/get/content/post", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request(get_url.get_content(server_url:global_value.server_url, list_name:"post"), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             alertController.dismiss(animated: true){
                 switch response.result {
                 case .success:

@@ -79,7 +79,9 @@ class ShareViewController: SLComposeServiceViewController {
         let password: String = shared.string(forKey: "password")!
         let server: String = shared.string(forKey: "server")!
         let send_time = public_func.get_timestamp()
-        let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
+        //let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
+        let sign_message = post_title+slug+public_func.sha512(string:content)
+        let sign = public_func.sign_message(sign_message:sign_message,password:password,send_time:send_time)
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -97,7 +99,7 @@ class ShareViewController: SLComposeServiceViewController {
             "send_time":send_time
         ]
         var result_message = ""
-        AF.request("https://" + server + "/control/"+public_func.version+"/new", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
+        AF.request(get_url.new_post(server_url: server), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
             self.dismiss(animated: true) {
                 switch response.result {
                 case .success(let json):
