@@ -7,23 +7,23 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var tableView: UITableView!
     var array_json = JSON()
-    let refreshControl = UIRefreshControl()
-    let net = NetworkReachabilityManager()
+    let REFRESH_CONTROL = UIRefreshControl()
+    let NET_REACHABILITY_MANAGER = NetworkReachabilityManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.REFRESH_CONTROL.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.refreshControl = refreshControl
+        self.tableView.refreshControl = REFRESH_CONTROL
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if (global_value.refresh || array_json == JSON()) {
             global_value.refresh = false
-            if net?.isReachable == false {
+            if (NET_REACHABILITY_MANAGER?.isReachable == false) {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -35,16 +35,16 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     func refresh_pull(){
-        self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y - (self.refreshControl.frame.size.height)), animated: true)
+        self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y - (self.REFRESH_CONTROL.frame.size.height)), animated: true)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-            self.refreshControl.sendActions(for: .valueChanged)
+            self.REFRESH_CONTROL.sendActions(for: .valueChanged)
         })
     }
 
     @objc func refresh(refreshControl: UIRefreshControl) {
         refreshControl.beginRefreshing()
-        if net?.isReachable == false {
+        if NET_REACHABILITY_MANAGER?.isReachable == false {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {action in
                 refreshControl.endRefreshing()

@@ -6,9 +6,9 @@ import public_func
 class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     var array_json = JSON()
-    let refreshControl = UIRefreshControl()
-    let net = NetworkReachabilityManager()
-    let shared = UserDefaults(suiteName: public_func.group_suite)!
+    let REFRESH_CONTROL = UIRefreshControl()
+    let NET_REACHABILITY_MANAGER = NetworkReachabilityManager()
+    let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
     
     @IBOutlet weak var more_button_outlet: UIBarButtonItem!
     
@@ -34,7 +34,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     
 
     func publish_click() {
-        if (net?.isReachable == false) {
+        if (NET_REACHABILITY_MANAGER?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -80,16 +80,16 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.refreshControl.addTarget(self, action: #selector(post_list_view.refresh), for: .valueChanged)
+        self.REFRESH_CONTROL.addTarget(self, action: #selector(post_list_view.refresh), for: .valueChanged)
         
-        self.tableView.refreshControl = refreshControl
+        self.tableView.refreshControl = REFRESH_CONTROL
 
 
     }
     @objc func becomeActive(){
-        if (shared.bool(forKey: "refresh")){
-            shared.set(false, forKey: "refresh")
-            shared.synchronize()
+        if (USER_CONFIG.bool(forKey: "refresh")){
+            USER_CONFIG.set(false, forKey: "refresh")
+            USER_CONFIG.synchronize()
             refresh_pull()
         }
     }
@@ -99,7 +99,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         NotificationCenter.default.addObserver(self, selector: #selector(post_list_view.becomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         if (global_value.refresh || array_json == JSON()) {
             global_value.refresh = false
-            if (net?.isReachable == false) {
+            if (NET_REACHABILITY_MANAGER?.isReachable == false) {
                 let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -110,15 +110,15 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tabBarController!.title = "Post"
     }
     func refresh_pull(){
-        self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y - (self.refreshControl.frame.size.height)), animated: true)
+        self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y - (self.REFRESH_CONTROL.frame.size.height)), animated: true)
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-            self.refreshControl.sendActions(for: .valueChanged)
+            self.REFRESH_CONTROL.sendActions(for: .valueChanged)
         })
     }
     @objc func refresh(refreshControl: UIRefreshControl) {
         refreshControl.beginRefreshing()
-        if (net?.isReachable == false) {
+        if (NET_REACHABILITY_MANAGER?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler:{ action in refreshControl.endRefreshing()} ))
             self.present(alert, animated: true, completion: nil)
@@ -145,7 +145,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (net?.isReachable == false) {
+        if (NET_REACHABILITY_MANAGER?.isReachable == false) {
             let alert = UIAlertController(title: "Failure", message: "No network connection.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

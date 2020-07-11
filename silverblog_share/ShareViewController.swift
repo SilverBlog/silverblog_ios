@@ -4,12 +4,12 @@ import Alamofire
 import public_func
 
 class ShareViewController: SLComposeServiceViewController {
-    let shared = UserDefaults(suiteName: public_func.group_suite)!
+    let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
     var post_title = "No Title"
     var slug = ""
     var config_list: [String: Any] = [:]
     override func isContentValid() -> Bool {
-        if (contentText.isEmpty || shared.string(forKey: "server") == nil) {
+        if (contentText.isEmpty || USER_CONFIG.string(forKey: "server") == nil) {
             return false
         }
         return true
@@ -17,25 +17,25 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if(shared.dictionary(forKey: "config_list") != nil){
-            let old_list = shared.dictionary(forKey: "config_list")!
+        if(USER_CONFIG.dictionary(forKey: "config_list") != nil){
+            let old_list = USER_CONFIG.dictionary(forKey: "config_list")!
             var new_list: [String: Any] = [:]
             old_list.forEach { (arg) in
                 let (key, value) = arg
                 new_list[key]=public_func.hmac_hex(hashName: "SHA256", message: value as! String, key: "SiLvErBlOg")
             }
-            self.shared.set(new_list,forKey: "config_list_v2")
-            self.shared.removeObject(forKey: "config_list")
-            self.shared.synchronize()
+            self.USER_CONFIG.set(new_list,forKey: "config_list_v2")
+            self.USER_CONFIG.removeObject(forKey: "config_list")
+            self.USER_CONFIG.synchronize()
         }
-        if (shared.dictionary(forKey: "config_list_v2") != nil) {
-            config_list = shared.dictionary(forKey: "config_list_v2")!
+        if (USER_CONFIG.dictionary(forKey: "config_list_v2") != nil) {
+            config_list = USER_CONFIG.dictionary(forKey: "config_list_v2")!
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if (shared.string(forKey: "server") == nil) {
+        if (USER_CONFIG.string(forKey: "server") == nil) {
             self.displayUIAlertController(title: "Please set the server information first.", message: "")
         }
     }
@@ -76,8 +76,8 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     func send_post(content: String) {
-        let password: String = shared.string(forKey: "password")!
-        let server: String = shared.string(forKey: "server")!
+        let password: String = USER_CONFIG.string(forKey: "password")!
+        let server: String = USER_CONFIG.string(forKey: "server")!
         let send_time = public_func.get_timestamp()
         //let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
         let sign_message = post_title+slug+public_func.sha512(string:content)
@@ -108,8 +108,8 @@ class ShareViewController: SLComposeServiceViewController {
                     result_message = "Article publication failed."
                     if (status) {
                         result_message = "The article has been successfully published."
-                        self.shared.set(true, forKey: "refresh")
-                        self.shared.synchronize()
+                        self.USER_CONFIG.set(true, forKey: "refresh")
+                        self.USER_CONFIG.synchronize()
                     }
                 case .failure(let error):
                     print(error)
@@ -134,7 +134,7 @@ class ShareViewController: SLComposeServiceViewController {
     private lazy var site_table_Item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!
         item.title = "Sites"
-        item.value = shared.string(forKey: "server")!
+        item.value = USER_CONFIG.string(forKey: "server")!
         item.tapHandler = {
             let actionSheetController: UIAlertController = UIAlertController(title: "Config list", message: "Please select the config", preferredStyle: .actionSheet)
             self.config_list.forEach { (key, value) in
@@ -152,9 +152,9 @@ class ShareViewController: SLComposeServiceViewController {
     }()
 
     func save_info(server: String, password: String) {
-        shared.set(server, forKey: "server")
-        shared.set(password, forKey: "password")
-        shared.synchronize()
+        USER_CONFIG.set(server, forKey: "server")
+        USER_CONFIG.set(password, forKey: "password")
+        USER_CONFIG.synchronize()
     }
     lazy var title_item: SLComposeSheetConfigurationItem = {
         let item = SLComposeSheetConfigurationItem()!

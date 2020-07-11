@@ -11,7 +11,7 @@ import Alamofire
 import public_func
 
 class ViewController: UIViewController {
-    let shared = UserDefaults(suiteName: public_func.group_suite)!
+    let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -30,8 +30,8 @@ class ViewController: UIViewController {
         if(config_list.count != 0){
             actionSheetController.addAction(UIAlertAction(title: "Clean", style: .destructive,handler: {(action: UIAlertAction!) -> () in
                 self.config_list = [:]
-                self.shared.set(self.config_list,forKey: "config_list_v2")
-                self.shared.synchronize()
+                self.USER_CONFIG.set(self.config_list,forKey: "config_list_v2")
+                self.USER_CONFIG.synchronize()
             }))
         }
         actionSheetController.popoverPresentationController?.sourceView = self.previson_button
@@ -82,11 +82,11 @@ class ViewController: UIViewController {
         self.navigationController!.pushViewController(vc, animated:true)
     }
     func save_info(server: String,password: String){
-            shared.set(server, forKey: "server")
-            shared.set(password, forKey: "password")
+            USER_CONFIG.set(server, forKey: "server")
+            USER_CONFIG.set(password, forKey: "password")
             config_list[server] = password
-            shared.set(config_list,forKey: "config_list_v2")
-            shared.synchronize()
+            USER_CONFIG.set(config_list,forKey: "config_list_v2")
+            USER_CONFIG.synchronize()
             global_value.server_url=server
             global_value.password=password
     }
@@ -101,8 +101,8 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (shared.dictionary(forKey: "config_list_v2") != nil){
-            config_list = shared.dictionary(forKey: "config_list_v2")!
+        if (USER_CONFIG.dictionary(forKey: "config_list_v2") != nil){
+            config_list = USER_CONFIG.dictionary(forKey: "config_list_v2")!
         }
     }
 }

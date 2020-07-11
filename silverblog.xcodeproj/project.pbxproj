@@ -213,10 +213,10 @@
 				5E8042222054A52D008FE7EF /* ViewController.swift */,
 				5E8042242054A52D008FE7EF /* Main.storyboard */,
 				5EA6A084206B962F002BA695 /* menu_list_view.swift */,
+				5EA6A086206CF412002BA695 /* edit_post_view.swift */,
 				5E80422C2054A52D008FE7EF /* Info.plist */,
 				5EC34D9D205518590023A9F7 /* global_value.swift */,
 				5EC0941A206AAB2B006E27EF /* post_list_view.swift */,
-				5EA6A086206CF412002BA695 /* edit_post_view.swift */,
 				5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */,
 				5E7033432074D46C004B52C6 /* LaunchScreen.storyboard */,
 			);
