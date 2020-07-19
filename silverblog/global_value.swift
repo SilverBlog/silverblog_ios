@@ -4,4 +4,3 @@ struct global_value {
     static var refresh = true
     static var is_scan = false
 }
-

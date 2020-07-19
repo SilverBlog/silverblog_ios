@@ -7,6 +7,7 @@ class ShareViewController: SLComposeServiceViewController {
     let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
     var post_title = "No Title"
     var slug = ""
+    var image = ""
     var config_list: [String: Any] = [:]
     override func isContentValid() -> Bool {
         if (contentText.isEmpty || USER_CONFIG.string(forKey: "server") == nil) {
@@ -72,14 +73,13 @@ class ShareViewController: SLComposeServiceViewController {
                 post_title = split[0].replacingOccurrences(of: "# ", with: "")
             }
         }
-        return [title_item, sulg_item, site_table_Item]
+        return [title_item, sulg_item,image_item, site_table_Item]
     }
 
     func send_post(content: String) {
         let password: String = USER_CONFIG.string(forKey: "password")!
         let server: String = USER_CONFIG.string(forKey: "server")!
         let send_time = public_func.get_timestamp()
-        //let sign = public_func.hmac_hex(hashName: "SHA512", message: post_title+slug+public_func.sha512(string:content), key: password+String(send_time))
         let sign_message = post_title+slug+public_func.sha512(string:content)
         let sign = public_func.sign_message(sign_message:sign_message,password:password,send_time:send_time)
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
@@ -189,6 +189,29 @@ class ShareViewController: SLComposeServiceViewController {
                 textField.placeholder = "Slug"
                 textField.keyboardType = .default
                 textField.text = self.slug
+            })
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            let confirm = UIAlertAction(title: "OK", style: .default) { (action) in
+                let textField = alert.textFields![0] // Force unwrapping because we know it exists.
+                item.value = textField.text
+                self.slug = textField.text!
+            }
+            alert.addAction(cancel)
+            alert.addAction(confirm)
+            self.present(alert, animated: true, completion: nil)
+        }
+        return item
+    }()
+    lazy var image_item: SLComposeSheetConfigurationItem = {
+        let item = SLComposeSheetConfigurationItem()!
+        item.title = "Image"
+        item.value = ""
+        item.tapHandler = {
+            let alert = UIAlertController(title: "Please enter a image URL:", message: "", preferredStyle: .alert)
+            alert.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "image"
+                textField.keyboardType = .default
+                textField.text = self.image
             })
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             let confirm = UIAlertAction(title: "OK", style: .default) { (action) in
