@@ -11,7 +11,7 @@ import Alamofire
 import public_func
 
 class ViewController: UIViewController {
-    let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
+    let USER_CONFIG = UserDefaults(suiteName: public_func.USER_DEFAULTS_GROUP)!
     var config_list: [String: Any] = [:]
     @IBOutlet weak var server_name: UITextField!
     @IBOutlet weak var password: UITextField!

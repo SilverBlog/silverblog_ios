@@ -8,7 +8,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
     var array_json = JSON()
     let REFRESH_CONTROL = UIRefreshControl()
     let NET_REACHABILITY_MANAGER = NetworkReachabilityManager()
-    let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
+    let USER_CONFIG = UserDefaults(suiteName: public_func.USER_DEFAULTS_GROUP)!
     
     @IBOutlet weak var more_button_outlet: UIBarButtonItem!
     

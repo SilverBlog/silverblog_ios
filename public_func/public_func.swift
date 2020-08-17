@@ -1,7 +1,7 @@
 import Foundation
 public class public_func{
-    public static let version = "v2"
-    public static let group_suite = "group.org.silverblog.public"
+    public static let VERSION = "v2"
+    public static let USER_DEFAULTS_GROUP = "group.org.silverblog.client"
     public static func get_error_message(error:Int) -> String {
         var result = ""
         switch error {
@@ -56,9 +56,9 @@ public class public_func{
         let algos = ["SHA256": (kCCHmacAlgSHA256, CC_SHA256_DIGEST_LENGTH),
                      "SHA512": (kCCHmacAlgSHA512, CC_SHA512_DIGEST_LENGTH)]
         guard let (hashAlgorithm, length) = algos[hashName]  else { return nil }
-        var macData = Data(count: Int(length))
+        var mac_data = Data(count: Int(length))
         
-        macData.withUnsafeMutableBytes {macBytes in
+        mac_data.withUnsafeMutableBytes {macBytes in
             message.withUnsafeBytes {messageBytes in
                 key.withUnsafeBytes {keyBytes in
                     CCHmac(CCHmacAlgorithm(hashAlgorithm),
@@ -68,7 +68,7 @@ public class public_func{
                 }
             }
         }
-        return macData
+        return mac_data
     }
     public static func hmac_hex(hashName:String, message:String, key:String) -> String {
         let messageData = message.data(using:.utf8)!

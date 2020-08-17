@@ -4,7 +4,7 @@ import Alamofire
 import public_func
 
 class ShareViewController: SLComposeServiceViewController {
-    let USER_CONFIG = UserDefaults(suiteName: public_func.group_suite)!
+    let USER_CONFIG = UserDefaults(suiteName: public_func.USER_DEFAULTS_GROUP)!
     var post_title = "No Title"
     var slug = ""
     var image = ""
