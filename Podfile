@@ -1,5 +1,4 @@
 platform :ios, '13.0'
-use_frameworks!
 project './silverblog.xcodeproj'
 target 'silverblog' do
   pod 'Alamofire','~> 5.1'

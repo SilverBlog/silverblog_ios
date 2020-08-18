@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A59D01130311F92BCA27F6C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2A59DA7642260DB007D67CD9 /* Podfile */; };
-		5E023F422390730C009205BF /* Pods_silverblog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FE7180841CDD410669A9D313 /* Pods_silverblog.framework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5E023F4423907316009205BF /* Pods_silverblog_share.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5E155CFC206E95B200035A4B /* silverblog_share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5E155CFC206E95B200035A4B /* silverblog_share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5EA269E7205ACD1E00888C61 /* silverblog_share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5E5C3D58246C063400357739 /* get_url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C3D57246C063400357739 /* get_url.swift */; };
 		5E7033462074D64E004B52C6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E7033452074D64E004B52C6 /* Images.xcassets */; };
 		5E7DD6C620831A4900DDF14D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E7DD6C420831A4900DDF14D /* MainInterface.storyboard */; };
@@ -28,8 +26,8 @@
 		5EF4BE84206FAFF30064FB65 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */; };
 		5EF6446F2390743100021F2E /* public_func.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; };
 		5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5EB5FFA621EC8F3F007D0139 /* public_func.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		89B85DEBC76E932782E4871A /* Pods_silverblog_share.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 956D5EA5CED8C22814C70C3E /* Pods_silverblog_share.framework */; };
-		FF5DBBB135E38099A397B8DA /* Pods_silverblog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A303DE7D177691D1FF1B670A /* Pods_silverblog.framework */; };
+		89FDB4407CF7C82C1AE98AA0 /* libPods-silverblog_share.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832360A075C519DE397002C6 /* libPods-silverblog_share.a */; };
+		B6DAA65DC97000EF0B590E1B /* libPods-silverblog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F912363869CAB88A0F4AD1 /* libPods-silverblog.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +45,7 @@
 			remoteGlobalIDString = 5EB5FFA521EC8F3F007D0139;
 			remoteInfo = public_func;
 		};
-		5EF644752390743A00021F2E /* PBXContainerItemProxy */ = {
+		5EF972D324EAE16000479AAD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E8042152054A52D008FE7EF /* Project object */;
 			proxyType = 1;
@@ -63,7 +61,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5E023F4423907316009205BF /* Pods_silverblog_share.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,7 +82,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5E023F422390730C009205BF /* Pods_silverblog.framework in Embed Frameworks */,
 				5EF644702390743100021F2E /* public_func.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -94,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		20F912363869CAB88A0F4AD1 /* libPods-silverblog.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-silverblog.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A59DA7642260DB007D67CD9 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		43EE4B1E9F5D85E66AAC2337 /* Pods-silverblog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.release.xcconfig"; path = "Pods/Target Support Files/Pods-silverblog/Pods-silverblog.release.xcconfig"; sourceTree = "<group>"; };
 		4A6C8B23123C076B0FB6F2D8 /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,9 +121,8 @@
 		5ED2712D206B93A100A50F9B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF4BE83206FAFF30064FB65 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		7D6C16E3FEC5C36D604C6BE9 /* Pods-silverblog_share.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog_share.debug.xcconfig"; path = "Pods/Target Support Files/Pods-silverblog_share/Pods-silverblog_share.debug.xcconfig"; sourceTree = "<group>"; };
+		832360A075C519DE397002C6 /* libPods-silverblog_share.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-silverblog_share.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		870C00CC06D8DA3F6B5641FE /* Pods-silverblog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-silverblog/Pods-silverblog.debug.xcconfig"; sourceTree = "<group>"; };
-		956D5EA5CED8C22814C70C3E /* Pods_silverblog_share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog_share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A303DE7D177691D1FF1B670A /* Pods_silverblog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB788647ABA352821A4A34B3 /* Pods-silverblog_share.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-silverblog_share.release.xcconfig"; path = "Pods/Target Support Files/Pods-silverblog_share/Pods-silverblog_share.release.xcconfig"; sourceTree = "<group>"; };
 		FE7180841CDD410669A9D313 /* Pods_silverblog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_silverblog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -137,7 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF6446F2390743100021F2E /* public_func.framework in Frameworks */,
-				FF5DBBB135E38099A397B8DA /* Pods_silverblog.framework in Frameworks */,
+				B6DAA65DC97000EF0B590E1B /* libPods-silverblog.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89B85DEBC76E932782E4871A /* Pods_silverblog_share.framework in Frameworks */,
+				89FDB4407CF7C82C1AE98AA0 /* libPods-silverblog_share.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,8 +161,8 @@
 				5ED2712D206B93A100A50F9B /* Alamofire.framework */,
 				5EC8551B205598FC00228E6E /* Alamofire */,
 				5EC85519205598F000228E6E /* SwiftyJSON */,
-				A303DE7D177691D1FF1B670A /* Pods_silverblog.framework */,
-				956D5EA5CED8C22814C70C3E /* Pods_silverblog_share.framework */,
+				20F912363869CAB88A0F4AD1 /* libPods-silverblog.a */,
+				832360A075C519DE397002C6 /* libPods-silverblog_share.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,7 +276,6 @@
 				5E80421B2054A52D008FE7EF /* Resources */,
 				5E155CFF206E95B200035A4B /* Embed App Extensions */,
 				5EB5FFB221EC8F3F007D0139 /* Embed Frameworks */,
-				1C9565BA06D1F078153311DF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -306,7 +301,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				5EF644762390743A00021F2E /* PBXTargetDependency */,
+				5EF972D424EAE16000479AAD /* PBXTargetDependency */,
 			);
 			name = silverblog_share;
 			productName = silverblog_share;
@@ -435,23 +430,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1C9565BA06D1F078153311DF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-silverblog/Pods-silverblog-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6FB0604041CA4F7EA4FC87E4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,7 +487,6 @@
 /* Begin PBXTargetDependency section */
 		5E155CFE206E95B200035A4B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 5EA269E6205ACD1E00888C61 /* silverblog_share */;
 			targetProxy = 5E155CFD206E95B200035A4B /* PBXContainerItemProxy */;
 		};
@@ -518,11 +495,10 @@
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
 			targetProxy = 5EF644712390743100021F2E /* PBXContainerItemProxy */;
 		};
-		5EF644762390743A00021F2E /* PBXTargetDependency */ = {
+		5EF972D424EAE16000479AAD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 5EB5FFA521EC8F3F007D0139 /* public_func */;
-			targetProxy = 5EF644752390743A00021F2E /* PBXContainerItemProxy */;
+			targetProxy = 5EF972D324EAE16000479AAD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -685,7 +661,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -714,7 +690,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -727,7 +703,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3PJP564QCS;
+				DEVELOPMENT_TEAM = 3G9U2VPD67;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -739,7 +715,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.client.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -752,7 +728,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = silverblog_share/silverblog_share.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3PJP564QCS;
+				DEVELOPMENT_TEAM = 3G9U2VPD67;
 				INFOPLIST_FILE = silverblog_share/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -764,7 +740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.client.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -776,10 +752,11 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3PJP564QCS;
+				DEVELOPMENT_TEAM = 3G9U2VPD67;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -794,10 +771,10 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.public;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.client.public;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -810,10 +787,11 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3PJP564QCS;
+				DEVELOPMENT_TEAM = 3G9U2VPD67;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -826,10 +804,10 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.x.client.main.public;
+				PRODUCT_BUNDLE_IDENTIFIER = org.silverblog.client.public;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

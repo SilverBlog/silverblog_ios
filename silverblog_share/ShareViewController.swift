@@ -85,7 +85,12 @@ class ShareViewController: SLComposeServiceViewController {
         let alertController = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        if #available(iOSApplicationExtension 13.0, *) {
+            loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        } else {
+            // Fallback on earlier versions
+            loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        }
         loadingIndicator.startAnimating();
         alertController.view.addSubview(loadingIndicator)
         self.present(alertController, animated: true, completion: nil)
