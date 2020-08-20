@@ -92,11 +92,15 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         if(content_input.text == "Content"){
             content_input.textColor = UIColor.placeholderText
         }
+
         content_input.delegate=self
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if(self.traitCollection.userInterfaceStyle == .dark){
+            content_input.backgroundColor = UIColor.black
+        }
         if (new_mode){
             self.title="New"
         }else{
@@ -108,9 +112,10 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             
             }
             self.content_input.textColor = UIColor.black
-            if(self.traitCollection.userInterfaceStyle == .dark){
+            if(UITraitCollection.current.userInterfaceStyle == .dark){
                 self.content_input.textColor = UIColor.white
             }
+
         }
     }
     func textViewDidBeginEditing(_ textView: UITextView) {

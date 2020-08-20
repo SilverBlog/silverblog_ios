@@ -81,7 +81,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.REFRESH_CONTROL.addTarget(self, action: #selector(post_list_view.refresh), for: .valueChanged)
-        
+        self.tableView.backgroundColor = UIColor.systemBackground
         self.tableView.refreshControl = REFRESH_CONTROL
 
 
@@ -108,6 +108,7 @@ class post_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
             refresh_pull()
         }
         self.tabBarController!.title = "Post"
+    
     }
     func refresh_pull(){
         self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y - (self.REFRESH_CONTROL.frame.size.height)), animated: true)

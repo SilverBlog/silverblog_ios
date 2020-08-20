@@ -17,6 +17,7 @@ class menu_list_view: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.refreshControl = REFRESH_CONTROL
+        self.tableView.backgroundColor = UIColor.systemBackground
     }
 
     override func viewDidAppear(_ animated: Bool) {
