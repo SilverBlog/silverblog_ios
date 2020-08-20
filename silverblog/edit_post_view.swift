@@ -38,6 +38,7 @@ class edit_post_view: UIViewController,UITextViewDelegate {
         let content:String = content_input.text!
         let name:String = slug_input.text!
         let content_hash = public_func.sha512(string: content)
+        let head_image = image_input.text!
         var sign_message = title+name+content_hash
         var submit_url = get_url.new_post(server_url:global_value.server_url)
         if(!new_mode){
@@ -51,7 +52,8 @@ class edit_post_view: UIViewController,UITextViewDelegate {
             "sign": sign,
             "content": content,
             "name": name,
-            "send_time":send_time
+            "send_time": send_time,
+            "head_image": head_image
         ]
         
         AF.request(submit_url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in

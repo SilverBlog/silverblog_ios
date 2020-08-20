@@ -101,7 +101,8 @@ class ShareViewController: SLComposeServiceViewController {
             "sign": sign,
             "content": content,
             "name": slug,
-            "send_time":send_time
+            "send_time":send_time,
+            "head_image": image
         ]
         var result_message = ""
         AF.request(get_url.new_post(server_url: server), method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON { response in
