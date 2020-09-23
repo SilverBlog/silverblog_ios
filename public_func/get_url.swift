@@ -9,7 +9,7 @@
 import Foundation
 public class get_url{
     public static func Publish(server_url:String) -> String{
-        return "https://" + server_url + "/control/"+public_func.VERSION+"/git_page_publish"
+        return "https://" + server_url + "/control/" + public_func.VERSION + "/git_page_publish"
     }
     public static func get_list(server_url:String, list_name:String) -> String{
         return "https://" + server_url + "/control/" + public_func.VERSION + "/get/list/"+list_name
